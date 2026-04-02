@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Ops Cleanup Sprint — Robinson Ops | Hamilton, Ontario</title>
+  <meta name="description" content="7 days. Your biggest operational leaks found, documented, and fixed. Robinson Ops Cleanup Sprint for Hamilton trades and property businesses. $750 flat rate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --black:       #000000;
+      --surface:     #090b0f;
+      --surface2:    #0d1017;
+      --silver:      #bcc6d4;
+      --silver-hi:   #e6ecf4;
+      --blue-deep:   #0f2a54;
+      --blue-mid:    #1560a4;
+      --blue-bright: #3a9fd5;
+      --txt:         #ffffff;
+      --txt-2:       #8a96a8;
+      --txt-3:       #444e5e;
+      --border:      rgba(188,198,212,0.10);
+      --border-hi:   rgba(188,198,212,0.22);
+      --radius:      6px;
+      --green:       #22c55e;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--txt);
+      font-family: 'Barlow', system-ui, sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo img { height: 38px; width: auto; }
+    .nav-wordmark {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.09em;
+      color: var(--silver-hi);
+    }
+    .nav-wordmark em { color: var(--blue-bright); font-style: normal; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--txt-2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--silver-hi); }
+    .nav-cta {
+      border: 1px solid var(--blue-mid) !important;
+      color: var(--blue-bright) !important;
+      padding: 0.38rem 1.3rem;
+      border-radius: var(--radius);
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--blue-mid) !important; color: #fff !important; }
+
+    /* ── SHARED ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--silver-hi);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--txt-2);
+      line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue-mid);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.6rem;
+      border: 1px solid var(--blue-bright);
+      border-radius: var(--radius);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--blue-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(58,159,213,0.32);
+    }
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--silver);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.6rem;
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: var(--silver);
+      color: var(--silver-hi);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO ── */
+    .sprint-hero {
+      padding: 9rem 2rem 6rem;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .sprint-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 55%;
+      height: 100%;
+      background: radial-gradient(ellipse 70% 80% at 80% 40%,
+        rgba(21,96,164,0.12) 0%,
+        transparent 70%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 1rem;
+    }
+    .flag-line {
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--blue-bright);
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: var(--silver-hi);
+      line-height: 1.0;
+      margin-bottom: 0.4rem;
+    }
+    .hero-title .accent { color: var(--blue-bright); }
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+      font-weight: 400;
+      color: var(--txt-2);
+      letter-spacing: 0.04em;
+      margin-bottom: 1.8rem;
+      line-height: 1.4;
+    }
+    .hero-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      margin-bottom: 2.4rem;
+    }
+    .hero-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--txt-2);
+    }
+    .hero-bullets li::before {
+      content: '✓';
+      color: var(--blue-bright);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Price card */
+    .price-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: 10px;
+      padding: 2.4rem 2rem;
+      text-align: center;
+      min-width: 220px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright));
+      border-radius: 10px 10px 0 0;
+    }
+    .price-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--txt-3);
+      margin-bottom: 0.4rem;
+    }
+    .price-amount {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--silver-hi);
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .price-amount sup {
+      font-size: 1.6rem;
+      vertical-align: super;
+      color: var(--txt-2);
+    }
+    .price-desc {
+      font-size: 0.8rem;
+      color: var(--txt-3);
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+    .price-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.8rem;
+      text-align: left;
+    }
+    .price-includes li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--txt-2);
+    }
+    .price-includes li::before {
+      content: '→';
+      color: var(--blue-bright);
+      flex-shrink: 0;
+    }
+    .price-guarantee {
+      font-size: 0.72rem;
+      color: var(--txt-3);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── WHO IT'S FOR ── */
+    .who-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .who-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      transition: border-color 0.25s;
+    }
+    .who-card:hover { border-color: rgba(58,159,213,0.3); }
+    .who-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .who-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--silver-hi);
+      margin-bottom: 0.5rem;
+    }
+    .who-example {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue-bright);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .who-body { font-size: 0.88rem; color: var(--txt-2); line-height: 1.65; }
+
+    /* ── DELIVERABLES ── */
+    .deliverables-section { background: var(--black); }
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .deliver-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      position: relative;
+    }
+    .deliver-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      color: var(--txt-3);
+      margin-bottom: 0.8rem;
+    }
+    .deliver-icon { font-size: 1.5rem; margin-bottom: 0.8rem; display: block; }
+    .deliver-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--silver-hi);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .deliver-body { font-size: 0.78rem; color: var(--txt-2); line-height: 1.55; }
+
+    /* ── TIMELINE ── */
+    .timeline-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .timeline-wrap {
+      margin-top: 3rem;
+      position: relative;
+    }
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--blue-mid), transparent);
+    }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      position: relative;
+    }
+    .tl-row:last-child { padding-bottom: 0; }
+    .tl-day {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding-top: 2px;
+      position: relative;
+      z-index: 1;
+    }
+    .day-dot {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--blue-mid);
+      border: 2px solid var(--blue-bright);
+      flex-shrink: 0;
+    }
+    .day-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      white-space: nowrap;
+    }
+    .tl-content {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      transition: border-color 0.2s;
+    }
+    .tl-content:hover { border-color: rgba(58,159,213,0.25); }
+    .tl-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--silver-hi);
+      margin-bottom: 0.4rem;
+    }
+    .tl-body { font-size: 0.88rem; color: var(--txt-2); line-height: 1.65; }
+    .tl-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-top: 0.7rem;
+    }
+    .tl-tag.remote { background: rgba(58,159,213,0.1); color: var(--blue-bright); border: 1px solid rgba(58,159,213,0.2); }
+    .tl-tag.onsite { background: rgba(34,197,94,0.08); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+    .tl-tag.delivery { background: rgba(200,168,75,0.08); color: #c8a84b; border: 1px solid rgba(200,168,75,0.2); }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--black); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--silver-hi);
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: left;
+      padding: 1.3rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.18s;
+    }
+    .faq-q:hover { background: var(--surface2); }
+    .faq-icon {
+      font-size: 1.1rem;
+      color: var(--blue-bright);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+      line-height: 1;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      padding: 0 1.5rem;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.3rem; }
+    .faq-a p { font-size: 0.88rem; color: var(--txt-2); line-height: 1.7; }
+
+    /* ── BOTTOM CTA ── */
+    .sprint-cta {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .sprint-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(21,96,164,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .sprint-cta .cta-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      color: var(--silver-hi);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .sprint-cta .cta-title span { color: var(--blue-bright); }
+    .sprint-cta .cta-body {
+      font-size: 1rem;
+      color: var(--txt-2);
+      max-width: 440px;
+      margin: 0 auto 2.5rem;
+      position: relative;
+    }
+    .cta-fine {
+      font-size: 0.78rem;
+      color: var(--txt-3);
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--surface2);
+      border-top: 1px solid var(--border);
+      padding: 3.5rem 2rem 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+    .footer-logo { height: 48px; width: auto; margin-bottom: 1rem; display: block; }
+    .footer-tagline { font-size: 0.85rem; color: var(--txt-2); line-height: 1.65; max-width: 290px; }
+    .footer-col-head {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--txt-3);
+      margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a { font-size: 0.9rem; color: var(--txt-2); text-decoration: none; transition: color 0.18s; }
+    .footer-links a:hover { color: var(--silver-hi); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-legal { font-size: 0.78rem; color: var(--txt-3); }
+    .footer-gcv { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .footer-gcv img { height: 26px; opacity: 0.65; transition: opacity 0.2s; }
+    .footer-gcv:hover img { opacity: 1; }
+    .footer-gcv span { font-size: 0.75rem; color: var(--txt-3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-grid      { grid-template-columns: 1fr; }
+      .price-card     { min-width: auto; width: 100%; max-width: 320px; }
+      .who-grid       { grid-template-columns: 1fr; }
+      .deliver-grid   { grid-template-columns: repeat(2,1fr); }
+      .faq-grid       { grid-template-columns: 1fr; }
+      .footer-grid    { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 680px) {
+      .deliver-grid   { grid-template-columns: 1fr; }
+      .nav-links      { display: none; }
+      .footer-bottom  { flex-direction: column; gap: 1rem; text-align: center; }
+      section         { padding: 4rem 1.25rem; }
+      .sprint-hero    { padding: 8rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════ NAV ════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/ops_logo.png" alt="Robinson Ops Shield">
+    <span class="nav-wordmark">ROBINSON <em>OPS</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html" style="color:var(--silver-hi)">The Sprint</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="digital-shield.html">Digital Shield</a></li>
+    <li><a href="book.html" class="nav-cta">Book a Call</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════ HERO ════════════ -->
+<section class="sprint-hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-flag"><span class="flag-line"></span> Flagship Service</div>
+      <h1 class="hero-title">
+        The Ops<br>Cleanup<br><span class="accent">Sprint</span>
+      </h1>
+      <p class="hero-subtitle">7 days. Your biggest operational<br>leaks found, documented, and fixed.</p>
+      <ul class="hero-bullets">
+        <li>Full ops audit of your business processes</li>
+        <li>Identify where time and revenue are leaking</li>
+        <li>At least one automation built and live by Day 7</li>
+        <li>Written playbook so your team can run it</li>
+        <li>Flat-rate pricing — no hidden costs, no surprises</li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="book.html" class="btn-primary">Start Your Sprint</a>
+        <a href="#timeline" class="btn-outline">See the 7 Days</a>
+      </div>
+    </div>
+    <div class="price-card">
+      <p class="price-tag">Flat-Rate Investment</p>
+      <div class="price-amount"><sup>$</sup>750</div>
+      <p class="price-desc">CAD · One-time · 7-day engagement<br>No retainer. No monthly fees.</p>
+      <ul class="price-includes">
+        <li>Ops audit + process mapping</li>
+        <li>At least 1 automation built live</li>
+        <li>Written ops playbook</li>
+        <li>30-day post-sprint check-in call</li>
+      </ul>
+      <a href="book.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Book the Sprint</a>
+      <p class="price-guarantee">Questions first? <a href="book.html" style="color:var(--blue-bright);text-decoration:none;">Book a free 15-min call →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ WHO IT'S FOR ════════════ -->
+<section class="who-section">
+  <div class="container">
+    <p class="eyebrow">Who This Is For</p>
+    <h2 class="section-title">Built for Hamilton's Hardest Workers</h2>
+    <p class="section-body" style="max-width:560px;">If you're running the business and doing the admin, the Sprint is for you. We built it specifically for local operators who are too busy to fix the systems they know are broken.</p>
+    <div class="who-grid">
+      <div class="who-card">
+        <span class="who-icon">🔧</span>
+        <div class="who-title">Trades & Contractors</div>
+        <div class="who-example">HVAC · Plumbing · Electrical · Auto</div>
+        <p class="who-body">You're booked solid but still manually chasing invoices, missing callbacks, and losing quotes that never got followed up. The Sprint builds the systems that catch what you're dropping.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-icon">🏢</span>
+        <div class="who-title">Property Management</div>
+        <div class="who-example">Residential · Commercial · Strata</div>
+        <p class="who-body">Tenant inquiries, maintenance tracking, rent follow-up — all manual, all dependent on you being available. We automate the repetitive layer so your attention goes to decisions, not admin.</p>
+      </div>
+      <div class="who-card">
+        <span class="who-icon">🏠</span>
+        <div class="who-title">Realtors & Brokerages</div>
+        <div class="who-example">Agents · Teams · Boutique Brokerages</div>
+        <p class="who-body">Leads go cold in under 5 minutes if you don't respond. The Sprint builds an intake and follow-up system that engages leads automatically while you're showing property.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ DELIVERABLES ════════════ -->
+<section class="deliverables-section">
+  <div class="container">
+    <p class="eyebrow">What You Get</p>
+    <h2 class="section-title">5 Things You Walk Away With</h2>
+    <div class="deliver-grid">
+      <div class="deliver-card">
+        <div class="deliver-num">01</div>
+        <span class="deliver-icon">🗺️</span>
+        <div class="deliver-title">Ops Process Map</div>
+        <p class="deliver-body">A clear visual of how your business actually runs today — bottlenecks, dependencies, and gaps all documented.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">02</div>
+        <span class="deliver-icon">📋</span>
+        <div class="deliver-title">Ops Audit Report</div>
+        <p class="deliver-body">A written breakdown of your top 3 operational leaks with the cost estimate of each one going unfixed.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">03</div>
+        <span class="deliver-icon">⚡</span>
+        <div class="deliver-title">Live Automation</div>
+        <p class="deliver-body">At least one real automation built and running in your business before Day 7 ends. Not a mockup — live.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">04</div>
+        <span class="deliver-icon">📖</span>
+        <div class="deliver-title">Written Playbook</div>
+        <p class="deliver-body">Step-by-step documentation so you or a staff member can run the new system without Joe being in the room.</p>
+      </div>
+      <div class="deliver-card">
+        <div class="deliver-num">05</div>
+        <span class="deliver-icon">📞</span>
+        <div class="deliver-title">30-Day Check-In</div>
+        <p class="deliver-body">A follow-up call 30 days after the Sprint to confirm the system is running and answer any questions that came up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ TIMELINE ════════════ -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <p class="eyebrow">7-Day Breakdown</p>
+    <h2 class="section-title">What Happens Each Day</h2>
+    <p class="section-body" style="max-width:560px;margin-bottom:0;">Most of this is handled remotely. No disruption to your day — we work around your schedule.</p>
+    <div class="timeline-wrap">
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Day 1</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Kickoff & Context Intake</div>
+          <p class="tl-body">60-minute call to walk through your current operations. We map your tools, your team, your workflow, and where you feel the most pain. You don't need to prepare — just talk through a normal week.</p>
+          <span class="tl-tag remote">Remote Call</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Day 2</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Process Audit & Leak Identification</div>
+          <p class="tl-body">Robinson Ops maps every manual touchpoint in your operation and identifies where time, leads, and revenue are escaping. You get a preliminary list of your top 3 leaks by end of day.</p>
+          <span class="tl-tag remote">Remote Work</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Day 3</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Automation Plan Sign-Off</div>
+          <p class="tl-body">30-minute call to review the leak report and agree on which automation gets built first. You pick the priority — we build to your decision, not ours.</p>
+          <span class="tl-tag remote">Remote Call</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Days 4–5</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Build & Integration</div>
+          <p class="tl-body">The automation gets built inside your existing tools — no expensive new software required. Typically this is an n8n workflow connected to your email, your sheets, and your calendar. We test it against real scenarios from your business.</p>
+          <span class="tl-tag remote">Remote Build</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Day 6</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Live Testing & Walkthrough</div>
+          <p class="tl-body">We run the automation live with real data from your business. You watch it work in real time. Any adjustments get made on the spot. We also walk you through the written playbook so you own it, not just rent it.</p>
+          <span class="tl-tag onsite">On-Site or Video</span>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-day">
+          <div class="day-dot"></div>
+          <div class="day-label">Day 7</div>
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">Handoff & Sprint Report</div>
+          <p class="tl-body">Full written sprint report delivered: ops map, audit findings, what was built, how to run it, and what to automate next if you choose to continue. The system is live and running independently before we wrap.</p>
+          <span class="tl-tag delivery">Final Delivery</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FAQ ════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="eyebrow">Common Questions</p>
+    <h2 class="section-title">Straight Answers</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do I need to already have tech tools in place?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>No. We work with whatever you currently use — even if that's just email and a spreadsheet. The Sprint maps what you have and builds automation on top of it. We don't require you to buy new software.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Will this take time away from running my business?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Minimal. You're involved for roughly 90 minutes total across Day 1, Day 3, and Day 6 calls. Everything else happens on our side. The Sprint is designed to run around your schedule, not disrupt it.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if I only want the audit, not the automation?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>The automation is included in the Sprint price because finding leaks without fixing one of them doesn't give you real value. That said, if budget is the issue, let's talk on the free call — there's usually a way to scope it down to what matters most for you right now.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How is $750 calculated — is there a catch?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>No catch. It's a flat-rate engagement, not an hourly rate. $750 covers everything: the audit, the build, the playbook, and the 30-day check-in. The price is set to be accessible for small operators while covering the actual work. No retainer, no upsell required.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What if the automation breaks after you leave?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>The written playbook covers basic troubleshooting. The 30-day check-in call gives you a window to flag anything that's not running right. For ongoing maintenance, we offer a separate support package — but many clients run the system independently without it.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I'm not in Hamilton — can you still help?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><p>Yes. The Sprint is almost entirely remote. Days 1, 3, and 6 are video calls, the build work is done online. If you're in the GTA or Southern Ontario and want an on-site component on Day 6, we can discuss it. Outside that region is fully remote.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ BOTTOM CTA ════════════ -->
+<section class="sprint-cta">
+  <div class="container" style="position:relative;">
+    <p class="eyebrow">Start Your Sprint</p>
+    <h2 class="cta-title">7 Days From Now,<br>Your Ops <span>Run Without You</span></h2>
+    <p class="cta-body">Book a free 15-minute call. We'll confirm the Sprint is the right fit and get you on the schedule.</p>
+    <a href="book.html" class="btn-primary">Book the Free Call First</a>
+    <p class="cta-fine">$750 flat. No retainer. No surprises. Hamilton-based, GTA-available.</p>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <img class="footer-logo" src="assets/images/ops_logo.png" alt="Robinson Ops">
+      <p class="footer-tagline">AI-powered operations consulting for Hamilton's trades and property professionals. Built by a location manager who spent 15 years running complex, multi-vendor logistics where failure wasn't an option.</p>
+    </div>
+    <div>
+      <p class="footer-col-head">Navigation</p>
+      <ul class="footer-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="sprint.html">The Sprint</a></li>
+        <li><a href="about.html">About Joe</a></li>
+        <li><a href="digital-shield.html">Digital Shield</a></li>
+        <li><a href="book.html">Book a Call</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-head">Contact</p>
+      <ul class="footer-links">
+        <li><a href="mailto:robinsonops@pm.me">robinsonops@pm.me</a></li>
+        <li><a href="book.html">Book a Free Call</a></li>
+        <li><a href="https://calendly.com/robinsonops/15min" target="_blank" rel="noopener">Calendly Booking</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 Robinson Ops · A GTA CAN Vibe Productions Inc. company · Hamilton, Ontario</p>
+    <a href="#" class="footer-gcv">
+      <img src="assets/images/gcv_logo.png" alt="GTA CAN Vibe Productions Inc.">
+      <span>GTA CAN Vibe Productions Inc.</span>
+    </a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+</body>
+</html>

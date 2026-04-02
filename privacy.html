@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy & Terms — Robinson Ops</title>
+<meta name="description" content="Privacy policy, terms of service, and AI disclaimers for Robinson Ops. GTA CAN Vibe Productions Inc., Hamilton, Ontario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #000000;
+  --surface: #090b0f;
+  --surface2: #0d1117;
+  --silver: #e6ecf4;
+  --blue-deep: #0a3d6b;
+  --blue-mid: #1560a4;
+  --blue-bright: #3a9fd5;
+  --blue-glow: #5bb8f0;
+  --gold: #c8a84e;
+  --txt: #e6ecf4;
+  --txt-2: #8a96a8;
+  --txt-3: #555e6c;
+  --border: rgba(58, 159, 213, 0.15);
+  --border-hi: rgba(58, 159, 213, 0.35);
+  --radius: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--txt);
+  font-family: 'Barlow', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue-bright); text-decoration: none; }
+a:hover { color: var(--blue-glow); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 20px;
+  color: var(--silver); letter-spacing: 0.04em;
+}
+.nav-brand img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--txt-2); transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue-bright); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--txt-2); margin: 5px 0; }
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(0,0,0,0.97); flex-direction: column;
+    padding: 24px; gap: 20px;
+    transform: translateY(-120%); transition: transform 0.3s;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { transform: translateY(0); }
+}
+
+/* LEGAL CONTENT */
+.legal {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 110px 24px 80px;
+}
+.legal h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4vw, 38px);
+  color: var(--silver);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.legal .updated {
+  font-size: 13px;
+  color: var(--txt-3);
+  margin-bottom: 32px;
+}
+.legal h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--silver);
+  margin-top: 40px;
+  margin-bottom: 12px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.legal h2:first-of-type { border-top: none; padding-top: 0; }
+.legal h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--txt);
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.legal p {
+  font-size: 15px;
+  color: var(--txt-2);
+  margin-bottom: 12px;
+}
+.legal strong { color: var(--txt); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px; text-align: center;
+}
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 16px;
+  color: var(--txt-3); letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.footer-brand span { color: var(--blue-bright); }
+.footer-links {
+  list-style: none; display: flex;
+  justify-content: center; gap: 24px;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 13px; color: var(--txt-3);
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.footer-links a:hover { color: var(--blue-bright); }
+.footer-copy { font-size: 12px; color: var(--txt-3); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
+    ROBINSON OPS
+  </a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="book.html">Book a Call</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<!-- LEGAL CONTENT -->
+<section class="legal">
+
+<h1>Privacy Policy &amp; Terms of Service</h1>
+<p class="updated">Last updated: April 1, 2026</p>
+
+<p>Robinson Ops is a service of <strong>GTA CAN Vibe Productions Inc.</strong>, a registered Ontario corporation based in Hamilton, Ontario, Canada. This page outlines how we handle your information and the terms governing use of this website and our services.</p>
+
+<!-- PRIVACY POLICY -->
+
+<h2>Privacy Policy</h2>
+
+<h3>Information We Collect</h3>
+<p>When you book a call through our Calendly scheduling tool, we collect your name, email address, and any information you voluntarily provide in the intake question. When you contact us by email at robinsonops@pm.me, we retain your message and contact details for the purpose of responding to your inquiry.</p>
+<p>This website does not use cookies for tracking or advertising. We do not use analytics tracking tools. We do not collect or store payment information on this website — all payments are processed through separate, secure channels (e-transfer or invoicing).</p>
+
+<h3>How We Use Your Information</h3>
+<p>Information collected through scheduling and email is used solely to provide and deliver our consulting services. We use your contact details to communicate about your engagement, deliver project materials, and follow up on service delivery. We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
+
+<h3>Data Retention</h3>
+<p>Contact information and engagement records are retained for the duration of our business relationship and for a reasonable period afterward for legal and accounting purposes. If you request deletion of your information, contact us at robinsonops@pm.me and we will process your request within 30 days.</p>
+
+<h3>Third-Party Services</h3>
+<p>We use the following third-party services in our operations: Calendly (scheduling), Google Workspace (calendar and communication), and Proton Mail (encrypted email). Each of these services maintains its own privacy policy. We select services that maintain strong privacy and security standards.</p>
+
+<h3>Your Rights</h3>
+<p>Under Canadian privacy law (PIPEDA), you have the right to access, correct, or request deletion of your personal information held by us. To exercise any of these rights, contact us at robinsonops@pm.me.</p>
+
+<!-- TERMS OF SERVICE -->
+
+<h2>Terms of Service</h2>
+
+<h3>Website Use</h3>
+<p>This website is provided for informational purposes about Robinson Ops consulting services. By accessing and using this website, you acknowledge and agree to these terms. We reserve the right to modify these terms at any time; the "last updated" date at the top of this page will reflect the most recent revision.</p>
+
+<h3>AI-Generated Content Disclaimer</h3>
+<p><strong>This is important:</strong> Robinson Ops utilizes artificial intelligence tools as part of our consulting methodology, including workflow automation, operational analysis, and communication tools. While we apply professional oversight and quality control to all AI-assisted outputs, AI-generated content is provided as a supplement to — not a replacement for — professional human judgment.</p>
+<p>We do not guarantee the accuracy, completeness, or fitness for any particular purpose of AI-generated outputs. Any interactive demonstrations, analysis tools, or generated scripts provided on this website or during engagements are for illustrative and operational purposes only. Clients are responsible for reviewing and approving all deliverables before implementation in their business operations.</p>
+
+<h3>Service Delivery</h3>
+<p>All consulting engagements are governed by a separate Master Service Agreement signed by both parties before work begins. The MSA defines scope of work, deliverables, payment terms, timelines, and mutual responsibilities. The terms on this webpage do not constitute a contract for services.</p>
+
+<h3>Limitation of Liability</h3>
+<p>To the maximum extent permitted by Ontario law, GTA CAN Vibe Productions Inc. and its principals shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website, our consulting services, or any AI-powered tools or automations delivered as part of an engagement.</p>
+<p>Our total liability for any claim related to a specific engagement shall not exceed the total fees paid by the client for that engagement. This limitation applies regardless of the theory of liability, whether in contract, tort, negligence, strict liability, or otherwise.</p>
+
+<h3>Intellectual Property</h3>
+<p>All content on this website — including text, design, graphics, logos, and code — is the property of GTA CAN Vibe Productions Inc. and is protected under Canadian copyright law. The Robinson Ops name, logo, and brand elements are proprietary. You may not reproduce, distribute, or create derivative works from this content without written permission.</p>
+<p>For client engagements: deliverables (workflows, SOPs, documentation) transfer to the client upon final payment as specified in the Master Service Agreement. Underlying tools, templates, and methodologies used to create deliverables remain the property of GTA CAN Vibe Productions Inc.</p>
+
+<h3>Governing Law</h3>
+<p>These terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein. Any disputes arising from the use of this website or our services shall be subject to the exclusive jurisdiction of the courts of Ontario.</p>
+
+<!-- CONTACT -->
+
+<h2>Contact</h2>
+<p>For privacy inquiries, service questions, or to exercise your rights under this policy, contact us at:</p>
+<p><strong>Robinson Ops</strong> — a service of GTA CAN Vibe Productions Inc.<br>
+Hamilton, Ontario, Canada<br>
+Email: <a href="mailto:robinsonops@pm.me">robinsonops@pm.me</a><br>
+Scheduling: <a href="https://calendly.com/robinsonops/15min">calendly.com/robinsonops/15min</a></p>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="book.html">Book a Call</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+</footer>
+
+</body>
+</html>

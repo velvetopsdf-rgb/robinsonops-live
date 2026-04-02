@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Robinson Ops — AI-Powered Operations Consulting | Hamilton & GTA</title>
+<meta name="description" content="Stop leaking money. Robinson Ops delivers AI-powered workflow automation and operations cleanup for trades contractors, property managers, and service businesses in Hamilton and the GTA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #000000;
+  --surface: #090b0f;
+  --surface2: #0d1117;
+  --silver: #e6ecf4;
+  --blue-deep: #0a3d6b;
+  --blue-mid: #1560a4;
+  --blue-bright: #3a9fd5;
+  --blue-glow: #5bb8f0;
+  --blue-electric: #64d2ff;
+  --gold: #c8a84e;
+  --txt: #e6ecf4;
+  --txt-2: #8a96a8;
+  --txt-3: #555e6c;
+  --border: rgba(58, 159, 213, 0.15);
+  --border-hi: rgba(58, 159, 213, 0.35);
+  --radius: 8px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--txt);
+  font-family: 'Barlow', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--blue-bright); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--blue-glow); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* SCROLL REVEAL */
+.rv { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.rv.vis { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ NAV ═══════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 20px;
+  color: var(--silver); letter-spacing: 0.04em;
+}
+.nav-brand img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--txt-2); transition: color 0.25s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--blue-bright); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+.nav-toggle span { display: block; width: 22px; height: 2px; background: var(--txt-2); margin: 5px 0; transition: 0.3s; }
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(0,0,0,0.97); flex-direction: column;
+    padding: 24px; gap: 20px;
+    transform: translateY(-120%); transition: transform 0.3s;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { transform: translateY(0); }
+}
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+}
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0,0,0,0.9) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 120px 24px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.hero-logo {
+  flex-shrink: 0;
+  width: 140px; height: auto;
+  filter: drop-shadow(0 0 30px rgba(58,159,213,0.4)) drop-shadow(0 0 60px rgba(58,159,213,0.15));
+  animation: logoPulse 4s ease-in-out infinite;
+}
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 30px rgba(58,159,213,0.4)) drop-shadow(0 0 60px rgba(58,159,213,0.15)); }
+  50% { filter: drop-shadow(0 0 40px rgba(58,159,213,0.6)) drop-shadow(0 0 80px rgba(58,159,213,0.25)); }
+}
+.hero-text { flex: 1; }
+.hero-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  font-size: clamp(42px, 7vw, 80px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  background: linear-gradient(175deg, #ffffff 0%, #dce8f5 25%, #a8c4e4 55%, #6898c8 80%, #3a6898 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 400;
+  font-size: clamp(18px, 2.5vw, 26px);
+  color: var(--blue-bright);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero-desc {
+  font-size: 17px;
+  color: var(--txt-2);
+  max-width: 480px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue-bright);
+  color: var(--black);
+  padding: 16px 32px;
+  border-radius: var(--radius);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 16px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: all 0.25s;
+  border: none; cursor: pointer;
+}
+.hero-cta:hover { background: var(--blue-glow); color: var(--black); transform: translateY(-2px); }
+.hero-cta svg { width: 16px; height: 16px; }
+
+.hero-location {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--txt-3);
+  letter-spacing: 0.04em;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: scrollBob 2s ease-in-out infinite;
+}
+.scroll-hint span {
+  display: block;
+  width: 20px; height: 32px;
+  border: 2px solid var(--txt-3);
+  border-radius: 10px;
+  position: relative;
+}
+.scroll-hint span::after {
+  content: '';
+  position: absolute;
+  top: 6px; left: 50%;
+  transform: translateX(-50%);
+  width: 3px; height: 8px;
+  background: var(--blue-bright);
+  border-radius: 2px;
+  animation: scrollDot 2s ease-in-out infinite;
+}
+@keyframes scrollBob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+@keyframes scrollDot { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 18px; } }
+
+@media (max-width: 768px) {
+  .hero-content { flex-direction: column; text-align: center; padding-top: 100px; }
+  .hero-logo { width: 100px; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+}
+
+/* ═══════════ VALUE STRIP ═══════════ */
+.values {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 24px;
+}
+.values-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+@media (max-width: 640px) { .values-grid { grid-template-columns: 1fr; gap: 24px; } }
+.val-icon {
+  width: 48px; height: 48px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--blue-bright);
+  font-size: 20px;
+}
+.val h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 18px;
+  color: var(--silver); margin-bottom: 6px;
+}
+.val p { font-size: 14px; color: var(--txt-2); max-width: 280px; margin: 0 auto; }
+
+/* ═══════════ INDUSTRY CARDS ═══════════ */
+.industries {
+  padding: 72px 24px;
+}
+.ind-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.ind-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: clamp(26px, 4vw, 38px);
+  color: var(--silver);
+}
+.ind-header p { font-size: 16px; color: var(--txt-2); margin-top: 8px; }
+.ind-grid {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 768px) { .ind-grid { grid-template-columns: 1fr; max-width: 420px; } }
+.ind-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.ind-card:hover { border-color: var(--blue-bright); transform: translateY(-4px); color: inherit; }
+.ind-card-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+.ind-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 20px;
+  color: var(--silver); margin-bottom: 8px;
+}
+.ind-card p { font-size: 14px; color: var(--txt-2); line-height: 1.6; margin-bottom: 14px; }
+.ind-card-link {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--blue-bright);
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+/* ═══════════ AUDIO SECTION ═══════════ */
+.audio-section {
+  padding: 64px 24px;
+  border-top: 1px solid var(--border);
+}
+.audio-inner {
+  max-width: 640px; margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 32px;
+  text-align: center;
+}
+.audio-inner h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 24px;
+  color: var(--silver); margin-bottom: 6px;
+}
+.audio-inner p {
+  font-size: 14px; color: var(--txt-2); margin-bottom: 20px;
+}
+.custom-player {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 10px 18px;
+}
+.play-btn {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: var(--blue-bright);
+  border: none; border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+}
+.play-btn:hover { background: var(--blue-glow); transform: scale(1.06); }
+.play-btn svg { width: 18px; height: 18px; fill: var(--black); margin-left: 2px; }
+.play-btn.playing svg { margin-left: 0; }
+.player-track { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.player-bar-wrap {
+  width: 100%; height: 6px;
+  background: rgba(58,159,213,0.15);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.player-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, var(--blue-mid), var(--blue-bright));
+  border-radius: 3px;
+  transition: width 0.1s linear;
+}
+.player-times {
+  display: flex; justify-content: space-between;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px; color: var(--txt-2);
+  letter-spacing: 0.04em;
+}
+audio.hidden-audio { display: none; }
+
+/* ═══════════ OPS LEAK FINDER (replaces Opal) ═══════════ */
+.finder {
+  padding: 72px 24px;
+  border-top: 1px solid var(--border);
+}
+.finder-inner {
+  max-width: 640px; margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.finder-inner::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright), var(--blue-deep));
+}
+.finder-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.finder-header h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 28px;
+  color: var(--silver); margin-bottom: 6px;
+}
+.finder-header p { font-size: 15px; color: var(--txt-2); }
+
+.finder-progress {
+  display: flex; gap: 6px; margin-bottom: 28px;
+}
+.finder-progress span {
+  flex: 1; height: 4px;
+  background: var(--surface2);
+  border-radius: 2px;
+  transition: background 0.4s;
+}
+.finder-progress span.done { background: var(--blue-bright); }
+
+.finder-step { display: none; animation: fadeUp 0.35s ease; }
+.finder-step.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.finder-q {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 18px;
+  color: var(--silver); margin-bottom: 16px;
+}
+.finder-opts { display: flex; flex-direction: column; gap: 10px; }
+.finder-opt {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--txt-2);
+  transition: all 0.2s;
+  text-align: left;
+}
+.finder-opt:hover {
+  border-color: var(--blue-bright);
+  color: var(--silver);
+  background: rgba(58,159,213,0.06);
+}
+
+.finder-result { display: none; text-align: center; animation: fadeUp 0.5s ease; }
+.finder-result.active { display: block; }
+.finder-result-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900; font-size: 52px;
+  color: var(--blue-bright);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.finder-result-label {
+  font-size: 14px;
+  color: var(--txt-3);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+.finder-result-rec {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+.finder-result-rec h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600; font-size: 15px;
+  color: var(--blue-bright); margin-bottom: 6px;
+}
+.finder-result-rec p { font-size: 14px; color: var(--txt-2); }
+.finder-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue-bright); color: var(--black);
+  padding: 14px 28px; border-radius: var(--radius);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 15px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: 0.25s; border: none; cursor: pointer;
+}
+.finder-cta:hover { background: var(--blue-glow); color: var(--black); }
+
+/* ═══════════ TRUST STRIP ═══════════ */
+.trust {
+  padding: 48px 24px;
+  border-top: 1px solid var(--border);
+}
+.trust-grid {
+  max-width: 900px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; text-align: center;
+}
+@media (max-width: 640px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+.trust-item-num {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 28px;
+  color: var(--blue-bright); line-height: 1;
+}
+.trust-item-label { font-size: 12px; color: var(--txt-3); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* ═══════════ CTA ═══════════ */
+.final-cta {
+  padding: 80px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  position: relative;
+}
+.final-cta h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 4.5vw, 42px);
+  color: var(--silver);
+  margin-bottom: 12px;
+}
+.final-cta p {
+  font-size: 17px; color: var(--txt-2);
+  max-width: 500px; margin: 0 auto 28px;
+}
+.final-cta-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--blue-bright); color: var(--black);
+  padding: 18px 40px; border-radius: var(--radius);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 17px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: 0.25s;
+}
+.final-cta-btn:hover { background: var(--blue-glow); color: var(--black); transform: translateY(-2px); }
+.final-cta-note { font-size: 13px; color: var(--txt-3); margin-top: 12px; }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 24px; text-align: center;
+}
+.footer-brand {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 16px;
+  color: var(--txt-3); letter-spacing: 0.06em; margin-bottom: 8px;
+}
+.footer-brand span { color: var(--blue-bright); }
+.footer-links {
+  list-style: none; display: flex;
+  justify-content: center; gap: 24px;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 13px; color: var(--txt-3);
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.footer-links a:hover { color: var(--blue-bright); }
+.footer-copy { font-size: 12px; color: var(--txt-3); }
+
+/* HERO TEXT STAGGER */
+.hero-text > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroIn 0.8s ease forwards;
+}
+.hero-text > *:nth-child(1) { animation-delay: 0.3s; }
+.hero-text > *:nth-child(2) { animation-delay: 0.5s; }
+.hero-text > *:nth-child(3) { animation-delay: 0.7s; }
+.hero-text > *:nth-child(4) { animation-delay: 0.9s; }
+.hero-text > *:nth-child(5) { animation-delay: 1.1s; }
+@keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
+    ROBINSON OPS
+  </a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="book.html">Book a Call</a></li>
+    <li><a href="about.html">About</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <canvas id="circuit"></canvas>
+  <div class="hero-fade"></div>
+  <div class="hero-content">
+    <img src="assets/images/ops_logo.png" alt="Robinson Ops Shield" class="hero-logo">
+    <div class="hero-text">
+      <div class="hero-title">ROBINSON<br>OPS</div>
+      <div class="hero-sub">AI-Powered Consulting</div>
+      <p class="hero-desc">We find the operational leaks bleeding your business dry — missed calls, lost invoices, scheduling chaos — and we fix them with automated workflows that run while you sleep.</p>
+      <a href="book.html" class="hero-cta">
+        Book Your Free Ops Audit
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <div class="hero-location">Hamilton, Ontario &nbsp;|&nbsp; Service area: Toronto to Niagara</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span></span></div>
+</section>
+
+<!-- ═══════════ VALUE STRIP ═══════════ -->
+<section class="values rv">
+  <div class="values-grid">
+    <div class="val">
+      <div class="val-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </div>
+      <h3>Find the Leaks</h3>
+      <p>We audit your operations in 15 minutes and show you exactly where time and money are disappearing.</p>
+    </div>
+    <div class="val">
+      <div class="val-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.7 20.4a2.5 2.5 0 11-3.54-3.54l6.93-6.93a6 6 0 017.94-7.94z"/></svg>
+      </div>
+      <h3>Build the Fix</h3>
+      <p>Custom n8n automations, documented SOPs, and working systems — delivered in 7 days, not 7 months.</p>
+    </div>
+    <div class="val">
+      <div class="val-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3>Run It Clean</h3>
+      <p>Your business runs on systems instead of memory. Leads get answered. Invoices get paid. You get your time back.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INDUSTRY CARDS ═══════════ -->
+<section class="industries">
+  <div class="ind-header rv">
+    <h2>Built for Businesses That Build Things</h2>
+    <p>Robinson Ops specializes in three sectors where operational chaos costs the most.</p>
+  </div>
+  <div class="ind-grid">
+    <a href="sprint.html" class="ind-card rv">
+      <span class="ind-card-icon">&#9881;</span>
+      <h3>Trades Contractors</h3>
+      <p>HVAC, plumbing, electrical, general contractors — if your dispatcher is a whiteboard and your invoices live in a text thread, we fix that.</p>
+      <span class="ind-card-link">See the Sprint &rarr;</span>
+    </a>
+    <a href="sprint.html" class="ind-card rv">
+      <span class="ind-card-icon">&#9975;</span>
+      <h3>Property Management</h3>
+      <p>Tenant requests falling through cracks, maintenance coordination by phone tag, lease renewals missed — we automate the whole pipeline.</p>
+      <span class="ind-card-link">See the Sprint &rarr;</span>
+    </a>
+    <a href="sprint.html" class="ind-card rv">
+      <span class="ind-card-icon">&#9878;</span>
+      <h3>Realtors &amp; Brokerages</h3>
+      <p>Lead follow-up that actually happens, showing scheduling that doesn't double-book, and transaction coordination that tracks itself.</p>
+      <span class="ind-card-link">See the Sprint &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════ AUDIO SECTION ═══════════ -->
+<section class="audio-section rv">
+  <div class="audio-inner">
+    <h2>Hear the Ops Playbook</h2>
+    <p>A 5-minute audio breakdown of how Robinson Ops transforms chaotic operations into automated systems. Built with NotebookLM.</p>
+    <audio id="opsAudio" class="hidden-audio" preload="metadata">
+      <source src="assets/audio/website_audio.MP3" type="audio/mpeg">
+    </audio>
+    <div class="custom-player">
+      <button class="play-btn" id="playBtn" onclick="toggleAudio()">
+        <svg id="playIcon" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </button>
+      <div class="player-track">
+        <div class="player-bar-wrap" id="barWrap" onclick="seekAudio(event)">
+          <div class="player-bar" id="bar"></div>
+        </div>
+        <div class="player-times">
+          <span id="timeCurrent">0:00</span>
+          <span id="timeTotal">0:00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ OPS LEAK FINDER ═══════════ -->
+<section class="finder rv">
+  <div class="finder-inner" id="leakFinder">
+    <div class="finder-header">
+      <h2>Find Your Ops Leaks</h2>
+      <p>Answer 4 quick questions. We'll estimate how much operational waste is costing you per year.</p>
+    </div>
+    <div class="finder-progress" id="finderProgress">
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="finder-step active" data-step="0">
+      <div class="finder-q">How many people work in your business?</div>
+      <div class="finder-opts">
+        <div class="finder-opt" onclick="nextStep(0, 'solo')">Just me — I run everything</div>
+        <div class="finder-opt" onclick="nextStep(0, 'small')">2 – 5 people</div>
+        <div class="finder-opt" onclick="nextStep(0, 'mid')">6 – 15 people</div>
+        <div class="finder-opt" onclick="nextStep(0, 'large')">16 – 30 people</div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="finder-step" data-step="1">
+      <div class="finder-q">How do customers reach you?</div>
+      <div class="finder-opts">
+        <div class="finder-opt" onclick="nextStep(1, 'phone')">Phone calls only</div>
+        <div class="finder-opt" onclick="nextStep(1, 'mixed')">Phone + email + maybe a form</div>
+        <div class="finder-opt" onclick="nextStep(1, 'multi')">Multiple channels — it's messy</div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="finder-step" data-step="2">
+      <div class="finder-q">How do you track jobs and invoices?</div>
+      <div class="finder-opts">
+        <div class="finder-opt" onclick="nextStep(2, 'manual')">Paper, memory, or sticky notes</div>
+        <div class="finder-opt" onclick="nextStep(2, 'spread')">Spreadsheets that nobody updates</div>
+        <div class="finder-opt" onclick="nextStep(2, 'software')">Software — but it's not working right</div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="finder-step" data-step="3">
+      <div class="finder-q">What keeps you up at night?</div>
+      <div class="finder-opts">
+        <div class="finder-opt" onclick="showResult('leads')">Missed calls and lost leads</div>
+        <div class="finder-opt" onclick="showResult('schedule')">Scheduling chaos and double-bookings</div>
+        <div class="finder-opt" onclick="showResult('money')">Invoices not getting paid on time</div>
+        <div class="finder-opt" onclick="showResult('all')">All of the above — honestly</div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="finder-result" id="finderResult">
+      <div class="finder-result-num" id="wasteNum">$0</div>
+      <div class="finder-result-label">Estimated annual operational waste</div>
+      <div class="finder-result-rec">
+        <h4 id="recTitle">Recommended starting point</h4>
+        <p id="recText">Based on your answers, here's where we'd start.</p>
+      </div>
+      <a href="book.html" class="finder-cta">Book Your Free Audit — Let's Fix This</a>
+      <div style="margin-top:14px;">
+        <span style="font-size:12px; color:var(--txt-3); cursor:pointer;" onclick="resetFinder()">Retake quiz</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST STRIP ═══════════ -->
+<section class="trust rv">
+  <div class="trust-grid">
+    <div>
+      <div class="trust-item-num">15+</div>
+      <div class="trust-item-label">Years in Production</div>
+    </div>
+    <div>
+      <div class="trust-item-num">DGC</div>
+      <div class="trust-item-label">Union Certified</div>
+    </div>
+    <div>
+      <div class="trust-item-num">n8n</div>
+      <div class="trust-item-label">Automation Platform</div>
+    </div>
+    <div>
+      <div class="trust-item-num">$750</div>
+      <div class="trust-item-label">Sprint Starts At</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="final-cta rv">
+  <h2>Stop Leaking Money. Start Here.</h2>
+  <p>15 minutes. No pitch. We find your top 2 operational leaks and you decide if you want them fixed.</p>
+  <a href="book.html" class="final-cta-btn">Book Your Free Ops Call</a>
+  <div class="final-cta-note">Response within same business day &middot; Hamilton & GTA only &middot; All prices in CAD</div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="book.html">Book a Call</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="privacy.html">Privacy & Terms</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+/* ——— CIRCUIT BOARD ANIMATION ——— */
+const cv = document.getElementById('circuit');
+const ctx = cv.getContext('2d');
+let W, H, nodes = [], pulses = [], t = 0;
+
+function resize() {
+  W = cv.offsetWidth;
+  H = cv.offsetHeight;
+  cv.width = W * devicePixelRatio;
+  cv.height = H * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+  buildNodes();
+}
+
+function buildNodes() {
+  nodes = [];
+  const count = Math.min(70, Math.floor((W * H) / 14000));
+  for (let i = 0; i < count; i++) {
+    const xBias = Math.random() < 0.6 ? 0.4 + Math.random() * 0.6 : Math.random();
+    nodes.push({
+      x: xBias * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
+      r: Math.random() * 2 + 1,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.02 + 0.008
+    });
+  }
+  pulses = [];
+}
+
+function spawnPulse() {
+  if (pulses.length > 8) return;
+  const a = nodes[Math.floor(Math.random() * nodes.length)];
+  const b = nodes[Math.floor(Math.random() * nodes.length)];
+  if (a === b) return;
+  const dx = a.x - b.x, dy = a.y - b.y;
+  if (Math.sqrt(dx * dx + dy * dy) < W * 0.2) {
+    pulses.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, t: 0, speed: 0.015 + Math.random() * 0.01 });
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.008;
+
+  if (Math.random() < 0.03) spawnPulse();
+
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    n.x += n.vx; n.y += n.vy; n.phase += n.speed;
+    if (n.x < -20) n.x = W + 20; if (n.x > W + 20) n.x = -20;
+    if (n.y < -20) n.y = H + 20; if (n.y > H + 20) n.y = -20;
+
+    for (let j = i + 1; j < nodes.length; j++) {
+      const m = nodes[j];
+      const dx = n.x - m.x, dy = n.y - m.y;
+      const d = Math.sqrt(dx * dx + dy * dy);
+      const maxD = W * 0.15;
+      if (d < maxD) {
+        const a = (1 - d / maxD) * 0.35;
+        ctx.beginPath();
+        ctx.moveTo(n.x, n.y);
+        ctx.lineTo(m.x, m.y);
+        ctx.strokeStyle = `rgba(58,159,213,${a})`;
+        ctx.lineWidth = 0.6;
+        ctx.stroke();
+      }
+    }
+  }
+
+  for (const n of nodes) {
+    const glow = 0.4 + Math.sin(n.phase) * 0.6;
+    const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 6);
+    grad.addColorStop(0, `rgba(90,184,240,${glow * 0.8})`);
+    grad.addColorStop(0.4, `rgba(58,159,213,${glow * 0.2})`);
+    grad.addColorStop(1, 'rgba(30,80,160,0)');
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r * 6, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(180,220,255,${glow})`;
+    ctx.fill();
+  }
+
+  for (let i = pulses.length - 1; i >= 0; i--) {
+    const p = pulses[i];
+    p.t += p.speed;
+    if (p.t > 1) { pulses.splice(i, 1); continue; }
+    const px = p.ax + (p.bx - p.ax) * p.t;
+    const py = p.ay + (p.by - p.ay) * p.t;
+    const pg = ctx.createRadialGradient(px, py, 0, px, py, 8);
+    pg.addColorStop(0, 'rgba(100,210,255,0.9)');
+    pg.addColorStop(0.5, 'rgba(58,159,213,0.3)');
+    pg.addColorStop(1, 'rgba(30,80,160,0)');
+    ctx.beginPath();
+    ctx.arc(px, py, 8, 0, Math.PI * 2);
+    ctx.fillStyle = pg;
+    ctx.fill();
+  }
+
+  requestAnimationFrame(draw);
+}
+
+resize();
+draw();
+window.addEventListener('resize', resize);
+
+/* ——— SCROLL REVEAL ——— */
+const rvs = document.querySelectorAll('.rv');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+rvs.forEach(el => obs.observe(el));
+
+/* ——— OPS LEAK FINDER ——— */
+let answers = [];
+function nextStep(step, val) {
+  answers[step] = val;
+  const steps = document.querySelectorAll('.finder-step');
+  const bars = document.querySelectorAll('.finder-progress span');
+  bars[step].classList.add('done');
+  steps[step].classList.remove('active');
+  if (step < 3) steps[step + 1].classList.add('active');
+}
+
+function showResult(pain) {
+  answers[3] = pain;
+  const bars = document.querySelectorAll('.finder-progress span');
+  bars[3].classList.add('done');
+  document.querySelectorAll('.finder-step').forEach(s => s.classList.remove('active'));
+
+  let base = 4000;
+  if (answers[0] === 'small') base = 8000;
+  if (answers[0] === 'mid') base = 18000;
+  if (answers[0] === 'large') base = 32000;
+  if (answers[1] === 'mixed') base *= 1.2;
+  if (answers[1] === 'multi') base *= 1.5;
+  if (answers[2] === 'manual') base *= 1.4;
+  if (answers[2] === 'spread') base *= 1.2;
+  if (answers[3] === 'all') base *= 1.3;
+
+  const waste = Math.round(base / 100) * 100;
+  const el = document.getElementById('wasteNum');
+  const result = document.getElementById('finderResult');
+  result.classList.add('active');
+
+  let current = 0;
+  const step = Math.ceil(waste / 40);
+  const counter = setInterval(() => {
+    current += step;
+    if (current >= waste) { current = waste; clearInterval(counter); }
+    el.textContent = '$' + current.toLocaleString();
+  }, 25);
+
+  const recTitle = document.getElementById('recTitle');
+  const recText = document.getElementById('recText');
+  if (waste < 10000) {
+    recTitle.textContent = 'Recommended: Ops Cleanup Sprint — $750';
+    recText.textContent = 'A focused 7-day engagement to audit your operations and deliver working solutions. Best for solo operators and small teams.';
+  } else if (waste < 25000) {
+    recTitle.textContent = 'Recommended: Workflow Builds — $1,500';
+    recText.textContent = 'Custom automation builds with up to 3 n8n workflows, CRM integration, and staff training. Built for growing teams.';
+  } else {
+    recTitle.textContent = 'Recommended: Digital Gatekeeping — $2,500';
+    recText.textContent = 'Full perimeter build with AI-powered communication protection, automated invoicing pipeline, and a real-time operations dashboard.';
+  }
+}
+
+function resetFinder() {
+  answers = [];
+  document.getElementById('finderResult').classList.remove('active');
+  document.querySelectorAll('.finder-step').forEach((s, i) => {
+    s.classList.toggle('active', i === 0);
+  });
+  document.querySelectorAll('.finder-progress span').forEach(s => s.classList.remove('done'));
+}
+
+/* ——— NAV SCROLL EFFECT ——— */
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 50
+    ? 'rgba(58,159,213,0.3)' : 'rgba(58,159,213,0.15)';
+});
+
+/* ——— CUSTOM AUDIO PLAYER ——— */
+const aud = document.getElementById('opsAudio');
+const bar = document.getElementById('bar');
+const playBtn = document.getElementById('playBtn');
+const playIcon = document.getElementById('playIcon');
+const timeCur = document.getElementById('timeCurrent');
+const timeTot = document.getElementById('timeTotal');
+
+function fmt(s) {
+  const m = Math.floor(s / 60);
+  const sec = Math.floor(s % 60);
+  return m + ':' + (sec < 10 ? '0' : '') + sec;
+}
+if (aud) {
+  aud.addEventListener('loadedmetadata', () => { timeTot.textContent = fmt(aud.duration); });
+  aud.addEventListener('timeupdate', () => {
+    if (aud.duration) {
+      bar.style.width = (aud.currentTime / aud.duration * 100) + '%';
+      timeCur.textContent = fmt(aud.currentTime);
+    }
+  });
+  aud.addEventListener('ended', () => {
+    playBtn.classList.remove('playing');
+    playIcon.innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+    bar.style.width = '0%';
+    timeCur.textContent = '0:00';
+  });
+}
+function toggleAudio() {
+  if (!aud) return;
+  if (aud.paused) {
+    aud.play();
+    playBtn.classList.add('playing');
+    playIcon.innerHTML = '<rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/>';
+  } else {
+    aud.pause();
+    playBtn.classList.remove('playing');
+    playIcon.innerHTML = '<polygon points="6,3 20,12 6,21"/>';
+  }
+}
+function seekAudio(e) {
+  if (!aud || !aud.duration) return;
+  const rect = document.getElementById('barWrap').getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  aud.currentTime = pct * aud.duration;
+}
+
+/* ——— LOGO FALLBACK ——— */
+document.querySelectorAll('img[src*="ops_logo"]').forEach(img => {
+  img.onerror = function() {
+    this.style.display = 'none';
+  };
+});
+</script>
+</body>
+</html>
