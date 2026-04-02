@@ -311,8 +311,8 @@ footer {
 
 <!-- HERO -->
 <section class="book-hero">
-  <h1>Book Your Free 15-Minute Ops Audit</h1>
-  <p>No pitch. No pressure. We identify your top 2 operational leaks on the call and you decide if you want them fixed.</p>
+  <h1 id="bookHeading">Book Your Free 15-Minute Ops Audit</h1>
+  <p id="bookSub">No pitch. No pressure. We identify your top 2 operational leaks on the call and you decide if you want them fixed.</p>
 </section>
 
 <!-- MAIN -->
@@ -342,7 +342,7 @@ footer {
       <div class="step-num">3</div>
       <div class="step-text">
         <h3>Your Decision</h3>
-        <p>I explain exactly what we'd fix and what it costs. You decide — zero pressure. Most clients know within 60 seconds if it's the right fit.</p>
+        <p id="step3Desc">I explain exactly what we'd fix and what it costs. You decide — zero pressure. Most clients know within 60 seconds if it's the right fit.</p>
       </div>
     </div>
 
@@ -385,7 +385,7 @@ footer {
 
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens after the call?</div>
-    <div class="faq-a"><p>If you want to move forward, we start with the Ops Cleanup Sprint — a 7-day engagement where I audit your systems and deliver working solutions. $750 flat rate, no surprises. If you're not ready, no follow-up pressure.</p></div>
+    <div class="faq-a"><p id="faqAfter">If you want to move forward, I'll recommend the right engagement based on your needs — from a focused 7-day Sprint to a comprehensive operations build. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div>
   </div>
 </section>
 
@@ -403,5 +403,29 @@ footer {
   <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
 </footer>
 
+<script>
+const tier = new URLSearchParams(window.location.search).get('tier');
+if (tier === 'sprint') {
+  document.getElementById('bookHeading').textContent = 'Book Your Ops Cleanup Sprint';
+  document.getElementById('bookSub').textContent = 'The $750 Sprint \u2014 a 7-day engagement where I audit your operations and deliver working solutions. No fluff, no ongoing commitment.';
+  document.getElementById('step3Desc').textContent = 'I\u2019ll scope your Sprint \u2014 a full operations audit, custom SOPs, one working automation, and a recorded walkthrough. $750 flat rate, delivered in 7 days.';
+  document.getElementById('faqAfter').textContent = 'If you want to move forward, we start with the Ops Cleanup Sprint \u2014 a 7-day engagement where I audit your systems and deliver working solutions. $750 flat rate, no surprises. If you\u2019re not ready, no follow-up pressure.';
+} else if (tier === 'workflow') {
+  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Workflow Builds';
+  document.getElementById('bookSub').textContent = 'You\u2019re looking at the $1,500 tier \u2014 custom n8n automations, CRM integration, and staff training. This call scopes out exactly what your business needs.';
+  document.getElementById('step3Desc').textContent = 'I\u2019ll outline a custom Workflow Builds engagement \u2014 up to 3 automated workflows, CRM integration, and a 14-day support window. You\u2019ll know exactly what you\u2019re getting and what it costs.';
+  document.getElementById('faqAfter').textContent = 'If you want to move forward, we kick off a Workflow Builds engagement \u2014 custom n8n automations, CRM or scheduling integration, email triage, and staff training documentation. $1,500 per project, 14-day support included. If you\u2019re not ready, no follow-up pressure.';
+} else if (tier === 'gatekeeping') {
+  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Digital Gatekeeping';
+  document.getElementById('bookSub').textContent = 'You\u2019re looking at the full $2,500 engagement \u2014 AI-powered communication protection, automated invoicing, and a real-time operations dashboard. This call maps out everything.';
+  document.getElementById('step3Desc').textContent = 'I\u2019ll walk you through the full Digital Gatekeeping build \u2014 spam filtering, call screening, automated invoicing pipeline, and a real-time dashboard. This is the comprehensive engagement with 30 days of post-delivery support.';
+  document.getElementById('faqAfter').textContent = 'If you want to move forward, we begin the Digital Gatekeeping engagement \u2014 full perimeter build with AI-powered communication protection, automated invoice follow-up, customer verification systems, and a real-time operations dashboard. $2,500 full engagement, 30-day support and monitoring included. If you\u2019re not ready, no pressure.';
+} else if (tier === 'production') {
+  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Production Ops';
+  document.getElementById('bookSub').textContent = 'You\u2019re a film or TV production looking to automate logistics, dispatch, and vendor coordination. This call scopes out exactly what your production needs.';
+  document.getElementById('step3Desc').textContent = 'I\u2019ll map out a Production Ops engagement tailored to your show \u2014 from LSP dispatch automation to real-time budget dashboards. Priced for production budgets, built by someone who\u2019s been on your set.';
+  document.getElementById('faqAfter').textContent = 'If you want to move forward, we scope a Production Sprint ($2,500) or Full Production Build ($5,000) depending on the scale. Dispatch automation, vendor pipelines, budget dashboards, and SOPs \u2014 all delivered within your prep schedule. If you\u2019re not ready, no pressure.';
+}
+</script>
 </body>
 </html>
