@@ -86,63 +86,164 @@ nav {
 
 /* ═══════════ HERO ═══════════ */
 .hero {
+  --hero-reveal-base: 380ms;
+  --hero-reveal-step: 240ms;
+  --hero-sweep-duration: 4600ms;
+  --hero-pulse-duration: 4800ms;
+  --hero-ambient-drift: 14s;
+  --hero-parallax: 16px;
+  --hero-parallax-rotate: 1.2deg;
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 80% 25%, rgba(58,159,213,0.14), transparent 44%),
+    radial-gradient(circle at 18% 42%, rgba(11,17,28,0.88), transparent 58%),
+    linear-gradient(180deg, #020305 0%, #000000 100%);
 }
-.hero canvas {
+.hero-bg-grid {
   position: absolute;
   inset: 0;
-  width: 100%; height: 100%;
+  background-image:
+    linear-gradient(rgba(58,159,213,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58,159,213,0.05) 1px, transparent 1px);
+  background-size: 62px 62px;
+  opacity: 0.22;
+  mask-image: radial-gradient(circle at 75% 40%, black 25%, transparent 70%);
+  z-index: 0;
+  transform: translate3d(0,0,0);
 }
+.hero-circuit-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.8;
+  transform: translate3d(0,0,0);
+  pointer-events: none;
+}
+.hero-circuit-svg {
+  position: absolute;
+  right: -6%;
+  top: -5%;
+  width: min(72vw, 920px);
+  height: 110%;
+  opacity: 0.58;
+  filter: drop-shadow(0 0 24px rgba(58,159,213,0.2));
+  transform: translate3d(var(--px-circuit, 0px), var(--py-circuit, 0px), 0);
+  transition: transform 380ms ease-out;
+}
+.circuit-line {
+  fill: none;
+  stroke: rgba(110,190,255,0.34);
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.circuit-node {
+  fill: rgba(137,214,255,0.74);
+}
+.circuit-pulse {
+  fill: rgba(100,210,255,0.9);
+  filter: drop-shadow(0 0 10px rgba(100,210,255,0.75));
+  transform-box: fill-box;
+}
+.circuit-path {
+  stroke: rgba(100,210,255,0.85);
+  stroke-width: 2.2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 16 280;
+  animation: pathFlow var(--hero-pulse-duration) linear infinite;
+  opacity: 0;
+}
+.circuit-path.delay { animation-delay: calc(var(--hero-pulse-duration) * -0.52); }
 .hero-fade {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(0,0,0,0.9) 0%, transparent 70%),
-    linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.8) 100%);
-  z-index: 1;
+    radial-gradient(ellipse 62% 80% at 18% 50%, rgba(0,0,0,0.95) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 30%, transparent 72%, rgba(0,0,0,0.88) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 .hero-content {
   position: relative;
-  z-index: 2;
-  padding: 120px 24px 60px;
-  max-width: 1100px;
+  z-index: 3;
+  padding: 120px 24px 76px;
+  max-width: 1140px;
   margin: 0 auto;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 44px;
+}
+.hero-shield {
+  position: relative;
+  width: min(22vw, 170px);
+  min-width: 108px;
+  flex-shrink: 0;
+  transform: translate3d(var(--px-logo, 0px), var(--py-logo, 0px), 0);
+  transition: transform 320ms ease-out;
 }
 .hero-logo {
-  flex-shrink: 0;
-  width: 140px; height: auto;
-  filter: drop-shadow(0 0 30px rgba(58,159,213,0.4)) drop-shadow(0 0 60px rgba(58,159,213,0.15));
-  animation: logoPulse 4s ease-in-out infinite;
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 0 38px rgba(86,175,236,0.36)) drop-shadow(0 0 72px rgba(58,159,213,0.16));
+  animation: shieldBreath 7.5s ease-in-out infinite;
 }
-@keyframes logoPulse {
-  0%, 100% { filter: drop-shadow(0 0 30px rgba(58,159,213,0.4)) drop-shadow(0 0 60px rgba(58,159,213,0.15)); }
-  50% { filter: drop-shadow(0 0 40px rgba(58,159,213,0.6)) drop-shadow(0 0 80px rgba(58,159,213,0.25)); }
+.hero-shimmer {
+  position: absolute;
+  inset: -20% -55%;
+  background: linear-gradient(104deg, rgba(255,255,255,0) 40%, rgba(223,240,255,0.5) 50%, rgba(255,255,255,0) 60%);
+  transform: translateX(-68%) rotate(8deg);
+  mix-blend-mode: screen;
+  opacity: var(--hero-shimmer-opacity, 0.38);
+  animation: shieldSweep var(--hero-sweep-duration) ease-in-out infinite;
+  pointer-events: none;
 }
-.hero-text { flex: 1; }
+.hero-text {
+  flex: 1;
+  max-width: 700px;
+}
+.hero-kicker {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: var(--blue-bright);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 .hero-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(42px, 7vw, 80px);
-  line-height: 0.92;
+  font-size: clamp(42px, 7vw, 84px);
+  line-height: 0.9;
   letter-spacing: -0.01em;
-  background: linear-gradient(175deg, #ffffff 0%, #dce8f5 25%, #a8c4e4 55%, #6898c8 80%, #3a6898 100%);
-  -webkit-background-clip: text; background-clip: text;
+  margin-bottom: 8px;
+}
+.hero-title .wordmark-main {
+  display: block;
+  color: var(--silver);
+}
+.hero-title .wordmark-sub {
+  display: block;
+  background: linear-gradient(175deg, #d8e6f5 0%, #9cc4e6 45%, #4a89c2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 4px;
 }
 .hero-sub {
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 400;
-  font-size: clamp(18px, 2.5vw, 26px);
-  color: var(--blue-bright);
+  font-weight: 500;
+  font-size: clamp(16px, 2.2vw, 24px);
+  color: var(--blue-electric);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -150,10 +251,11 @@ nav {
 .hero-desc {
   font-size: 17px;
   color: var(--txt-2);
-  max-width: 480px;
-  margin-bottom: 28px;
-  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 30px;
+  line-height: 1.72;
 }
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--blue-bright);
@@ -163,24 +265,48 @@ nav {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 16px;
   letter-spacing: 0.06em; text-transform: uppercase;
-  transition: all 0.25s;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
   border: none; cursor: pointer;
+  box-shadow: 0 14px 30px rgba(58,159,213,0.24);
 }
 .hero-cta:hover { background: var(--blue-glow); color: var(--black); transform: translateY(-2px); }
+.hero-cta.ghost {
+  background: transparent;
+  color: var(--silver);
+  border: 1px solid var(--border-hi);
+  box-shadow: none;
+}
+.hero-cta.ghost:hover { border-color: var(--blue-bright); color: var(--blue-bright); }
 .hero-cta svg { width: 16px; height: 16px; }
-
 .hero-location {
-  margin-top: 16px;
+  margin-top: 18px;
   font-size: 13px;
   color: var(--txt-3);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
-
+.hero-layer {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(4px);
+}
+.hero-ready .hero-layer {
+  animation: heroReveal 840ms cubic-bezier(0.2, 0.75, 0.2, 1) forwards;
+}
+.hero-ready .hero-kicker { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 2); }
+.hero-ready .hero-title { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 3); }
+.hero-ready .hero-sub { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 4); }
+.hero-ready .hero-desc { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 5); }
+.hero-ready .hero-location { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 6); }
+.hero-ready .hero-cta-row { animation-delay: calc(var(--hero-reveal-base) + var(--hero-reveal-step) * 7); }
+.hero-ready .circuit-path,
+.hero-ready .circuit-pulse { opacity: 1; }
+.hero-ready .hero-circuit-svg { animation: circuitWake 1200ms ease-out forwards; }
+.hero-ready .hero-bg-grid { animation: gridWake 1400ms ease-out forwards, bgFloat var(--hero-ambient-drift) ease-in-out infinite 1300ms; }
 .scroll-hint {
   position: absolute;
   bottom: 28px; left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 4;
   animation: scrollBob 2s ease-in-out infinite;
 }
 .scroll-hint span {
@@ -200,13 +326,59 @@ nav {
   border-radius: 2px;
   animation: scrollDot 2s ease-in-out infinite;
 }
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes shieldSweep {
+  0%, 16% { transform: translateX(-74%) rotate(8deg); opacity: 0; }
+  24%, 45% { opacity: var(--hero-shimmer-opacity, 0.38); }
+  62%, 100% { transform: translateX(76%) rotate(8deg); opacity: 0; }
+}
+@keyframes shieldBreath {
+  0%, 100% { filter: drop-shadow(0 0 30px rgba(86,175,236,0.3)) drop-shadow(0 0 64px rgba(58,159,213,0.12)); }
+  50% { filter: drop-shadow(0 0 40px rgba(86,175,236,0.38)) drop-shadow(0 0 72px rgba(58,159,213,0.2)); }
+}
+@keyframes pathFlow {
+  0% { stroke-dashoffset: 320; }
+  100% { stroke-dashoffset: -320; }
+}
+@keyframes circuitWake {
+  0% { opacity: 0.08; transform: scale(1.05); }
+  100% { opacity: 0.58; transform: scale(1); }
+}
+@keyframes gridWake {
+  0% { opacity: 0; }
+  100% { opacity: 0.22; }
+}
+@keyframes bgFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
 @keyframes scrollBob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
 @keyframes scrollDot { 0% { opacity: 1; top: 6px; } 100% { opacity: 0; top: 18px; } }
-
+@media (max-width: 980px) {
+  .hero-content { gap: 28px; }
+  .hero-shield { width: min(25vw, 140px); }
+}
 @media (max-width: 768px) {
-  .hero-content { flex-direction: column; text-align: center; padding-top: 100px; }
-  .hero-logo { width: 100px; }
+  .hero { min-height: 92vh; }
+  .hero-content { flex-direction: column; text-align: center; padding-top: 96px; padding-bottom: 56px; }
+  .hero-text { max-width: 620px; }
   .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-cta-row { justify-content: center; }
+  .hero-circuit-svg { width: min(110vw, 760px); right: -34%; top: -14%; opacity: 0.42; }
+  .hero-shield { width: min(34vw, 124px); }
+  .scroll-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero, .hero * {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+  .hero-layer { opacity: 1; transform: none; filter: none; }
+  .hero-circuit-svg { opacity: 0.44; }
+  .hero-shimmer { display: none; }
 }
 
 /* ═══════════ VALUE STRIP ═══════════ */
@@ -569,23 +741,75 @@ footer {
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
-<section class="hero">
-  <canvas id="circuit"></canvas>
+<section class="hero" id="heroCommand" aria-labelledby="heroHeading">
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-circuit-layer" aria-hidden="true">
+    <svg class="hero-circuit-svg" viewBox="0 0 900 620" role="presentation">
+      <path class="circuit-line" d="M42 118 H290 V78 H468"/>
+      <path class="circuit-line" d="M122 208 H360 V162 H514 V208 H700"/>
+      <path class="circuit-line" d="M88 318 H298 V356 H540 V308 H760"/>
+      <path class="circuit-line" d="M180 430 H414 V474 H670"/>
+      <path class="circuit-line" d="M470 64 V526"/>
+      <path class="circuit-line" d="M610 106 V380 H790"/>
+
+      <path class="circuit-path" d="M122 208 H360 V162 H514 V208 H700"/>
+      <path class="circuit-path delay" d="M88 318 H298 V356 H540 V308 H760"/>
+
+      <circle class="circuit-node" cx="122" cy="208" r="4.5"/>
+      <circle class="circuit-node" cx="360" cy="162" r="4.5"/>
+      <circle class="circuit-node" cx="514" cy="208" r="4.5"/>
+      <circle class="circuit-node" cx="700" cy="208" r="4.5"/>
+      <circle class="circuit-node" cx="298" cy="356" r="4.5"/>
+      <circle class="circuit-node" cx="540" cy="308" r="4.5"/>
+      <circle class="circuit-node" cx="760" cy="308" r="4.5"/>
+      <circle class="circuit-node" cx="470" cy="64" r="4"/>
+      <circle class="circuit-node" cx="470" cy="526" r="4"/>
+
+      <circle class="circuit-pulse" cx="122" cy="208" r="3.2">
+        <animateMotion dur="4.8s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#pulseRouteA"/>
+        </animateMotion>
+      </circle>
+      <path id="pulseRouteA" d="M122 208 H360 V162 H514 V208 H700" fill="none" stroke="none"/>
+
+      <circle class="circuit-pulse" cx="88" cy="318" r="2.8">
+        <animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" rotate="auto">
+          <mpath href="#pulseRouteB"/>
+        </animateMotion>
+      </circle>
+      <path id="pulseRouteB" d="M88 318 H298 V356 H540 V308 H760" fill="none" stroke="none"/>
+    </svg>
+  </div>
   <div class="hero-fade"></div>
+
   <div class="hero-content">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops Shield" class="hero-logo">
-    <div class="hero-text">
-      <div class="hero-title">ROBINSON<br>OPS</div>
-      <div class="hero-sub">AI-Powered Consulting</div>
-      <p class="hero-desc">We find the operational leaks bleeding your business dry — missed calls, lost invoices, scheduling chaos — and we fix them with automated workflows that run while you sleep.</p>
-      <a href="book.html" class="hero-cta">
-        Book Your Free Ops Audit
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </a>
-      <div class="hero-location">Hamilton, Ontario &nbsp;|&nbsp; Service area: Toronto to Niagara</div>
+    <div class="hero-shield hero-layer" data-depth="0.65">
+      <img src="assets/images/ops_logo.png" alt="Robinson Ops Shield" class="hero-logo">
+      <div class="hero-shimmer" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-text" data-depth="0.35">
+      <div class="hero-kicker hero-layer">Operations Command Layer</div>
+      <h1 id="heroHeading" class="hero-title hero-layer">
+        <span class="wordmark-main">ROBINSON</span>
+        <span class="wordmark-sub">OPS</span>
+      </h1>
+      <div class="hero-sub hero-layer">AI-Powered Consulting</div>
+      <p class="hero-desc hero-layer">We identify the operational leaks bleeding your business dry — missed calls, delayed invoices, scheduling chaos — then deploy clean automations that keep your operation running with precision.</p>
+
+      <div class="hero-location hero-layer">Hamilton, Ontario &nbsp;|&nbsp; Service area: Toronto to Niagara</div>
+
+      <div class="hero-cta-row hero-layer">
+        <a href="book.html" class="hero-cta">
+          Book Your Free Ops Audit
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="services.html" class="hero-cta ghost">View Services</a>
+      </div>
     </div>
   </div>
-  <div class="scroll-hint"><span></span></div>
+
+  <div class="scroll-hint" aria-hidden="true"><span></span></div>
 </section>
 
 <!-- ═══════════ VALUE STRIP ═══════════ -->
@@ -783,116 +1007,80 @@ footer {
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
 <script>
-/* ——— CIRCUIT BOARD ANIMATION ——— */
-const cv = document.getElementById('circuit');
-const ctx = cv.getContext('2d');
-let W, H, nodes = [], pulses = [], t = 0;
+/* ——— HERO MOTION SYSTEM ——— */
+const hero = document.getElementById('heroCommand');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function resize() {
-  W = cv.offsetWidth;
-  H = cv.offsetHeight;
-  cv.width = W * devicePixelRatio;
-  cv.height = H * devicePixelRatio;
-  ctx.scale(devicePixelRatio, devicePixelRatio);
-  buildNodes();
-}
+const heroSettings = {
+  revealBaseMs: 380,
+  revealStepMs: 240,
+  pulseCycleMs: 4800,
+  sweepCycleMs: 4600,
+  shimmerOpacity: 0.38,
+  parallaxStrength: 16,
+  parallaxRotateDeg: 1.2
+};
 
-function buildNodes() {
-  nodes = [];
-  const count = Math.min(70, Math.floor((W * H) / 14000));
-  for (let i = 0; i < count; i++) {
-    const xBias = Math.random() < 0.6 ? 0.4 + Math.random() * 0.6 : Math.random();
-    nodes.push({
-      x: xBias * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.18,
-      vy: (Math.random() - 0.5) * 0.18,
-      r: Math.random() * 2 + 1,
-      phase: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.02 + 0.008
+if (hero) {
+  hero.style.setProperty('--hero-reveal-base', `${heroSettings.revealBaseMs}ms`);
+  hero.style.setProperty('--hero-reveal-step', `${heroSettings.revealStepMs}ms`);
+  hero.style.setProperty('--hero-pulse-duration', `${heroSettings.pulseCycleMs}ms`);
+  hero.style.setProperty('--hero-sweep-duration', `${heroSettings.sweepCycleMs}ms`);
+  hero.style.setProperty('--hero-shimmer-opacity', `${heroSettings.shimmerOpacity}`);
+  hero.style.setProperty('--hero-parallax', `${heroSettings.parallaxStrength}px`);
+  hero.style.setProperty('--hero-parallax-rotate', `${heroSettings.parallaxRotateDeg}deg`);
+
+  requestAnimationFrame(() => hero.classList.add('hero-ready'));
+
+  if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+    const layers = hero.querySelectorAll('[data-depth]');
+    let tx = 0;
+    let ty = 0;
+    let px = 0;
+    let py = 0;
+    let rafId = null;
+
+    const animateParallax = () => {
+      px += (tx - px) * 0.09;
+      py += (ty - py) * 0.09;
+
+      layers.forEach(layer => {
+        const depth = Number(layer.dataset.depth || 0.3);
+        const x = px * depth;
+        const y = py * depth;
+        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      });
+
+      hero.style.setProperty('--px-circuit', `${px * 0.18}px`);
+      hero.style.setProperty('--py-circuit', `${py * 0.18}px`);
+      hero.style.setProperty('--px-logo', `${px * 0.45}px`);
+      hero.style.setProperty('--py-logo', `${py * 0.45}px`);
+
+      if (Math.abs(tx - px) > 0.08 || Math.abs(ty - py) > 0.08) {
+        rafId = requestAnimationFrame(animateParallax);
+      } else {
+        rafId = null;
+      }
+    };
+
+    hero.addEventListener('pointermove', (event) => {
+      const rect = hero.getBoundingClientRect();
+      const nx = (event.clientX - rect.left) / rect.width - 0.5;
+      const ny = (event.clientY - rect.top) / rect.height - 0.5;
+
+      tx = nx * heroSettings.parallaxStrength;
+      ty = ny * heroSettings.parallaxStrength;
+
+      if (!rafId) rafId = requestAnimationFrame(animateParallax);
+    });
+
+    hero.addEventListener('pointerleave', () => {
+      tx = 0;
+      ty = 0;
+      if (!rafId) rafId = requestAnimationFrame(animateParallax);
     });
   }
-  pulses = [];
 }
-
-function spawnPulse() {
-  if (pulses.length > 8) return;
-  const a = nodes[Math.floor(Math.random() * nodes.length)];
-  const b = nodes[Math.floor(Math.random() * nodes.length)];
-  if (a === b) return;
-  const dx = a.x - b.x, dy = a.y - b.y;
-  if (Math.sqrt(dx * dx + dy * dy) < W * 0.2) {
-    pulses.push({ ax: a.x, ay: a.y, bx: b.x, by: b.y, t: 0, speed: 0.015 + Math.random() * 0.01 });
-  }
-}
-
-function draw() {
-  ctx.clearRect(0, 0, W, H);
-  t += 0.008;
-
-  if (Math.random() < 0.03) spawnPulse();
-
-  for (let i = 0; i < nodes.length; i++) {
-    const n = nodes[i];
-    n.x += n.vx; n.y += n.vy; n.phase += n.speed;
-    if (n.x < -20) n.x = W + 20; if (n.x > W + 20) n.x = -20;
-    if (n.y < -20) n.y = H + 20; if (n.y > H + 20) n.y = -20;
-
-    for (let j = i + 1; j < nodes.length; j++) {
-      const m = nodes[j];
-      const dx = n.x - m.x, dy = n.y - m.y;
-      const d = Math.sqrt(dx * dx + dy * dy);
-      const maxD = W * 0.15;
-      if (d < maxD) {
-        const a = (1 - d / maxD) * 0.35;
-        ctx.beginPath();
-        ctx.moveTo(n.x, n.y);
-        ctx.lineTo(m.x, m.y);
-        ctx.strokeStyle = `rgba(58,159,213,${a})`;
-        ctx.lineWidth = 0.6;
-        ctx.stroke();
-      }
-    }
-  }
-
-  for (const n of nodes) {
-    const glow = 0.4 + Math.sin(n.phase) * 0.6;
-    const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r * 6);
-    grad.addColorStop(0, `rgba(90,184,240,${glow * 0.8})`);
-    grad.addColorStop(0.4, `rgba(58,159,213,${glow * 0.2})`);
-    grad.addColorStop(1, 'rgba(30,80,160,0)');
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, n.r * 6, 0, Math.PI * 2);
-    ctx.fillStyle = grad;
-    ctx.fill();
-    ctx.beginPath();
-    ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(180,220,255,${glow})`;
-    ctx.fill();
-  }
-
-  for (let i = pulses.length - 1; i >= 0; i--) {
-    const p = pulses[i];
-    p.t += p.speed;
-    if (p.t > 1) { pulses.splice(i, 1); continue; }
-    const px = p.ax + (p.bx - p.ax) * p.t;
-    const py = p.ay + (p.by - p.ay) * p.t;
-    const pg = ctx.createRadialGradient(px, py, 0, px, py, 8);
-    pg.addColorStop(0, 'rgba(100,210,255,0.9)');
-    pg.addColorStop(0.5, 'rgba(58,159,213,0.3)');
-    pg.addColorStop(1, 'rgba(30,80,160,0)');
-    ctx.beginPath();
-    ctx.arc(px, py, 8, 0, Math.PI * 2);
-    ctx.fillStyle = pg;
-    ctx.fill();
-  }
-
-  requestAnimationFrame(draw);
-}
-
-resize();
-draw();
-window.addEventListener('resize', resize);
 
 /* ——— SCROLL REVEAL ——— */
 const rvs = document.querySelectorAll('.rv');
