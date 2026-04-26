@@ -719,13 +719,14 @@ footer {
 .hero-text > *:nth-child(5) { animation-delay: 1.1s; }
 @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
 </style>
+<link rel="stylesheet" href="assets/css/command-hero.css?v=3">
 </head>
 <body>
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
+    <img src="assets/images/website-logo-shield-centered-web.png" alt="Robinson Ops shield">
     ROBINSON OPS
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
@@ -741,75 +742,136 @@ footer {
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
-<section class="hero" id="heroCommand" aria-labelledby="heroHeading">
-  <div class="hero-bg-grid" aria-hidden="true"></div>
-  <div class="hero-circuit-layer" aria-hidden="true">
-    <svg class="hero-circuit-svg" viewBox="0 0 900 620" role="presentation">
-      <path class="circuit-line" d="M42 118 H290 V78 H468"/>
-      <path class="circuit-line" d="M122 208 H360 V162 H514 V208 H700"/>
-      <path class="circuit-line" d="M88 318 H298 V356 H540 V308 H760"/>
-      <path class="circuit-line" d="M180 430 H414 V474 H670"/>
-      <path class="circuit-line" d="M470 64 V526"/>
-      <path class="circuit-line" d="M610 106 V380 H790"/>
+<section class="command-hero" id="heroCommand" aria-labelledby="heroHeading">
+  <div class="command-bg js-parallax" data-depth="0.08" aria-hidden="true"></div>
+  <div class="command-bloom js-parallax" data-depth="0.18" aria-hidden="true"></div>
+  <div class="command-frame js-parallax" data-depth="0.16" aria-hidden="true">
+    <span class="command-frame-rail command-frame-rail-top"></span>
+    <span class="command-frame-rail command-frame-rail-bottom"></span>
+    <span class="command-frame-node command-frame-node-left"></span>
+    <span class="command-frame-node command-frame-node-right"></span>
+  </div>
 
-      <path class="circuit-path" d="M122 208 H360 V162 H514 V208 H700"/>
-      <path class="circuit-path delay" d="M88 318 H298 V356 H540 V308 H760"/>
+  <div class="command-circuit-wrap js-parallax" data-depth="0.28" aria-hidden="true">
+    <svg class="command-circuit-svg" viewBox="0 0 1200 720" role="presentation" focusable="false">
+      <defs>
+        <linearGradient id="commandCircuitGradient" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#7bdcff" stop-opacity="0"/>
+          <stop offset="0.42" stop-color="#7bdcff" stop-opacity="0.92"/>
+          <stop offset="0.72" stop-color="#d9f3ff" stop-opacity="0.95"/>
+          <stop offset="1" stop-color="#7bdcff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="commandNodeGlow" x="-80%" y="-80%" width="260%" height="260%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
 
-      <circle class="circuit-node" cx="122" cy="208" r="4.5"/>
-      <circle class="circuit-node" cx="360" cy="162" r="4.5"/>
-      <circle class="circuit-node" cx="514" cy="208" r="4.5"/>
-      <circle class="circuit-node" cx="700" cy="208" r="4.5"/>
-      <circle class="circuit-node" cx="298" cy="356" r="4.5"/>
-      <circle class="circuit-node" cx="540" cy="308" r="4.5"/>
-      <circle class="circuit-node" cx="760" cy="308" r="4.5"/>
-      <circle class="circuit-node" cx="470" cy="64" r="4"/>
-      <circle class="circuit-node" cx="470" cy="526" r="4"/>
+      <g class="command-circuit-group command-circuit-group-left">
+        <path class="command-circuit-base" d="M52 152 H190 L230 112 H382"/>
+        <path class="command-circuit-base" d="M34 286 H228 L270 244 H418 V182 H540"/>
+        <path class="command-circuit-base" d="M86 432 H238 V478 H392 L446 532 H602"/>
+        <path class="command-circuit-base" d="M150 612 H338 L384 568 H514"/>
+        <path class="command-circuit-base" d="M338 86 V232 H448"/>
+        <path class="command-circuit-flow route-a" d="M34 286 H228 L270 244 H418 V182 H540"/>
+        <path class="command-circuit-flow route-b" d="M86 432 H238 V478 H392 L446 532 H602"/>
+      </g>
 
-      <circle class="circuit-pulse" cx="122" cy="208" r="3.2">
-        <animateMotion dur="4.8s" repeatCount="indefinite" rotate="auto">
-          <mpath href="#pulseRouteA"/>
-        </animateMotion>
-      </circle>
-      <path id="pulseRouteA" d="M122 208 H360 V162 H514 V208 H700" fill="none" stroke="none"/>
+      <g class="command-circuit-group command-circuit-group-right">
+        <path class="command-circuit-base" d="M1164 116 H982 L936 162 H790"/>
+        <path class="command-circuit-base" d="M1184 260 H968 L912 314 H740"/>
+        <path class="command-circuit-base" d="M1124 404 H968 V456 H760"/>
+        <path class="command-circuit-base" d="M1190 578 H1010 L958 532 H790"/>
+        <path class="command-circuit-base" d="M908 98 V254 H812"/>
+        <path class="command-circuit-flow route-c" d="M1164 116 H982 L936 162 H790"/>
+        <path class="command-circuit-flow route-d" d="M1190 578 H1010 L958 532 H790"/>
+      </g>
 
-      <circle class="circuit-pulse" cx="88" cy="318" r="2.8">
-        <animateMotion dur="5.6s" begin="1.3s" repeatCount="indefinite" rotate="auto">
-          <mpath href="#pulseRouteB"/>
-        </animateMotion>
-      </circle>
-      <path id="pulseRouteB" d="M88 318 H298 V356 H540 V308 H760" fill="none" stroke="none"/>
+      <g class="command-nodes" filter="url(#commandNodeGlow)">
+        <circle class="command-node" cx="190" cy="152" r="4.4"/>
+        <circle class="command-node" cx="382" cy="112" r="3.8"/>
+        <circle class="command-node" cx="270" cy="244" r="4.2"/>
+        <circle class="command-node" cx="418" cy="182" r="4.8"/>
+        <circle class="command-node" cx="540" cy="182" r="3.8"/>
+        <circle class="command-node" cx="238" cy="478" r="4.4"/>
+        <circle class="command-node" cx="446" cy="532" r="4.2"/>
+        <circle class="command-node" cx="602" cy="532" r="3.7"/>
+        <circle class="command-node" cx="982" cy="116" r="4.4"/>
+        <circle class="command-node" cx="936" cy="162" r="4"/>
+        <circle class="command-node" cx="790" cy="162" r="3.8"/>
+        <circle class="command-node" cx="968" cy="314" r="4.8"/>
+        <circle class="command-node" cx="740" cy="314" r="3.8"/>
+        <circle class="command-node" cx="968" cy="456" r="4.2"/>
+        <circle class="command-node" cx="760" cy="456" r="3.8"/>
+        <circle class="command-node" cx="958" cy="532" r="4.4"/>
+        <circle class="command-node" cx="790" cy="532" r="3.8"/>
+      </g>
+
+      <g class="command-data-pips">
+        <circle class="command-pip pip-a" r="3.2">
+          <animateMotion dur="5.4s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#commandRouteA"/>
+          </animateMotion>
+        </circle>
+        <circle class="command-pip pip-b" r="2.8">
+          <animateMotion dur="6.8s" begin="1.1s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#commandRouteB"/>
+          </animateMotion>
+        </circle>
+        <circle class="command-pip pip-c" r="3">
+          <animateMotion dur="6.2s" begin="0.55s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#commandRouteC"/>
+          </animateMotion>
+        </circle>
+      </g>
+      <path id="commandRouteA" d="M34 286 H228 L270 244 H418 V182 H540" fill="none"/>
+      <path id="commandRouteB" d="M86 432 H238 V478 H392 L446 532 H602" fill="none"/>
+      <path id="commandRouteC" d="M1164 116 H982 L936 162 H790" fill="none"/>
     </svg>
   </div>
-  <div class="hero-fade"></div>
 
-  <div class="hero-content">
-    <div class="hero-shield hero-layer" data-depth="0.65">
-      <img src="assets/images/ops_logo.png" alt="Robinson Ops Shield" class="hero-logo">
-      <div class="hero-shimmer" aria-hidden="true"></div>
+  <div class="command-pointer-field" aria-hidden="true"></div>
+  <div class="command-static-field" aria-hidden="true"></div>
+  <div class="command-vignette" aria-hidden="true"></div>
+
+  <div class="command-hero-inner">
+    <div class="command-shield-stage command-reveal js-parallax" data-depth="0.58">
+      <div class="command-shield-aura" aria-hidden="true"></div>
+      <div class="command-shield-object" role="img" aria-label="Robinson Ops chrome shield logo">
+        <img src="assets/images/website-logo-shield-centered-web.png" alt="" class="command-shield-img" aria-hidden="true">
+        <span class="command-shield-rim" aria-hidden="true"></span>
+        <span class="command-shield-sweep" aria-hidden="true"></span>
+      </div>
+      <div class="command-status-pill" aria-hidden="true">
+        <span></span>
+        Command layer online
+      </div>
     </div>
 
-    <div class="hero-text" data-depth="0.35">
-      <div class="hero-kicker hero-layer">Operations Command Layer</div>
-      <h1 id="heroHeading" class="hero-title hero-layer">
-        <span class="wordmark-main">ROBINSON</span>
-        <span class="wordmark-sub">OPS</span>
-      </h1>
-      <div class="hero-sub hero-layer">AI-Powered Consulting</div>
-      <p class="hero-desc hero-layer">We identify the operational leaks bleeding your business dry — missed calls, delayed invoices, scheduling chaos — then deploy clean automations that keep your operation running with precision.</p>
-
-      <div class="hero-location hero-layer">Hamilton, Ontario &nbsp;|&nbsp; Service area: Toronto to Niagara</div>
-
-      <div class="hero-cta-row hero-layer">
-        <a href="book.html" class="hero-cta">
-          Book Your Free Ops Audit
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    <div class="command-copy js-parallax" data-depth="0.28">
+      <p class="command-kicker command-reveal">Operations Command Layer</p>
+      <h1 id="heroHeading" class="command-title command-reveal">ROBINSON OPS</h1>
+      <p class="command-subheadline command-reveal">AI-Powered Operations Consulting | Hamilton &amp; GTA</p>
+      <p class="command-support command-reveal">Systems. Automation. Operational Clarity.</p>
+      <p class="command-proof command-reveal">Hamilton-based operational cleanup and automation systems for service businesses from Toronto to Niagara.</p>
+      <div class="command-cta-row command-reveal">
+        <a href="book.html" class="command-cta command-cta-primary">
+          <span>Book a Free Ops Audit</span>
+          <svg viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+            <path d="M3 9h11M10 5l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
-        <a href="services.html" class="hero-cta ghost">View Services</a>
+        <a href="services.html" class="command-cta command-cta-secondary">
+          <span>Explore Services</span>
+        </a>
       </div>
     </div>
   </div>
 
-  <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  <div class="command-scroll-cue" aria-hidden="true"><span></span></div>
 </section>
 
 <!-- ═══════════ VALUE STRIP ═══════════ -->
@@ -1006,82 +1068,8 @@ footer {
 </footer>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
+<script src="assets/js/command-hero.js?v=3"></script>
 <script>
-/* ——— HERO MOTION SYSTEM ——— */
-const hero = document.getElementById('heroCommand');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-const heroSettings = {
-  revealBaseMs: 380,
-  revealStepMs: 240,
-  pulseCycleMs: 4800,
-  sweepCycleMs: 4600,
-  shimmerOpacity: 0.38,
-  parallaxStrength: 16,
-  parallaxRotateDeg: 1.2
-};
-
-if (hero) {
-  hero.style.setProperty('--hero-reveal-base', `${heroSettings.revealBaseMs}ms`);
-  hero.style.setProperty('--hero-reveal-step', `${heroSettings.revealStepMs}ms`);
-  hero.style.setProperty('--hero-pulse-duration', `${heroSettings.pulseCycleMs}ms`);
-  hero.style.setProperty('--hero-sweep-duration', `${heroSettings.sweepCycleMs}ms`);
-  hero.style.setProperty('--hero-shimmer-opacity', `${heroSettings.shimmerOpacity}`);
-  hero.style.setProperty('--hero-parallax', `${heroSettings.parallaxStrength}px`);
-  hero.style.setProperty('--hero-parallax-rotate', `${heroSettings.parallaxRotateDeg}deg`);
-
-  requestAnimationFrame(() => hero.classList.add('hero-ready'));
-
-  if (!reduceMotion && window.matchMedia('(pointer:fine)').matches) {
-    const layers = hero.querySelectorAll('[data-depth]');
-    let tx = 0;
-    let ty = 0;
-    let px = 0;
-    let py = 0;
-    let rafId = null;
-
-    const animateParallax = () => {
-      px += (tx - px) * 0.09;
-      py += (ty - py) * 0.09;
-
-      layers.forEach(layer => {
-        const depth = Number(layer.dataset.depth || 0.3);
-        const x = px * depth;
-        const y = py * depth;
-        layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      });
-
-      hero.style.setProperty('--px-circuit', `${px * 0.18}px`);
-      hero.style.setProperty('--py-circuit', `${py * 0.18}px`);
-      hero.style.setProperty('--px-logo', `${px * 0.45}px`);
-      hero.style.setProperty('--py-logo', `${py * 0.45}px`);
-
-      if (Math.abs(tx - px) > 0.08 || Math.abs(ty - py) > 0.08) {
-        rafId = requestAnimationFrame(animateParallax);
-      } else {
-        rafId = null;
-      }
-    };
-
-    hero.addEventListener('pointermove', (event) => {
-      const rect = hero.getBoundingClientRect();
-      const nx = (event.clientX - rect.left) / rect.width - 0.5;
-      const ny = (event.clientY - rect.top) / rect.height - 0.5;
-
-      tx = nx * heroSettings.parallaxStrength;
-      ty = ny * heroSettings.parallaxStrength;
-
-      if (!rafId) rafId = requestAnimationFrame(animateParallax);
-    });
-
-    hero.addEventListener('pointerleave', () => {
-      tx = 0;
-      ty = 0;
-      if (!rafId) rafId = requestAnimationFrame(animateParallax);
-    });
-  }
-}
-
 /* ——— SCROLL REVEAL ——— */
 const rvs = document.querySelectorAll('.rv');
 const obs = new IntersectionObserver((entries) => {
