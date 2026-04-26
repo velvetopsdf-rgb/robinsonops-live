@@ -527,6 +527,92 @@
     .faq-item.open .faq-a { max-height: 300px; padding: 0 1.5rem 1.3rem; }
     .faq-a p { font-size: 0.88rem; color: var(--txt-2); line-height: 1.7; }
 
+    .pricing-snapshot {
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 28%, rgba(21,96,164,0.16), transparent 68%),
+        linear-gradient(180deg, var(--black) 0%, #03060b 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .pricing-snapshot .container {
+      max-width: 1180px;
+    }
+    .snapshot-head {
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+    .snapshot-card {
+      position: relative;
+      padding: clamp(1rem, 2.4vw, 1.8rem);
+      border: 1px solid rgba(58,159,213,0.34);
+      border-radius: 12px;
+      background:
+        linear-gradient(145deg, rgba(188,198,212,0.09), rgba(9,11,15,0.78) 34%, rgba(13,16,23,0.92)),
+        var(--surface);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,0.52),
+        0 0 46px rgba(58,159,213,0.13),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .snapshot-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background:
+        linear-gradient(90deg, transparent, rgba(230,236,244,0.16), transparent),
+        radial-gradient(circle at 12% 10%, rgba(58,159,213,0.2), transparent 30%);
+      opacity: 0.52;
+      pointer-events: none;
+    }
+    .snapshot-image-frame {
+      position: relative;
+      z-index: 1;
+      padding: clamp(0.5rem, 1.4vw, 0.9rem);
+      border: 1px solid rgba(188,198,212,0.16);
+      border-radius: 8px;
+      background: rgba(0,0,0,0.4);
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-color: rgba(58,159,213,0.55) rgba(255,255,255,0.08);
+    }
+    .snapshot-image-frame img {
+      display: block;
+      width: 100%;
+      max-width: 1120px;
+      min-width: 720px;
+      height: auto;
+      margin: 0 auto;
+      border-radius: 6px;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.38);
+    }
+    .snapshot-note {
+      position: relative;
+      z-index: 1;
+      margin-top: 1rem;
+      color: var(--txt-3);
+      font-size: 0.78rem;
+      line-height: 1.65;
+    }
+    .snapshot-open {
+      position: relative;
+      z-index: 1;
+      display: none;
+      margin-top: 0.8rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      text-decoration: none;
+    }
+    .snapshot-open:hover {
+      color: var(--silver-hi);
+    }
+
     /* ── BOTTOM CTA ── */
     .sprint-cta {
       background: var(--surface);
@@ -625,6 +711,11 @@
       .footer-bottom  { flex-direction: column; gap: 1rem; text-align: center; }
       section         { padding: 4rem 1.25rem; }
       .sprint-hero    { padding: 8rem 1.25rem 4rem; }
+      .snapshot-head  { margin-bottom: 1.4rem; }
+      .snapshot-card  { margin-inline: -0.25rem; padding: 0.75rem; }
+      .snapshot-image-frame { padding: 0.45rem; }
+      .snapshot-image-frame img { min-width: 680px; }
+      .snapshot-open { display: inline-block; }
     }
   </style>
 </head>
@@ -880,6 +971,30 @@
 </section>
 
 <!-- ════════════ BOTTOM CTA ════════════ -->
+<section class="pricing-snapshot" aria-labelledby="pricingSnapshotTitle">
+  <div class="container">
+    <div class="snapshot-head">
+      <p class="eyebrow">Pricing Snapshot</p>
+      <h2 class="section-title" id="pricingSnapshotTitle">Robinson Ops Pricing &amp; Impact Snapshot</h2>
+      <p class="section-body">A quick visual breakdown of the core Robinson Ops service tiers and the kind of operational improvements these systems are designed to target.</p>
+    </div>
+
+    <div class="snapshot-card">
+      <div class="snapshot-image-frame" role="region" aria-label="Scrollable pricing infographic">
+        <img
+          src="assets/images/pricing-infographic-web.jpg"
+          alt="Robinson Ops pricing infographic showing Ops Cleanup Sprint, Workflow Builds, and Digital Gatekeeping service tiers with estimated operational impact."
+          width="2752"
+          height="1536"
+          loading="lazy"
+          decoding="async">
+      </div>
+      <p class="snapshot-note">Impact figures are illustrative estimates based on common operational bottlenecks. Actual results depend on business volume, workflow complexity, and implementation scope.</p>
+      <a class="snapshot-open" href="assets/images/pricing-infographic-web.jpg" target="_blank" rel="noopener">Open full-size infographic</a>
+    </div>
+  </div>
+</section>
+
 <section class="sprint-cta">
   <div class="container" style="position:relative;">
     <p class="eyebrow">Start Your Sprint</p>
