@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Throughline Operations logo">
+  <defs>
+    <style><![CDATA[
+      .throughline-main { font-family: 'Inter Display', 'Inter', 'Arial', sans-serif; font-weight: 900; letter-spacing: 12px; }
+      .throughline-sub { font-family: 'Inter Display', 'Inter', 'Arial', sans-serif; font-weight: 700; letter-spacing: 26px; }
+    ]]></style>
+  </defs>
+<g><polygon points="81.50,483.30 598.10,483.30 598.10,524.30 81.50,524.30" fill="#1560A4"/>
+<polygon points="667.80,483.30 848.20,483.30 889.20,493.55 889.20,524.30 667.80,524.30" fill="#1560A4"/>
+<polygon points="81.50,245.50 536.60,245.50 483.30,319.30 81.50,319.30" fill="#0A1628"/>
+<polygon points="253.70,319.30 341.85,319.30 374.65,350.05 374.65,430.00 253.70,430.00" fill="#0A1628"/>
+<rect x="253.70" y="555.05" width="120.95" height="200.90" fill="#0A1628"/>
+<path d="M 468.95,503.80 a 227.55,227.55 0 1,0 455.10,0 a 227.55,227.55 0 1,0 -455.10,0 M 548.90,503.80 a 147.60,147.60 0 1,1 295.20,0 a 147.60,147.60 0 1,1 -295.20,0" fill="#0A1628" fill-rule="evenodd"/></g>
+</svg>
