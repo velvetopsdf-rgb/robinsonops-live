@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Your Free Ops Call — Robinson Ops</title>
-<meta name="description" content="Book a free 15-minute operations audit with Robinson Ops. We'll identify your top 2 operational leaks and show you how to fix them. Hamilton & GTA.">
+<title>Book a Free Discovery Call — Throughline Operations</title>
+<meta name="description" content="Book a free discovery call with Throughline Operations. We'll find the repeating work in your operation and show you what we'd build. Hamilton &amp; GTA.">
+<link rel="canonical" href="https://throughlineoperations.com/book.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Book a Free Discovery Call — Throughline Operations">
+<meta property="og:description" content="Book a free discovery call. We'll find the repeating work in your operation and show you what we'd build. Hamilton &amp; GTA.">
+<meta property="og:url" content="https://throughlineoperations.com/book.html">
+<meta property="og:image" content="https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/images/01_square_mark_TO_blue_throughline_transparent_64_favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,11 +29,22 @@
   --gold: #c8a84e;
   --txt: #e6ecf4;
   --txt-2: #8a96a8;
-  --txt-3: #555e6c;
+  --txt-3: #7a8494;
+  --navy: #0A1628;
+  --chrome: #C8CDD3;
   --border: rgba(58, 159, 213, 0.15);
   --border-hi: rgba(58, 159, 213, 0.35);
   --radius: 8px;
 }
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--blue-bright); color: #001018;
+  padding: 10px 16px; border-radius: 0 0 var(--radius) 0;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -197,6 +216,16 @@ nav {
   height: 700px;
   border: none;
 }
+.calendly-fallback {
+  display: block;
+  text-align: center;
+  padding: 14px 20px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px; letter-spacing: 0.04em;
+  color: var(--txt-2);
+  border-top: 1px solid var(--border);
+}
+.calendly-fallback a { color: var(--blue-bright); font-weight: 700; }
 
 /* FAQ */
 .book-faq {
@@ -265,6 +294,8 @@ footer {
   padding: 32px 24px;
   text-align: center;
 }
+.footer-logo { height: 56px; width: auto; margin: 0 auto 14px; display: block; }
+.footer-entity { font-size: 12px; color: var(--txt-3); margin-top: 8px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 .footer-brand {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 16px;
@@ -292,27 +323,30 @@ footer {
 <body>
 
 <!-- NAV -->
+<a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
-    ROBINSON OPS
+    <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="Throughline Operations" width="34" height="34">
+    THROUGHLINE OPERATIONS
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html" class="active">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
 <section class="book-hero">
-  <h1 id="bookHeading">Book Your Free 15-Minute Ops Audit</h1>
-  <p id="bookSub">No pitch. No pressure. We identify your top 2 operational leaks on the call and you decide if you want them fixed.</p>
+  <h1 id="bookHeading">Book a Free Discovery Call</h1>
+  <p id="bookSub">No pitch. No pressure. We find the work that repeats in your operation and show you what we'd build — you decide if it's worth it.</p>
 </section>
 
 <!-- MAIN -->
@@ -326,15 +360,15 @@ footer {
       <div class="step-num">1</div>
       <div class="step-text">
         <h3>Quick Snapshot</h3>
-        <p>You tell me how your business runs right now — scheduling, invoicing, customer communication, team coordination. Two minutes, no prep needed.</p>
+        <p>You tell us how your business runs right now — scheduling, invoicing, customer communication, team coordination. Two minutes, no prep needed.</p>
       </div>
     </div>
 
     <div class="call-step">
       <div class="step-num">2</div>
       <div class="step-text">
-        <h3>Identify the Leaks</h3>
-        <p>I pinpoint the 2 biggest operational bottlenecks costing you time and money. Missed calls, lost invoices, manual scheduling — whatever it is, we find it.</p>
+        <h3>Find the Throughline</h3>
+        <p>We pinpoint the repeating work costing you time and money. Missed calls, lost invoices, manual scheduling — whatever runs through every day, we find it.</p>
       </div>
     </div>
 
@@ -342,7 +376,7 @@ footer {
       <div class="step-num">3</div>
       <div class="step-text">
         <h3>Your Decision</h3>
-        <p id="step3Desc">I explain exactly what we'd fix and what it costs. You decide — zero pressure. Most clients know within 60 seconds if it's the right fit.</p>
+        <p id="step3Desc">We explain exactly what we'd build and what it costs. You decide — zero pressure. Most people know within 60 seconds if it's the right fit.</p>
       </div>
     </div>
 
@@ -357,9 +391,11 @@ footer {
   <div class="calendly-wrap">
     <iframe
       src="https://calendly.com/robinsonops/15min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=090b0f&text_color=e6ecf4&primary_color=3a9fd5"
-      title="Book a call with Robinson Ops"
-      loading="lazy">
+      title="Book a call with Throughline Operations"
+      width="100%"
+      height="700">
     </iframe>
+    <p class="calendly-fallback">Booking calendar not loading? <a href="https://calendly.com/robinsonops/15min" target="_blank" rel="noopener">Open it in a new tab &rarr;</a></p>
   </div>
 
 </section>
@@ -370,7 +406,7 @@ footer {
 
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is this actually free?</div>
-    <div class="faq-a"><p>Yes. The 15-minute audit is free, always. I use it to understand your operations and show you what I'd fix. If we're a fit, I'll quote you on the spot. If not, you still leave with clarity on your biggest operational leak.</p></div>
+    <div class="faq-a"><p>Yes. The discovery call is free, always. We use it to understand your operations and show you what we'd build. If we're a fit, we'll quote you on the spot. If not, you still leave with clarity on your biggest operational leak.</p></div>
   </div>
 
   <div class="faq-item">
@@ -380,51 +416,65 @@ footer {
 
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need to prepare anything?</div>
-    <div class="faq-a"><p>No prep needed. Just show up ready to describe how your day-to-day operations work — how jobs get booked, how you invoice, how your team communicates. I'll ask the right questions.</p></div>
+    <div class="faq-a"><p>No prep needed. Just show up ready to describe how your day-to-day operations work — how jobs get booked, how you invoice, how your team communicates. We'll ask the right questions.</p></div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens after the call?</div>
-    <div class="faq-a"><p id="faqAfter">If you want to move forward, I'll recommend the right engagement based on your needs — from a focused 7-day Sprint to a comprehensive operations build. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div>
+    <div class="faq-a"><p id="faqAfter">If you want to move forward, we'll recommend the right engagement based on your needs — from a fixed-scope Automation Sprint to a fuller intelligence build. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <img src="assets/images/02_stacked_lockup_transparent.svg" alt="Throughline Operations" class="footer-logo" width="160" height="56">
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="privacy.html">Privacy &amp; Terms</a></li>
   </ul>
-  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+  <div class="footer-copy">&copy; 2026 Throughline Operations &middot; Hamilton, Ontario &middot; All prices in CAD</div>
+  <div class="footer-entity">Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc.</div>
 </footer>
 
 <script>
-const tier = new URLSearchParams(window.location.search).get('tier');
-if (tier === 'sprint') {
-  document.getElementById('bookHeading').textContent = 'Book Your Ops Cleanup Sprint';
-  document.getElementById('bookSub').textContent = 'The $750 Sprint \u2014 a 7-day engagement where I audit your operations and deliver working solutions. No fluff, no ongoing commitment.';
-  document.getElementById('step3Desc').textContent = 'I\u2019ll scope your Sprint \u2014 a full operations audit, custom SOPs, one working automation, and a recorded walkthrough. $750 flat rate, delivered in 7 days.';
-  document.getElementById('faqAfter').textContent = 'If you want to move forward, we start with the Ops Cleanup Sprint \u2014 a 7-day engagement where I audit your systems and deliver working solutions. $750 flat rate, no surprises. If you\u2019re not ready, no follow-up pressure.';
-} else if (tier === 'workflow') {
-  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Workflow Builds';
-  document.getElementById('bookSub').textContent = 'You\u2019re looking at the $1,500 tier \u2014 custom n8n automations, CRM integration, and staff training. This call scopes out exactly what your business needs.';
-  document.getElementById('step3Desc').textContent = 'I\u2019ll outline a custom Workflow Builds engagement \u2014 up to 3 automated workflows, CRM integration, and a 14-day support window. You\u2019ll know exactly what you\u2019re getting and what it costs.';
-  document.getElementById('faqAfter').textContent = 'If you want to move forward, we kick off a Workflow Builds engagement \u2014 custom n8n automations, CRM or scheduling integration, email triage, and staff training documentation. $1,500 per project, 14-day support included. If you\u2019re not ready, no follow-up pressure.';
-} else if (tier === 'gatekeeping') {
-  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Digital Gatekeeping';
-  document.getElementById('bookSub').textContent = 'You\u2019re looking at the full $2,500 engagement \u2014 AI-powered communication protection, automated invoicing, and a real-time operations dashboard. This call maps out everything.';
-  document.getElementById('step3Desc').textContent = 'I\u2019ll walk you through the full Digital Gatekeeping build \u2014 spam filtering, call screening, automated invoicing pipeline, and a real-time dashboard. This is the comprehensive engagement with 30 days of post-delivery support.';
-  document.getElementById('faqAfter').textContent = 'If you want to move forward, we begin the Digital Gatekeeping engagement \u2014 full perimeter build with AI-powered communication protection, automated invoice follow-up, customer verification systems, and a real-time operations dashboard. $2,500 full engagement, 30-day support and monitoring included. If you\u2019re not ready, no pressure.';
-} else if (tier === 'production') {
-  document.getElementById('bookHeading').textContent = 'Let\u2019s Talk Production Ops';
-  document.getElementById('bookSub').textContent = 'You\u2019re a film or TV production looking to automate logistics, dispatch, and vendor coordination. This call scopes out exactly what your production needs.';
-  document.getElementById('step3Desc').textContent = 'I\u2019ll map out a Production Ops engagement tailored to your show \u2014 from LSP dispatch automation to real-time budget dashboards. Priced for production budgets, built by someone who\u2019s been on your set.';
-  document.getElementById('faqAfter').textContent = 'If you want to move forward, we scope a Production Sprint ($2,500) or Full Production Build ($5,000) depending on the scale. Dispatch automation, vendor pipelines, budget dashboards, and SOPs \u2014 all delivered within your prep schedule. If you\u2019re not ready, no pressure.';
+/* Tier/service-aware booking \u2014 context passed from services.html and the homepage preview */
+const params = new URLSearchParams(window.location.search);
+const tier = params.get('tier');
+const service = params.get('service');
+const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
+
+const SPRINTS = {
+  'sprint-essentials': { name: 'Automation Sprint \u2014 Essentials', price: '$2,499', blurb: 'one repeating leak, found and eliminated' },
+  'sprint-growth':     { name: 'Automation Sprint \u2014 Growth',     price: '$4,499', blurb: 'several connected workflows across one operational area' },
+  'sprint-operations': { name: 'Automation Sprint \u2014 Operations', price: '$6,999', blurb: 'intelligent systems across several operational areas' }
+};
+const SERVICES = {
+  geo:      { name: 'GEO Audit + Retainer', price: '$1,499 audit (then $497\u2013$1,497/mo)', blurb: 'getting you found when customers ask AI tools for a recommendation' },
+  website:  { name: 'Website Build',        price: 'contact for pricing',  blurb: 'a fast, modern, conversion-focused site' },
+  agents:   { name: 'AI Agent Build',       price: 'contact for pricing',  blurb: 'a custom agent that handles a real operational task' },
+  local:    { name: 'Local AI Deployment',  price: 'contact for pricing',  blurb: 'private, on-premise intelligence that keeps your data yours' },
+  cloud:    { name: 'Cloud + Hybrid AI',    price: 'contact for pricing',  blurb: 'the right mix of local control and cloud scale' },
+  hardware: { name: 'Hardware-with-AI Bundle', price: 'contact for pricing', blurb: 'turnkey hardware configured and deployed with your AI stack' }
+};
+
+if (tier && SPRINTS[tier]) {
+  const t = SPRINTS[tier];
+  setText('bookHeading', 'Book Your ' + t.name);
+  setText('bookSub', 'You\u2019re looking at the ' + t.name + ' (' + t.price + ') \u2014 ' + t.blurb + '. This call confirms the scope and fit. No pressure.');
+  setText('step3Desc', 'We\u2019ll scope your ' + t.name + ' \u2014 ' + t.blurb + ' \u2014 with a fixed price (' + t.price + '), built with you and documented so your team owns it.');
+  setText('faqAfter', 'If you want to move forward, we kick off the ' + t.name + ' \u2014 ' + t.blurb + '. Fixed scope at ' + t.price + ', built with you, documented. If you\u2019re not ready, no follow-up pressure.');
+} else if (service && SERVICES[service]) {
+  const s = SERVICES[service];
+  setText('bookHeading', 'Let\u2019s Talk ' + s.name);
+  setText('bookSub', 'You\u2019re interested in ' + s.name + ' (' + s.price + ') \u2014 ' + s.blurb + '. This call scopes out exactly what your business needs.');
+  setText('step3Desc', 'We\u2019ll outline a ' + s.name + ' engagement \u2014 ' + s.blurb + ' \u2014 architected and deployed with you. You\u2019ll know the scope and price before you commit.');
+  setText('faqAfter', 'If you want to move forward, we scope a ' + s.name + ' engagement \u2014 ' + s.blurb + '. We architect and deploy it with you, documented end to end. If you\u2019re not ready, no follow-up pressure.');
 }
 </script>
 </body>

@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy & Terms — Robinson Ops</title>
-<meta name="description" content="Privacy policy, terms of service, and AI disclaimers for Robinson Ops. GTA CAN Vibe Productions Inc., Hamilton, Ontario.">
+<title>Privacy Policy &amp; Terms — Throughline Operations</title>
+<meta name="description" content="Privacy policy, terms of service, and AI disclaimers for Throughline Operations. GTA CAN Vibe Productions Inc., Hamilton, Ontario.">
+<link rel="canonical" href="https://throughlineoperations.com/privacy.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy Policy &amp; Terms — Throughline Operations">
+<meta property="og:description" content="Privacy policy, terms of service, and AI disclaimers for Throughline Operations.">
+<meta property="og:url" content="https://throughlineoperations.com/privacy.html">
+<meta property="og:image" content="https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/images/01_square_mark_TO_blue_throughline_transparent_64_favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,11 +29,22 @@
   --gold: #c8a84e;
   --txt: #e6ecf4;
   --txt-2: #8a96a8;
-  --txt-3: #555e6c;
+  --txt-3: #7a8494;
+  --navy: #0A1628;
+  --chrome: #C8CDD3;
   --border: rgba(58, 159, 213, 0.15);
   --border-hi: rgba(58, 159, 213, 0.35);
   --radius: 8px;
 }
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--blue-bright); color: #001018;
+  padding: 10px 16px; border-radius: 0 0 var(--radius) 0;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -63,7 +82,7 @@ nav {
   letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--txt-2); transition: color 0.2s;
 }
-.nav-links a:hover { color: var(--blue-bright); }
+.nav-links a:hover, .nav-links a.active { color: var(--blue-bright); }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--txt-2); margin: 5px 0; }
 @media (max-width: 768px) {
@@ -128,6 +147,8 @@ footer {
   border-top: 1px solid var(--border);
   padding: 32px 24px; text-align: center;
 }
+.footer-logo { height: 56px; width: auto; margin: 0 auto 14px; display: block; }
+.footer-entity { font-size: 12px; color: var(--txt-3); margin-top: 8px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 .footer-brand {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 16px;
@@ -151,22 +172,25 @@ footer {
 <body>
 
 <!-- NAV -->
+<a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
-    ROBINSON OPS
+    <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="Throughline Operations" width="34" height="34">
+    THROUGHLINE OPERATIONS
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
+
+<main id="main">
 
 <!-- LEGAL CONTENT -->
 <section class="legal">
@@ -174,37 +198,37 @@ footer {
 <h1>Privacy Policy &amp; Terms of Service</h1>
 <p class="updated">Last updated: April 1, 2026</p>
 
-<p>Robinson Ops is a service of <strong>GTA CAN Vibe Productions Inc.</strong>, a registered Ontario corporation based in Hamilton, Ontario, Canada. This page outlines how we handle your information and the terms governing use of this website and our services.</p>
+<p>Throughline Operations is a service of <strong>GTA CAN Vibe Productions Inc.</strong>, a registered Ontario corporation based in Hamilton, Ontario, Canada. This page outlines how we handle your information and the terms governing use of this website and our services.</p>
 
 <!-- PRIVACY POLICY -->
 
 <h2>Privacy Policy</h2>
 
 <h3>Information We Collect</h3>
-<p>When you book a call through our Calendly scheduling tool, we collect your name, email address, and any information you voluntarily provide in the intake question. When you contact us by email at robinsonops@pm.me, we retain your message and contact details for the purpose of responding to your inquiry.</p>
+<p>When you book a call through our Calendly scheduling tool, we collect your name, email address, and any information you voluntarily provide in the intake question. When you contact us by email at joe@throughlineoperations.com, we retain your message and contact details for the purpose of responding to your inquiry.</p>
 <p>This website does not use cookies for tracking or advertising. We do not use analytics tracking tools. We do not collect or store payment information on this website — all payments are processed through separate, secure channels (e-transfer or invoicing).</p>
 
 <h3>How We Use Your Information</h3>
 <p>Information collected through scheduling and email is used solely to provide and deliver our consulting services. We use your contact details to communicate about your engagement, deliver project materials, and follow up on service delivery. We do not sell, rent, or share your personal information with third parties for marketing purposes.</p>
 
 <h3>Data Retention</h3>
-<p>Contact information and engagement records are retained for the duration of our business relationship and for a reasonable period afterward for legal and accounting purposes. If you request deletion of your information, contact us at robinsonops@pm.me and we will process your request within 30 days.</p>
+<p>Contact information and engagement records are retained for the duration of our business relationship and for a reasonable period afterward for legal and accounting purposes. If you request deletion of your information, contact us at joe@throughlineoperations.com and we will process your request within 30 days.</p>
 
 <h3>Third-Party Services</h3>
-<p>We use the following third-party services in our operations: Calendly (scheduling), Google Workspace (calendar and communication), and Proton Mail (encrypted email). Each of these services maintains its own privacy policy. We select services that maintain strong privacy and security standards.</p>
+<p>We use the following third-party services in our operations: Calendly (scheduling), Google Workspace (calendar and communication), and our business email provider. Each of these services maintains its own privacy policy. We select services that maintain strong privacy and security standards.</p>
 
 <h3>Your Rights</h3>
-<p>Under Canadian privacy law (PIPEDA), you have the right to access, correct, or request deletion of your personal information held by us. To exercise any of these rights, contact us at robinsonops@pm.me.</p>
+<p>Under Canadian privacy law (PIPEDA), you have the right to access, correct, or request deletion of your personal information held by us. To exercise any of these rights, contact us at joe@throughlineoperations.com.</p>
 
 <!-- TERMS OF SERVICE -->
 
 <h2>Terms of Service</h2>
 
 <h3>Website Use</h3>
-<p>This website is provided for informational purposes about Robinson Ops consulting services. By accessing and using this website, you acknowledge and agree to these terms. We reserve the right to modify these terms at any time; the "last updated" date at the top of this page will reflect the most recent revision.</p>
+<p>This website is provided for informational purposes about Throughline Operations consulting services. By accessing and using this website, you acknowledge and agree to these terms. We reserve the right to modify these terms at any time; the "last updated" date at the top of this page will reflect the most recent revision.</p>
 
 <h3>AI-Generated Content Disclaimer</h3>
-<p><strong>This is important:</strong> Robinson Ops utilizes artificial intelligence tools as part of our consulting methodology, including workflow automation, operational analysis, and communication tools. While we apply professional oversight and quality control to all AI-assisted outputs, AI-generated content is provided as a supplement to — not a replacement for — professional human judgment.</p>
+<p><strong>This is important:</strong> Throughline Operations utilizes artificial intelligence tools as part of our consulting methodology, including workflow automation, operational analysis, and communication tools. While we apply professional oversight and quality control to all AI-assisted outputs, AI-generated content is provided as a supplement to — not a replacement for — professional human judgment.</p>
 <p>We do not guarantee the accuracy, completeness, or fitness for any particular purpose of AI-generated outputs. Any interactive demonstrations, analysis tools, or generated scripts provided on this website or during engagements are for illustrative and operational purposes only. Clients are responsible for reviewing and approving all deliverables before implementation in their business operations.</p>
 
 <h3>Service Delivery</h3>
@@ -215,7 +239,7 @@ footer {
 <p>Our total liability for any claim related to a specific engagement shall not exceed the total fees paid by the client for that engagement. This limitation applies regardless of the theory of liability, whether in contract, tort, negligence, strict liability, or otherwise.</p>
 
 <h3>Intellectual Property</h3>
-<p>All content on this website — including text, design, graphics, logos, and code — is the property of GTA CAN Vibe Productions Inc. and is protected under Canadian copyright law. The Robinson Ops name, logo, and brand elements are proprietary. You may not reproduce, distribute, or create derivative works from this content without written permission.</p>
+<p>All content on this website — including text, design, graphics, logos, and code — is the property of GTA CAN Vibe Productions Inc. and is protected under Canadian copyright law. The Throughline Operations name, logo, and brand elements are proprietary. You may not reproduce, distribute, or create derivative works from this content without written permission.</p>
 <p>For client engagements: deliverables (workflows, SOPs, documentation) transfer to the client upon final payment as specified in the Master Service Agreement. Underlying tools, templates, and methodologies used to create deliverables remain the property of GTA CAN Vibe Productions Inc.</p>
 
 <h3>Governing Law</h3>
@@ -225,25 +249,28 @@ footer {
 
 <h2>Contact</h2>
 <p>For privacy inquiries, service questions, or to exercise your rights under this policy, contact us at:</p>
-<p><strong>Robinson Ops</strong> — a service of GTA CAN Vibe Productions Inc.<br>
+<p><strong>Throughline Operations</strong> — a service of GTA CAN Vibe Productions Inc.<br>
 Hamilton, Ontario, Canada<br>
-Email: <a href="mailto:robinsonops@pm.me">robinsonops@pm.me</a><br>
+Email: <a href="mailto:joe@throughlineoperations.com">joe@throughlineoperations.com</a><br>
 Scheduling: <a href="https://calendly.com/robinsonops/15min">calendly.com/robinsonops/15min</a></p>
 
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <img src="assets/images/02_stacked_lockup_transparent.svg" alt="Throughline Operations" class="footer-logo" width="160" height="56">
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="privacy.html">Privacy &amp; Terms</a></li>
   </ul>
-  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+  <div class="footer-copy">&copy; 2026 Throughline Operations &middot; Hamilton, Ontario &middot; All prices in CAD</div>
+  <div class="footer-entity">Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc.</div>
 </footer>
 
 </body>

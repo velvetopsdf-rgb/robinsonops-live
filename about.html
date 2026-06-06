@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Joe Robinson — Robinson Ops</title>
-<meta name="description" content="15 years managing complex film logistics for The Boys, Gen V, and American Gods. Now applying elite operational infrastructure to Hamilton & GTA businesses.">
+<title>About Joe Robinson — Throughline Operations</title>
+<meta name="description" content="15 years managing complex film logistics for The Boys, Gen V, and American Gods. Now building operational intelligence for Hamilton &amp; GTA businesses.">
+<link rel="canonical" href="https://throughlineoperations.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Joe Robinson — Throughline Operations">
+<meta property="og:description" content="15 years of DGC film logistics, now building operational intelligence for Hamilton &amp; GTA businesses.">
+<meta property="og:url" content="https://throughlineoperations.com/about.html">
+<meta property="og:image" content="https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/images/01_square_mark_TO_blue_throughline_transparent_64_favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,11 +29,22 @@
   --gold: #c8a84e;
   --txt: #e6ecf4;
   --txt-2: #8a96a8;
-  --txt-3: #555e6c;
+  --txt-3: #7a8494;
+  --navy: #0A1628;
+  --chrome: #C8CDD3;
   --border: rgba(58, 159, 213, 0.15);
   --border-hi: rgba(58, 159, 213, 0.35);
   --radius: 8px;
 }
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--blue-bright); color: #001018;
+  padding: 10px 16px; border-radius: 0 0 var(--radius) 0;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -258,11 +277,49 @@ nav {
 }
 .cta-btn:hover { background: var(--blue-glow); color: var(--black); }
 
+/* FOUNDER CARD */
+.founder-section { max-width: 780px; margin: 0 auto; padding: 0 24px 48px; }
+.founder-card {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--radius);
+  padding: 32px 30px;
+  position: relative;
+  overflow: hidden;
+}
+.founder-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--blue-deep), var(--blue-bright), var(--blue-deep));
+}
+.founder-eyebrow {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700; font-size: 12px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--blue-bright); margin-bottom: 14px;
+}
+.founder-card p { font-size: 16px; color: var(--txt-2); margin-bottom: 14px; line-height: 1.7; }
+.founder-card p:last-of-type { margin-bottom: 0; }
+.founder-sig {
+  margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif; color: var(--silver);
+  font-weight: 700; font-size: 16px; letter-spacing: 0.02em;
+}
+.founder-sig span { display: block; font-weight: 400; font-size: 13px; color: var(--txt-3); letter-spacing: 0.04em; margin-top: 2px; }
+/* Founder video slot — swap .founder-card for this .video-embed when filmed */
+.video-embed {
+  position: relative; width: 100%; max-width: 880px; margin: 0 auto;
+  aspect-ratio: 16 / 9; border: 1px solid var(--border-hi); border-radius: var(--radius);
+  overflow: hidden; background: var(--surface);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
   padding: 32px 24px; text-align: center;
 }
+.footer-logo { height: 56px; width: auto; margin: 0 auto 14px; display: block; }
+.footer-entity { font-size: 12px; color: var(--txt-3); margin-top: 8px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 .footer-brand {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 16px;
@@ -286,30 +343,33 @@ footer {
 <body>
 
 <!-- NAV -->
+<a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
-    ROBINSON OPS
+    <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="Throughline Operations" width="34" height="34">
+    THROUGHLINE OPERATIONS
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html" class="active">About</a></li>
   </ul>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
 <section class="about-hero">
-  <h1>15 Years Running Complex Logistics. Now I Automate Them.</h1>
-  <div class="subtitle">Joe Robinson &middot; DGC Location Manager &middot; Founder, Robinson Ops</div>
+  <h1>15 Years Running Complex Logistics. Now I Build the Throughline.</h1>
+  <div class="subtitle">Joe Robinson &middot; DGC Location Manager &middot; Founder, Throughline Operations</div>
   <p>For a decade and a half, my job has been making impossible things happen on time and under budget. Managing multi-million dollar film productions across Ontario — coordinating dozens of vendors, hundreds of crew members, and thousands of moving parts — with zero margin for error.</p>
   <p>Every day on set is a masterclass in operations: what breaks when systems are manual, what scales when they're automated, and what costs you money when nobody's watching the details.</p>
-  <p>Robinson Ops takes everything I've learned managing logistics for some of the biggest shows in the country and applies it to the businesses that need it most — the trades contractors, property managers, and service companies that are too busy running their operations to fix them.</p>
+  <p>Throughline Operations takes everything I've learned managing logistics for some of the biggest shows in the country and applies it to the businesses that need it most — the operators who are too busy running their business to build the systems they know are missing.</p>
 </section>
 
 <!-- CREDITS -->
@@ -350,44 +410,62 @@ footer {
   </div>
 
   <div class="story-block">
-    <h2>What Robinson Ops Does Differently</h2>
-    <p>Most "AI automation agencies" sell you a chatbot and disappear. I sit inside your operations for 7 days and find the leaks that are actually costing you money — the missed calls, the invoices that slip through cracks, the scheduling chaos that burns your team's time.</p>
-    <p>Then I build you working solutions. Not slide decks. Not strategy documents. Actual automated workflows, documented SOPs, and trained staff — delivered in a week and built to last.</p>
-    <p>I serve Hamilton and the GTA exclusively because I know this market. I know the trades. I know the pressures. And I know that a $750 Sprint that saves you $3,000 in recovered time is the kind of math that speaks for itself.</p>
+    <h2>What Throughline Operations Does Differently</h2>
+    <p>Most "AI agencies" hand you a chatbot and disappear. I sit inside your operations, find the line running through every day — the work that repeats — and build operational intelligence around it. The missed calls, the invoices that slip through cracks, the scheduling chaos that burns your team's time.</p>
+    <p>Then I build you working systems. Not slide decks. Not strategy documents. Actual automations, documented and handed over so your team owns them — built to augment your people, never to replace them.</p>
+    <p>I focus on Hamilton and the GTA because I know this market and these pressures. And I price in fixed-scope sprints, so the math is simple: a sprint that saves your team hours every week pays for itself fast.</p>
   </div>
 
+</section>
+
+<!-- NOTE FROM FOUNDER -->
+<section class="founder-section">
+  <!-- FOUNDER VIDEO: replace this card with .video-embed and set the YouTube ID when filmed -->
+  <div class="founder-card">
+    <div class="founder-eyebrow">A Note from the Founder</div>
+    <p>Hi — I'm Joe Robinson, founder of Throughline Operations.</p>
+    <p>For fifteen years I was a Location Manager in film — DGC. My job was to take chaos and make it run on schedule. Hundreds of moving parts, immovable deadlines, no room for "we'll figure it out later." If the trucks weren't there at 5am, the whole day collapsed.</p>
+    <p>Small businesses run on that same edge — except you're doing it without a crew of forty behind you. Quotes that don't go out. Follow-ups that slip. Hours lost to work that should run itself.</p>
+    <p>That's what we do. We find the line running through your operation — the work that repeats, day after day — and build operational intelligence around it so it runs without you babysitting it. It augments your team. It never replaces them.</p>
+    <p>I'm not an agency that hands you a dashboard and disappears. I've spent my career being the person who makes sure the day actually works. That's still the job.</p>
+    <p>Let's find your throughline.</p>
+    <div class="founder-sig">Joe Robinson<span>Founder &middot; DGC Location Manager &middot; Throughline Operations</span></div>
+  </div>
 </section>
 
 <!-- GCV -->
 <section class="gcv-section">
   <div class="gcv-card">
-    <img src="assets/images/gcv_logo.png" alt="GTA CAN Vibe Productions Inc.">
+    <img src="assets/images/gcv_logo.png" alt="GTA CAN Vibe Productions Inc." width="60" height="60">
     <div>
       <h3>GTA CAN Vibe Productions Inc.</h3>
-      <p>Robinson Ops operates under GTA CAN Vibe Productions Inc. — a registered Ontario corporation providing production services, operations consulting, and AI-powered business infrastructure to Hamilton and GTA businesses.</p>
+      <p>Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc. — a registered Ontario corporation serving Hamilton and GTA businesses.</p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section class="about-cta">
-  <h2>Ready to Fix Your Operations?</h2>
-  <p>15 minutes. No pitch. I'll tell you exactly where you're leaking money and what it would take to stop it.</p>
-  <a href="book.html" class="cta-btn">Book Your Free Ops Call</a>
+  <h2>Let's Find Your Throughline.</h2>
+  <p>15 minutes. No pitch. I'll tell you exactly where the repeating work is and what it would take to make it run itself.</p>
+  <a href="book.html" class="cta-btn">Book a Free Discovery Call</a>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <img src="assets/images/02_stacked_lockup_transparent.svg" alt="Throughline Operations" class="footer-logo" width="160" height="56">
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="privacy.html">Privacy &amp; Terms</a></li>
   </ul>
-  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+  <div class="footer-copy">&copy; 2026 Throughline Operations &middot; Hamilton, Ontario &middot; All prices in CAD</div>
+  <div class="footer-entity">Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc.</div>
 </footer>
 
 </body>

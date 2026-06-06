@@ -3,8 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services & Pricing — Robinson Ops</title>
-<meta name="description" content="AI-powered operations consulting for Hamilton & GTA businesses. From a $750 Sprint to full Digital Gatekeeping — see which tier fits your business.">
+<title>Services &amp; Pricing — Throughline Operations</title>
+<meta name="description" content="Seven service lines from Automation Sprints ($2,499+) to GEO, AI agents, and local AI deployments. Operational intelligence for Hamilton &amp; GTA businesses.">
+<link rel="canonical" href="https://throughlineoperations.com/services.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Services &amp; Pricing — Throughline Operations">
+<meta property="og:description" content="Seven service lines from Automation Sprints ($2,499+) to GEO, AI agents, and local AI deployments. Operational intelligence for Hamilton &amp; GTA businesses.">
+<meta property="og:url" content="https://throughlineoperations.com/services.html">
+<meta property="og:image" content="https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" href="assets/images/01_square_mark_TO_blue_throughline_transparent_64_favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -21,11 +29,22 @@
   --gold: #c8a84e;
   --txt: #e6ecf4;
   --txt-2: #8a96a8;
-  --txt-3: #555e6c;
+  --txt-3: #7a8494;
+  --navy: #0A1628;
+  --chrome: #C8CDD3;
   --border: rgba(58, 159, 213, 0.15);
   --border-hi: rgba(58, 159, 213, 0.35);
   --radius: 8px;
 }
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--blue-bright); color: #001018;
+  padding: 10px 16px; border-radius: 0 0 var(--radius) 0;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
+:focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -107,13 +126,16 @@ nav {
 .tiers {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px 60px;
+  padding: 26px 24px 64px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  align-items: center;
 }
 @media (max-width: 900px) {
   .tiers { grid-template-columns: 1fr; max-width: 500px; }
+  .tier.featured { transform: none; }
+  .tier.featured:hover { transform: translateY(-4px); }
 }
 .tier {
   background: var(--surface);
@@ -130,19 +152,35 @@ nav {
   transform: translateY(-4px);
 }
 .tier.featured {
-  border-color: var(--blue-bright);
-  background: linear-gradient(180deg, rgba(58,159,213,0.06) 0%, var(--surface) 40%);
+  border: 1px solid var(--blue-bright);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(58,159,213,0.20), transparent 60%),
+    linear-gradient(180deg, rgba(21,96,164,0.24) 0%, rgba(58,159,213,0.05) 34%, var(--surface) 72%);
+  transform: scale(1.045);
+  transform-origin: center bottom;
+  z-index: 2;
+  box-shadow:
+    0 0 0 1px rgba(58,159,213,0.55),
+    0 22px 60px rgba(21,96,164,0.45),
+    0 0 64px rgba(58,159,213,0.28);
+}
+.tier.featured:hover {
+  transform: scale(1.045) translateY(-6px);
+  border-color: var(--blue-glow);
 }
 .tier-badge {
   position: absolute;
-  top: -1px; right: 24px;
-  background: var(--blue-bright);
-  color: var(--black);
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(90deg, var(--blue-mid), var(--blue-bright));
+  color: #001018;
   font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700; font-size: 11px;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 0 0 var(--radius) var(--radius);
+  font-weight: 800; font-size: 12px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(58,159,213,0.5), inset 0 0 0 1px rgba(255,255,255,0.14);
 }
 .tier-name {
   font-family: 'Barlow Condensed', sans-serif;
@@ -305,12 +343,42 @@ nav {
   line-height: 1.65;
 }
 
+/* SECTION HEADINGS */
+.svc-section-head { max-width: 1100px; margin: 0 auto; padding: 24px 24px 8px; text-align: center; }
+.svc-section-head h2 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: clamp(24px, 3.6vw, 34px); color: var(--silver);
+}
+.svc-section-head p { font-size: 15px; color: var(--txt-2); margin-top: 6px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.tier[id], .svc-grid > [id] { scroll-margin-top: 84px; }
+
+/* SERVICE LINE GRID */
+.svc-grid {
+  max-width: 1100px; margin: 0 auto; padding: 8px 24px 60px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+@media (max-width: 900px) { .svc-grid { grid-template-columns: 1fr; max-width: 500px; } }
+
+/* VIDEO EMBED */
+.video-section { padding: 56px 24px; border-top: 1px solid var(--border); }
+.video-head { text-align: center; margin-bottom: 28px; }
+.video-head h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 26px; color: var(--silver); }
+.video-head p { font-size: 15px; color: var(--txt-2); margin-top: 6px; }
+.video-embed {
+  position: relative; width: 100%; max-width: 880px; margin: 0 auto;
+  aspect-ratio: 16 / 9; border: 1px solid var(--border-hi); border-radius: var(--radius);
+  overflow: hidden; background: var(--surface);
+}
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
 /* FOOTER */
 footer {
   border-top: 1px solid var(--border);
   padding: 32px 24px;
   text-align: center;
 }
+.footer-logo { height: 56px; width: auto; margin: 0 auto 14px; display: block; }
+.footer-entity { font-size: 12px; color: var(--txt-3); margin-top: 8px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 .footer-brand {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700; font-size: 16px;
@@ -355,6 +423,7 @@ footer {
 .infographic-img {
   width: 100%;
   max-width: 1000px;
+  height: auto;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   transition: transform 0.4s, border-color 0.4s;
@@ -377,96 +446,211 @@ footer {
 <body>
 
 <!-- NAV -->
+<a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
-    <img src="assets/images/ops_logo.png" alt="Robinson Ops">
-    ROBINSON OPS
+    <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="Throughline Operations" width="34" height="34">
+    THROUGHLINE OPERATIONS
   </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
   </ul>
 </nav>
 
+<main id="main">
+
 <!-- HERO -->
 <section class="svc-hero">
-  <h1>Three Ways to Stop Leaking Money</h1>
-  <p>Every service starts with the same question: where are you bleeding time and cash? Pick the tier that matches how deep you want to go.</p>
+  <h1>Seven Ways We Build the Throughline</h1>
+  <p>Every engagement starts with the same question: what work in your operation repeats, day after day? Start with a fixed-scope sprint, or go deeper with a full intelligence stack. We architect and deploy it <em>with</em> you.</p>
 </section>
 
-<!-- TIERS -->
-<section class="tiers rv">
+<!-- AUTOMATION SPRINTS (flagship) -->
+<div class="svc-section-head rv">
+  <h2>Automation Sprints</h2>
+  <p>Our flagship. A fixed-scope sprint to eliminate a repeating operational leak — defined start, finish, and deliverable.</p>
+</div>
+<section class="tiers rv" id="sprints">
 
-  <!-- TIER 1: OPS CLEANUP SPRINT -->
+  <!-- SPRINT TIER 1: ESSENTIALS -->
+  <div class="tier">
+    <div class="tier-name">Essentials</div>
+    <div class="tier-tagline">One repeating leak, found and eliminated. Best for solo operators and small teams.</div>
+    <div class="tier-price">$2,499</div>
+    <div class="tier-price-note">Fixed scope &middot; One-time &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>Operations audit focused on your single biggest leak</li>
+      <li>One intelligent automation built and deployed with you</li>
+      <li>Documented system + recorded walkthrough so your team owns it</li>
+    </ul>
+    <a href="book.html?tier=sprint-essentials" class="tier-cta tier-cta-outline">Book a Discovery Call</a>
+  </div>
+
+  <!-- SPRINT TIER 2: GROWTH -->
   <div class="tier featured">
     <div class="tier-badge">Most Popular</div>
-    <div class="tier-name">Ops Cleanup Sprint</div>
-    <div class="tier-tagline">7-day tactical intervention. I audit your operations and hand you working solutions.</div>
-    <div class="tier-price">$750</div>
-    <div class="tier-price-note">Flat rate &middot; One-time &middot; CAD</div>
+    <div class="tier-name">Growth</div>
+    <div class="tier-tagline">Several connected workflows across one operational area. For growing teams.</div>
+    <div class="tier-price">$4,499</div>
+    <div class="tier-price-note">Fixed scope &middot; One-time &middot; CAD</div>
     <div class="tier-divider"></div>
     <ul class="tier-features">
-      <li>Full operations audit — scheduling, invoicing, communications</li>
-      <li>Custom Standard Operating Procedures document</li>
-      <li>1 working n8n automation (lead intake, invoice follow-up, or booking)</li>
-      <li>Tool stack recommendations with setup guidance</li>
-      <li>Recorded walkthrough of everything delivered</li>
-      <li>7 calendar days from kickoff to delivery</li>
+      <li>Everything in Essentials, plus:</li>
+      <li>Multiple connected automations + a tool/CRM integration</li>
+      <li>Lead routing or invoicing pipeline built around your throughline</li>
+      <li>Team training documentation + post-delivery support window</li>
     </ul>
-    <a href="book.html" class="tier-cta tier-cta-primary">Book Your Sprint Call</a>
+    <a href="book.html?tier=sprint-growth" class="tier-cta tier-cta-primary">Book a Discovery Call</a>
   </div>
 
-  <!-- TIER 2: WORKFLOW BUILDS -->
+  <!-- SPRINT TIER 3: OPERATIONS -->
   <div class="tier">
-    <div class="tier-name">Workflow Builds</div>
-    <div class="tier-tagline">Custom automation builds for businesses ready to scale their operations infrastructure.</div>
-    <div class="tier-price">$1,500</div>
-    <div class="tier-price-note">Per project &middot; CAD</div>
+    <div class="tier-name">Operations</div>
+    <div class="tier-tagline">Intelligent systems across several operational areas. For teams with real volume.</div>
+    <div class="tier-price">$6,999</div>
+    <div class="tier-price-note">Fixed scope &middot; One-time &middot; CAD</div>
     <div class="tier-divider"></div>
     <ul class="tier-features">
-      <li>Everything in the Sprint, plus:</li>
-      <li>Up to 3 custom n8n workflow automations</li>
-      <li>CRM or scheduling tool integration</li>
-      <li>Email triage and lead routing system</li>
-      <li>Staff training documentation</li>
-      <li>14-day post-delivery support window</li>
+      <li>Everything in Growth, plus:</li>
+      <li>Automation across multiple connected operational areas</li>
+      <li>Operations dashboard for real-time visibility</li>
+      <li>Extended support + a clear path to ongoing partnership</li>
     </ul>
-    <a href="book.html" class="tier-cta tier-cta-outline">Discuss This Tier</a>
+    <a href="book.html?tier=sprint-operations" class="tier-cta tier-cta-outline">Book a Discovery Call</a>
   </div>
 
-  <!-- TIER 3: DIGITAL GATEKEEPING -->
-  <div class="tier">
-    <div class="tier-name">Digital Gatekeeping</div>
-    <div class="tier-tagline">Full perimeter build. AI-powered communication protection and operational automation in one engagement.</div>
-    <div class="tier-price">$2,500</div>
-    <div class="tier-price-note">Full engagement &middot; CAD</div>
+</section>
+
+<!-- THE FULL SERVICE LINE -->
+<div class="svc-section-head rv">
+  <h2>The Full Service Line</h2>
+  <p>Beyond sprints, we architect and deploy the systems around them. Newer lines are scoped consultatively — honest about what fits.</p>
+</div>
+<section class="svc-grid rv">
+
+  <!-- GEO -->
+  <div class="tier" id="geo">
+    <div class="tier-name">GEO Audit + Retainer</div>
+    <div class="tier-tagline">Get found when customers ask AI tools for a recommendation.</div>
+    <div class="tier-price">$1,499</div>
+    <div class="tier-price-note">One-time audit &middot; then $497&ndash;$1,497/mo retainer &middot; CAD</div>
     <div class="tier-divider"></div>
     <ul class="tier-features">
-      <li>Everything in Workflow Builds, plus:</li>
-      <li>Digital trust layer — spam filtering, call screening, bot detection</li>
-      <li>Customer-facing verification system</li>
-      <li>Automated invoice and payment follow-up pipeline</li>
-      <li>Real-time operations dashboard</li>
-      <li>30-day post-delivery support and monitoring</li>
+      <li>Generative-engine visibility audit across the major AI assistants</li>
+      <li>Content + structured-data fixes so AI tools cite you</li>
+      <li>Optional monthly retainer to monitor and hold position</li>
     </ul>
-    <a href="book.html" class="tier-cta tier-cta-outline">Discuss This Tier</a>
+    <a href="book.html?service=geo" class="tier-cta tier-cta-primary">Book a Discovery Call</a>
   </div>
 
+  <!-- WEBSITE BUILDS -->
+  <div class="tier" id="websites">
+    <div class="tier-name">Website Builds</div>
+    <div class="tier-tagline">Fast, modern, conversion-focused sites that earn their keep.</div>
+    <div class="tier-price">Contact for pricing</div>
+    <div class="tier-price-note">Scope-dependent &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>Clean, fast, mobile-first build with no template bloat</li>
+      <li>Built to convert — clear structure, real calls to action</li>
+      <li>Wired into your booking, intake, and automation stack</li>
+    </ul>
+    <a href="book.html?service=website" class="tier-cta tier-cta-outline">Get a Quote</a>
+  </div>
+
+  <!-- AI AGENT BUILDS -->
+  <div class="tier" id="agents">
+    <div class="tier-name">AI Agent Builds</div>
+    <div class="tier-tagline">Custom agents that handle real operational tasks, end to end.</div>
+    <div class="tier-price">Contact for pricing</div>
+    <div class="tier-price-note">Scope-dependent &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>Agents scoped to a specific, repeatable job in your operation</li>
+      <li>Connected to your tools, with guardrails and a human in the loop</li>
+      <li>Architected and deployed with you — not a black box</li>
+    </ul>
+    <a href="book.html?service=agents" class="tier-cta tier-cta-outline">Get a Quote</a>
+  </div>
+
+  <!-- LOCAL AI DEPLOYMENTS -->
+  <div class="tier" id="local">
+    <div class="tier-name">Local AI Deployments</div>
+    <div class="tier-tagline">Private, on-premise intelligence — your data stays yours.</div>
+    <div class="tier-price">Contact for pricing</div>
+    <div class="tier-price-note">Scope-dependent &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>On-premise models so sensitive data never leaves your walls</li>
+      <li>Right-sized hardware and configuration for your workload</li>
+      <li>Documented, maintainable setup your team can run</li>
+    </ul>
+    <a href="book.html?service=local" class="tier-cta tier-cta-outline">Get a Quote</a>
+  </div>
+
+  <!-- CLOUD + HYBRID AI -->
+  <div class="tier" id="cloud">
+    <div class="tier-name">Cloud + Hybrid AI</div>
+    <div class="tier-tagline">The right mix of local control and cloud scale.</div>
+    <div class="tier-price">Contact for pricing</div>
+    <div class="tier-price-note">Scope-dependent &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>Architecture that balances cost, speed, privacy, and scale</li>
+      <li>Sensitive work stays local; heavy lifting bursts to the cloud</li>
+      <li>Clear ownership and documentation, no vendor lock-in games</li>
+    </ul>
+    <a href="book.html?service=cloud" class="tier-cta tier-cta-outline">Get a Quote</a>
+  </div>
+
+  <!-- HARDWARE-WITH-AI BUNDLES -->
+  <div class="tier" id="hardware">
+    <div class="tier-name">Hardware-with-AI Bundles</div>
+    <div class="tier-tagline">Turnkey hardware configured and deployed with your AI stack.</div>
+    <div class="tier-price">Contact for pricing</div>
+    <div class="tier-price-note">Scope-dependent &middot; includes hardware lead time &middot; CAD</div>
+    <div class="tier-divider"></div>
+    <ul class="tier-features">
+      <li>Hardware specified for your AI workload and budget</li>
+      <li>Configured, deployed, and tested before it reaches you</li>
+      <li>Note: lead time for hardware order + delivery applies</li>
+    </ul>
+    <a href="book.html?service=hardware" class="tier-cta tier-cta-outline">Get a Quote</a>
+  </div>
+
+</section>
+
+<!-- MATURITY CURVE VIDEO -->
+<section class="video-section rv">
+  <div class="video-head">
+    <h2>The Maturity Curve</h2>
+    <p>A short explainer on how operations mature — and where intelligent systems earn their place.</p>
+  </div>
+  <div class="video-embed">
+    <iframe
+      src="https://www.youtube.com/embed/6-qE6OfDbdU"
+      title="Throughline Operations — The Maturity Curve"
+      loading="lazy"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </div>
 </section>
 
 <!-- INFOGRAPHIC -->
 <section class="infographic rv">
   <div class="infographic-inner">
-    <h2>The Automation Dividend</h2>
-    <p>Real operational impact across all three tiers — from reclaimed hours to eliminated data errors.</p>
-    <img src="assets/images/Infographic_1-_website.png" alt="Robinson Ops — Reclaiming the Hamilton Trades via AI Automation. 10 hours reclaimed weekly, 85% reduction in data errors, 60% faster quote processing." class="infographic-img" loading="lazy">
-    <div class="infographic-credit">Built with NotebookLM</div>
+    <h2>The Service Matrix</h2>
+    <p>How the seven service lines map across your operation — from a single sprint to a full intelligence stack.</p>
+    <img src="assets/images/infographic-service-matrix.jpg" alt="Throughline Operations service matrix — Automation Sprints, GEO, Website Builds, AI Agent Builds, Local AI, Cloud and Hybrid AI, and Hardware-with-AI bundles mapped across an operation." class="infographic-img" width="2650" height="1479" loading="lazy">
   </div>
 </section>
 
@@ -476,18 +660,18 @@ footer {
   <div class="how-steps">
     <div class="how-step">
       <div class="how-step-num">1</div>
-      <h3>Free 15-Min Audit</h3>
-      <p>We identify your top 2 operational leaks on a quick call. No pitch, no pressure.</p>
+      <h3>Free Discovery Call</h3>
+      <p>We find the work that repeats in your operation on a quick call. No pitch, no pressure.</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">2</div>
-      <h3>Pick Your Tier</h3>
-      <p>Choose the depth that fits your budget and urgency. Every tier starts the same week.</p>
+      <h3>Scope the Throughline</h3>
+      <p>We agree on a fixed scope and deliverable that fits your budget and urgency.</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">3</div>
-      <h3>Working Solutions</h3>
-      <p>You receive documented SOPs, live automations, and a recorded walkthrough. No fluff.</p>
+      <h3>Built With You</h3>
+      <p>You receive working systems, documentation, and a recorded walkthrough your team owns.</p>
     </div>
   </div>
 </section>
@@ -495,24 +679,27 @@ footer {
 <!-- NOT SURE -->
 <section class="not-sure rv">
   <div class="not-sure-card">
-    <h2>Not Sure Which Tier?</h2>
-    <p>That's what the free call is for. Most Hamilton trades and property businesses start with the Sprint — it's low-risk, fast, and shows you exactly what's possible before you commit to more.</p>
-    <a href="book.html" class="tier-cta tier-cta-primary" style="display:inline-block;">Book the Free Call</a>
+    <h2>Not Sure Where to Start?</h2>
+    <p>That's what the free call is for. Most businesses start with an Automation Sprint — it's fixed-scope, fast, and shows you exactly what's possible before you commit to more.</p>
+    <a href="book.html" class="tier-cta tier-cta-primary" style="display:inline-block;">Book a Discovery Call</a>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand">ROBINSON <span>OPS</span></div>
+  <img src="assets/images/02_stacked_lockup_transparent.svg" alt="Throughline Operations" class="footer-logo" width="160" height="56">
   <ul class="footer-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="sprint.html">The Sprint</a></li>
     <li><a href="book.html">Book a Call</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="privacy.html">Privacy &amp; Terms</a></li>
   </ul>
-  <div class="footer-copy">&copy; 2026 GTA CAN Vibe Productions Inc. &middot; Hamilton, Ontario</div>
+  <div class="footer-copy">&copy; 2026 Throughline Operations &middot; Hamilton, Ontario &middot; All prices in CAD</div>
+  <div class="footer-entity">Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc.</div>
 </footer>
 
 <script>
