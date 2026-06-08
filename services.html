@@ -45,6 +45,14 @@
 }
 .skip-link:focus { left: 0; }
 :focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
+/* ═══════════ SITE-WIDE CIRCUIT-GUTTER MOTIF (static, non-hero) ═══════════ */
+.circuit-gutters { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.circuit-gutters .cg { position: absolute; top: 0; height: 100%; width: 132px; opacity: 0.12; }
+.circuit-gutters .cg-left { left: 0; }
+.circuit-gutters .cg-right { right: 0; transform: scaleX(-1); }
+.circuit-gutters .cg-trace { fill: none; stroke: rgba(58,159,213,0.55); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.circuit-gutters .cg-node { fill: rgba(137,214,255,0.7); }
+@media (max-width: 900px) { .circuit-gutters { display: none; } }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -130,12 +138,15 @@ nav {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  align-items: center;
+  align-items: end;
 }
 @media (max-width: 900px) {
   .tiers { grid-template-columns: 1fr; max-width: 500px; }
   .tier.featured { transform: none; }
   .tier.featured:hover { transform: translateY(-4px); }
+  /* Staircase collapses on mobile: stack in order, Operations still emphasized via border/glow/badge */
+  #sprints .tier-base, #sprints .tier-mid, #sprints .tier-hero { min-height: 0; transform: none; }
+  #sprints .tier-mid:hover, #sprints .tier-hero:hover { transform: translateY(-4px); }
 }
 .tier {
   background: var(--surface);
@@ -168,19 +179,40 @@ nav {
   transform: scale(1.045) translateY(-6px);
   border-color: var(--blue-glow);
 }
-.tier-badge {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translate(-50%, -50%);
+/* FLAGSHIP badge — sits INSIDE the card in normal flow (cannot overflow into the section heading) */
+.tier-badge-flag {
+  align-self: flex-start;
   background: linear-gradient(90deg, var(--blue-mid), var(--blue-bright));
   color: #001018;
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 800; font-size: 12px;
   letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 7px 18px;
+  padding: 6px 16px;
   border-radius: 999px;
   white-space: nowrap;
+  margin-bottom: 14px;
   box-shadow: 0 6px 20px rgba(58,159,213,0.5), inset 0 0 0 1px rgba(255,255,255,0.14);
+}
+
+/* PRICING STAIRCASE — emphasis climbs Essentials -> Growth -> Operations (the hero) */
+#sprints .tier-base { min-height: 500px; }
+#sprints .tier-mid {
+  min-height: 540px;
+  border-color: var(--border-hi);
+  transform: scale(1.02);
+  transform-origin: center bottom;
+  box-shadow: 0 12px 34px rgba(21,96,164,0.20);
+  z-index: 1;
+}
+#sprints .tier-mid:hover { transform: scale(1.02) translateY(-6px); border-color: var(--blue-bright); }
+#sprints .tier-hero {
+  min-height: 580px;
+  transform: scale(1.06);
+  transform-origin: center bottom;
+}
+#sprints .tier-hero:hover {
+  transform: scale(1.06) translateY(-6px);
+  border-color: var(--blue-glow);
 }
 .tier-name {
   font-family: 'Barlow Condensed', sans-serif;
@@ -446,6 +478,39 @@ footer {
 <body>
 
 <!-- NAV -->
+<!-- SITE-WIDE CIRCUIT-GUTTER MOTIF (static, behind content, gutters only) -->
+<div class="circuit-gutters" aria-hidden="true">
+  <svg class="cg cg-left" viewBox="0 0 132 800" preserveAspectRatio="xMinYMid slice" focusable="false">
+    <path class="cg-trace" d="M0 84 H44 L70 58 H112"/>
+    <path class="cg-trace" d="M70 58 V26"/>
+    <path class="cg-trace" d="M0 198 H30 L56 224 H92 V288 H124"/>
+    <path class="cg-trace" d="M0 372 H58 V414 H100 L124 438"/>
+    <path class="cg-trace" d="M0 540 H38 L64 516 H108"/>
+    <path class="cg-trace" d="M0 672 H50 L78 696 H120"/>
+    <circle class="cg-node" cx="112" cy="58" r="3.4"/>
+    <circle class="cg-node" cx="56" cy="224" r="3"/>
+    <circle class="cg-node" cx="124" cy="288" r="3.4"/>
+    <circle class="cg-node" cx="100" cy="414" r="3.2"/>
+    <circle class="cg-node" cx="124" cy="438" r="2.8"/>
+    <circle class="cg-node" cx="108" cy="516" r="3.2"/>
+    <circle class="cg-node" cx="120" cy="696" r="3"/>
+  </svg>
+  <svg class="cg cg-right" viewBox="0 0 132 800" preserveAspectRatio="xMinYMid slice" focusable="false">
+    <path class="cg-trace" d="M0 84 H44 L70 58 H112"/>
+    <path class="cg-trace" d="M70 58 V26"/>
+    <path class="cg-trace" d="M0 198 H30 L56 224 H92 V288 H124"/>
+    <path class="cg-trace" d="M0 372 H58 V414 H100 L124 438"/>
+    <path class="cg-trace" d="M0 540 H38 L64 516 H108"/>
+    <path class="cg-trace" d="M0 672 H50 L78 696 H120"/>
+    <circle class="cg-node" cx="112" cy="58" r="3.4"/>
+    <circle class="cg-node" cx="56" cy="224" r="3"/>
+    <circle class="cg-node" cx="124" cy="288" r="3.4"/>
+    <circle class="cg-node" cx="100" cy="414" r="3.2"/>
+    <circle class="cg-node" cx="124" cy="438" r="2.8"/>
+    <circle class="cg-node" cx="108" cy="516" r="3.2"/>
+    <circle class="cg-node" cx="120" cy="696" r="3"/>
+  </svg>
+</div>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
@@ -480,7 +545,7 @@ footer {
 <section class="tiers rv" id="sprints">
 
   <!-- SPRINT TIER 1: ESSENTIALS -->
-  <div class="tier">
+  <div class="tier tier-base">
     <div class="tier-name">Essentials</div>
     <div class="tier-tagline">One repeating leak, found and eliminated. Best for solo operators and small teams.</div>
     <div class="tier-price">$2,499</div>
@@ -495,8 +560,7 @@ footer {
   </div>
 
   <!-- SPRINT TIER 2: GROWTH -->
-  <div class="tier featured">
-    <div class="tier-badge">Most Popular</div>
+  <div class="tier tier-mid">
     <div class="tier-name">Growth</div>
     <div class="tier-tagline">Several connected workflows across one operational area. For growing teams.</div>
     <div class="tier-price">$4,499</div>
@@ -508,11 +572,12 @@ footer {
       <li>Lead routing or invoicing pipeline built around your throughline</li>
       <li>Team training documentation + post-delivery support window</li>
     </ul>
-    <a href="book.html?tier=sprint-growth" class="tier-cta tier-cta-primary">Book a Discovery Call</a>
+    <a href="book.html?tier=sprint-growth" class="tier-cta tier-cta-outline">Book a Discovery Call</a>
   </div>
 
   <!-- SPRINT TIER 3: OPERATIONS -->
-  <div class="tier">
+  <div class="tier featured tier-hero">
+    <div class="tier-badge-flag">Flagship</div>
     <div class="tier-name">Operations</div>
     <div class="tier-tagline">Intelligent systems across several operational areas. For teams with real volume.</div>
     <div class="tier-price">$6,999</div>
@@ -524,7 +589,7 @@ footer {
       <li>Operations dashboard for real-time visibility</li>
       <li>Extended support + a clear path to ongoing partnership</li>
     </ul>
-    <a href="book.html?tier=sprint-operations" class="tier-cta tier-cta-outline">Book a Discovery Call</a>
+    <a href="book.html?tier=sprint-operations" class="tier-cta tier-cta-primary">Book a Discovery Call</a>
   </div>
 
 </section>

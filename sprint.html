@@ -49,6 +49,14 @@
     }
     .skip-link:focus { left: 0; }
     :focus-visible { outline: 2px solid var(--blue-glow); outline-offset: 3px; }
+    /* ═══════════ SITE-WIDE CIRCUIT-GUTTER MOTIF (static, non-hero) ═══════════ */
+    .circuit-gutters { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+    .circuit-gutters .cg { position: absolute; top: 0; height: 100%; width: 132px; opacity: 0.12; }
+    .circuit-gutters .cg-left { left: 0; }
+    .circuit-gutters .cg-right { right: 0; transform: scaleX(-1); }
+    .circuit-gutters .cg-trace { fill: none; stroke: rgba(58,159,213,0.55); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit-gutters .cg-node { fill: rgba(137,214,255,0.7); }
+    @media (max-width: 900px) { .circuit-gutters { display: none; } }
 
     body {
       background: var(--black);
@@ -705,6 +713,39 @@
 <body>
 
 <!-- ════════════ NAV ════════════ -->
+<!-- SITE-WIDE CIRCUIT-GUTTER MOTIF (static, behind content, gutters only) -->
+<div class="circuit-gutters" aria-hidden="true">
+  <svg class="cg cg-left" viewBox="0 0 132 800" preserveAspectRatio="xMinYMid slice" focusable="false">
+    <path class="cg-trace" d="M0 84 H44 L70 58 H112"/>
+    <path class="cg-trace" d="M70 58 V26"/>
+    <path class="cg-trace" d="M0 198 H30 L56 224 H92 V288 H124"/>
+    <path class="cg-trace" d="M0 372 H58 V414 H100 L124 438"/>
+    <path class="cg-trace" d="M0 540 H38 L64 516 H108"/>
+    <path class="cg-trace" d="M0 672 H50 L78 696 H120"/>
+    <circle class="cg-node" cx="112" cy="58" r="3.4"/>
+    <circle class="cg-node" cx="56" cy="224" r="3"/>
+    <circle class="cg-node" cx="124" cy="288" r="3.4"/>
+    <circle class="cg-node" cx="100" cy="414" r="3.2"/>
+    <circle class="cg-node" cx="124" cy="438" r="2.8"/>
+    <circle class="cg-node" cx="108" cy="516" r="3.2"/>
+    <circle class="cg-node" cx="120" cy="696" r="3"/>
+  </svg>
+  <svg class="cg cg-right" viewBox="0 0 132 800" preserveAspectRatio="xMinYMid slice" focusable="false">
+    <path class="cg-trace" d="M0 84 H44 L70 58 H112"/>
+    <path class="cg-trace" d="M70 58 V26"/>
+    <path class="cg-trace" d="M0 198 H30 L56 224 H92 V288 H124"/>
+    <path class="cg-trace" d="M0 372 H58 V414 H100 L124 438"/>
+    <path class="cg-trace" d="M0 540 H38 L64 516 H108"/>
+    <path class="cg-trace" d="M0 672 H50 L78 696 H120"/>
+    <circle class="cg-node" cx="112" cy="58" r="3.4"/>
+    <circle class="cg-node" cx="56" cy="224" r="3"/>
+    <circle class="cg-node" cx="124" cy="288" r="3.4"/>
+    <circle class="cg-node" cx="100" cy="414" r="3.2"/>
+    <circle class="cg-node" cx="124" cy="438" r="2.8"/>
+    <circle class="cg-node" cx="108" cy="516" r="3.2"/>
+    <circle class="cg-node" cx="120" cy="696" r="3"/>
+  </svg>
+</div>
 <a class="skip-link" href="#main">Skip to content</a>
 <nav>
   <a href="index.html" class="nav-brand">
