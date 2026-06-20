@@ -18,16 +18,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/throughline-v2.css?v=1">
 <style>
-/* ═══════════ HOME — booting hero ═══════════ */
+/* ═══════════ HOME — booting hero (full-bleed video background) ═══════════ */
 .hero {
-  position: relative; min-height: 100vh; display: flex; align-items: center;
-  padding: 120px 0 80px; overflow: hidden; isolation: isolate;
+  position: relative; min-height: 100svh; display: flex; align-items: center;
+  padding: 132px 0 96px; overflow: hidden;
+  /* NB: no opaque background here — a positioned parent's own background would
+     paint over the z-index:-2 hero video. Fallback when the video is absent is
+     the body gradient + scrim + Live Circuit, which is already a rich dark field. */
 }
-.hero-grid {
-  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(32px, 5vw, 64px);
-  align-items: center; width: 100%;
-}
-@media (max-width: 940px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+.hero > .container { position: relative; z-index: 1; }   /* copy sits above scrim */
+.hero-copy { max-width: 760px; }
 
 .hero-emblem {
   display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px;
@@ -66,27 +66,17 @@
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
 .hero-loc { margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.04em; }
 
-/* featured video panel */
-.hero-media {
-  position: relative; border-radius: var(--radius-lg); overflow: hidden;
-  border: 1px solid var(--edge-hi); aspect-ratio: 16 / 10;
-  background:
-    radial-gradient(120% 120% at 70% 0%, rgba(21,96,164,0.3), transparent 60%),
-    linear-gradient(160deg, var(--navy-raised), var(--void) 90%);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(58,159,213,0.12);
-}
-.hero-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-media::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, transparent 60%, rgba(5,11,20,0.5) 100%);
-}
-.hero-media .media-tag {
-  position: absolute; left: 14px; bottom: 14px; z-index: 2;
+/* full-bleed hero background video: sits at -2 so the global Live Circuit
+   (-1) and the readability scrim layer OVER it; copy is highest. */
+.hero .hero-video { z-index: -2; }
+.hero .media-scrim { z-index: 0; }
+.hero-media-tag {
+  position: absolute; left: var(--gut); bottom: 22px; z-index: 1;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--chrome); background: rgba(5,11,20,0.6); border: 1px solid var(--edge);
-  padding: 6px 11px; border-radius: 7px; backdrop-filter: blur(6px);
+  color: var(--chrome-dim); display: inline-flex; align-items: center; gap: 8px;
 }
-@media (max-width: 940px) { .hero-media { aspect-ratio: 16 / 11; } }
+.hero-media-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--signal-bright); box-shadow: 0 0 8px var(--signal-bright); }
+@media (max-width: 940px) { .hero-desc { max-width: 100%; } }
 
 /* booting reveal — line by line */
 .boot { opacity: 0; transform: translateY(16px); filter: blur(3px); }
@@ -190,8 +180,16 @@
 
 <!-- ═══════════ BOOTING HERO ═══════════ -->
 <section class="hero" id="hero" aria-labelledby="heroHeading">
+  <!-- full-bleed self-hosted hero loop; poster kills the black flash and is the
+       mobile / reduced-motion fallback. Live Circuit (-1) + scrim layer over it. -->
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" data-bgvideo
+         poster="assets/images/Hero%20Variation%20A2.png"
+         onerror="this.style.display='none'">
+    <source src="assets/video/website-video-banner.mp4" type="video/mp4">
+  </video>
+  <div class="media-scrim" aria-hidden="true"></div>
+
   <div class="container">
-    <div class="hero-grid">
       <div class="hero-copy">
         <div class="hero-emblem boot b1" role="img" aria-label="Throughline Operations — command layer online">
           <img src="assets/images/03_square_mark_TO_chrome.svg" alt="">
@@ -213,20 +211,8 @@
         </div>
         <p class="hero-loc boot b6">Built on 15 years of film logistics · Response same business day · CAD</p>
       </div>
-
-      <div class="hero-media boot b7" aria-label="Throughline Operations motion banner">
-        <!-- Self-hosted hero loop. Drop website-video-banner.mp4 (16:9) and
-             website-video-banner-mobile.mp4 (9:16) into assets/video/.
-             Falls back gracefully to the glass/circuit backdrop if absent. -->
-        <video autoplay muted loop playsinline preload="metadata"
-               onerror="this.style.display='none'">
-          <source src="assets/video/website-video-banner-mobile.mp4" type="video/mp4" media="(max-width: 700px)">
-          <source src="assets/video/website-video-banner.mp4" type="video/mp4">
-        </video>
-        <span class="media-tag">Chaos · resolving into a throughline</span>
-      </div>
-    </div>
   </div>
+  <span class="hero-media-tag boot b7" aria-hidden="true"><span class="dot"></span> Chaos · resolving into a throughline</span>
   <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
 </section>
 
@@ -309,7 +295,7 @@
       <p>From a fixed-scope sprint to a full private intelligence stack — start where it hurts most.</p>
     </div>
     <div class="svc-grid">
-      <a href="services.html#sprints" class="svc-card flagship rv">
+      <div class="svc-card flagship rv">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:14px;">
           <span class="svc-num">01 / Automation</span>
           <span class="badge">Most common start</span>
@@ -319,20 +305,22 @@
         <p class="svc-get"><b>What you get:</b> a working automation built and tested in your real tools, with a plain-English handbook and a walkthrough so your team runs it without us.</p>
         <div class="svc-foot">
           <span class="svc-price">$2,499 / $4,499 / $6,999 CAD</span>
-          <span class="svc-link">See the sprint →</span>
+          <a href="services.html#sprints" class="svc-link">See the sprint →</a>
         </div>
-      </a>
+        <a href="https://opal.google/app/1l8r87AUrYgwJrl-T87pyC1-mm6s_73_l" target="_blank" rel="noopener" class="card-opal">Open the Leak Finder app — free ↗</a>
+      </div>
 
-      <a href="services.html#geo" class="svc-card rv rv-1">
+      <div class="svc-card rv rv-1">
         <span class="svc-num">02 / Visibility</span>
         <h3>GEO Audit + Retainer</h3>
         <p>45% of customers now ask AI to recommend a local business — and almost nobody shows up. We test exactly what AI says about you across every major platform, find why you're missing, and hand you the fix list, ranked.</p>
         <p class="svc-get"><b>What you get:</b> the full audit scored across six domains with a prioritized action plan. Retainers keep you visible month after month.</p>
         <div class="svc-foot">
           <span class="svc-price">$1,499 audit · $497–$1,497/mo</span>
+          <a href="services.html#geo" class="svc-link">Explore GEO →</a>
         </div>
-        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="opal-link" onclick="event.stopPropagation();">Check your AI visibility — free, 2 min ↗</a>
-      </a>
+        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="card-opal">Check your AI visibility — free, 2 min ↗</a>
+      </div>
 
       <a href="services.html#deployment" class="svc-card rv rv-2">
         <span class="svc-num">03 / Deployment</span>
@@ -392,6 +380,12 @@
       </div>
     </div>
     <p class="geo-note">Figures reflect 2026 generative-search research · sources available on request.</p>
+    <figure class="geo-infographic rv rv-scale">
+      <img src="assets/images/hero-infographic.png" alt="Can AI find your business? Getting recommended by AI is roughly 30× harder than ranking in classic search." loading="lazy" width="1934" height="1080">
+    </figure>
+    <div style="text-align:center; margin-top:28px;">
+      <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="btn btn-ghost">Check your AI visibility — free, 2 min ↗</a>
+    </div>
   </div>
 </section>
 

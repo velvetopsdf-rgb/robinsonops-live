@@ -111,7 +111,7 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--chrome-bright); }
 .circuit-field {
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -1;            /* above hero background video (-2), below content */
   pointer-events: none;
   opacity: 0;
   transition: opacity 1.2s ease;
@@ -354,4 +354,104 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--chrome-bright); }
   .rv { opacity: 1 !important; transform: none !important; }
   .circuit-field { display: none !important; }
   .footer-status .dot { animation: none; opacity: 1; }
+  /* keep the poster frame visible (video is paused by JS, not hidden) */
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   LAUNCH PASS — flashy / premium polish (motion + depth, no copy changes)
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* ---- full-bleed background video utility (hero + deployment banner) ---- */
+.media-stage { position: relative; isolation: isolate; overflow: hidden; }
+.hero-video, .deploy-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; pointer-events: none;
+  /* poster shows instantly (no black flash); frames play over it seamlessly.
+     a subtle scale-settle on first play adds life without a poster->black pop */
+  transform: scale(1.04); transition: transform 1.4s var(--ease-out);
+}
+.hero-video.playing, .deploy-video.playing { transform: scale(1); }
+/* navy readability scrim — keeps headline + CTAs legible over motion */
+.media-scrim {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5,11,20,0.92) 0%, rgba(5,11,20,0.7) 38%, rgba(5,11,20,0.32) 72%, rgba(5,11,20,0.5) 100%),
+    linear-gradient(180deg, rgba(5,11,20,0.55) 0%, transparent 26%, transparent 58%, rgba(5,11,20,0.9) 100%),
+    radial-gradient(120% 90% at 80% 18%, rgba(21,96,164,0.18), transparent 60%);
+}
+@media (max-width: 760px) {
+  /* phones: lean harder on the scrim so copy never fights the footage */
+  .media-scrim { background:
+    linear-gradient(180deg, rgba(5,11,20,0.78) 0%, rgba(5,11,20,0.62) 40%, rgba(5,11,20,0.82) 100%),
+    radial-gradient(140% 100% at 50% 0%, rgba(21,96,164,0.16), transparent 64%); }
+}
+
+/* ---- richer scroll reveals ---- */
+.rv { transform: translateY(34px) scale(0.985); filter: blur(2px); transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out), filter 0.85s var(--ease-out); }
+.rv.in { filter: blur(0); }
+.rv-scale { transform: scale(0.94); filter: blur(2px); }
+.rv-left { transform: translateX(-34px); filter: blur(2px); }
+
+/* ---- CTA micro-interaction: light sweep on primary ---- */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::before {
+  content: ''; position: absolute; top: 0; left: -130%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-18deg); transition: left 0.6s var(--ease-out); pointer-events: none;
+}
+.btn-primary:hover::before { left: 130%; }
+.btn-ghost { position: relative; }
+.btn-ghost:hover { box-shadow: 0 0 26px rgba(58,159,213,0.22), inset 0 0 22px rgba(58,159,213,0.08); }
+
+/* ---- depth lift on raised surfaces ---- */
+.svc-card, .readout, .beat-card, .tier, .deliver-card {
+  box-shadow: 0 1px 0 rgba(232,238,245,0.04) inset, 0 14px 40px rgba(0,0,0,0.28);
+}
+.readout { background:
+  radial-gradient(120% 120% at 50% 0%, rgba(21,96,164,0.14), transparent 62%),
+  linear-gradient(165deg, var(--navy-raised), var(--navy) 90%); }
+.readout:hover { border-color: var(--edge-hi); }
+
+/* ---- flagship card: it must clearly win ---- */
+.svc-card.flagship {
+  border-color: rgba(58,159,213,0.5);
+  box-shadow:
+    0 0 0 1px rgba(58,159,213,0.35),
+    0 0 60px rgba(58,159,213,0.22),
+    0 26px 80px rgba(21,96,164,0.34);
+  background:
+    radial-gradient(90% 160% at 0% 0%, rgba(21,96,164,0.26), transparent 56%),
+    linear-gradient(150deg, var(--navy-raised), var(--navy) 84%);
+}
+.svc-card.flagship::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(120deg, rgba(58,159,213,0.7), transparent 40%, transparent 60%, rgba(58,159,213,0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+/* siblings of a flagship recede so the eye lands on the flagship first */
+.svc-grid:has(.flagship) .svc-card:not(.flagship) { opacity: 0.9; }
+.svc-grid:has(.flagship) .svc-card:not(.flagship):hover { opacity: 1; }
+
+/* secondary Opal button living inside a service card */
+.card-opal {
+  display: inline-flex; align-items: center; gap: 8px; align-self: flex-start;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--signal-bright); border: 1px solid var(--edge-hi); border-radius: 999px;
+  padding: 8px 14px; margin-top: 2px; transition: 0.2s; position: relative; z-index: 2;
+}
+.card-opal:hover { background: rgba(58,159,213,0.12); border-color: var(--signal-bright); color: #5bb8f0; }
+
+/* ---- GEO infographic frame ---- */
+.geo-infographic {
+  margin-top: clamp(36px, 5vw, 56px);
+  border: 1px solid var(--edge-hi); border-radius: var(--radius-lg);
+  overflow: hidden; position: relative;
+  box-shadow: 0 0 0 1px rgba(58,159,213,0.1), 0 30px 80px rgba(0,0,0,0.45);
+  background: linear-gradient(165deg, var(--navy-raised), var(--void) 92%);
+}
+.geo-infographic img { width: 100%; height: auto; display: block; }
+.geo-infographic::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  box-shadow: inset 0 0 80px rgba(5,11,20,0.5);
 }

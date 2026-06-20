@@ -76,4 +76,24 @@
 
   /* ---- current year ---- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+
+  /* ---- background videos (hero + deployment banner) ---- */
+  document.querySelectorAll('video[data-bgvideo]').forEach((v) => {
+    if (reduce) {
+      // reduced motion: don't animate — pause and let the poster frame stand
+      v.removeAttribute('autoplay');
+      v.pause();
+      return;
+    }
+    const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    v.addEventListener('playing', () => v.classList.add('playing'), { once: true });
+    v.addEventListener('loadeddata', tryPlay, { once: true });
+    tryPlay();
+    // pause when fully offscreen to save battery / decode cost
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries) => {
+        entries.forEach((e) => { e.isIntersecting ? tryPlay() : v.pause(); });
+      }, { threshold: 0.01 }).observe(v);
+    }
+  });
 })();

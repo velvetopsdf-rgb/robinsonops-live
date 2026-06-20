@@ -30,10 +30,30 @@
 .svc-detail .get b { color: var(--chrome-bright); }
 
 /* tier cards */
-.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; }
-@media (max-width: 860px) { .tiers { grid-template-columns: 1fr; max-width: 460px; } }
-.tier { border: 1px solid var(--edge); border-radius: var(--radius-lg); background: linear-gradient(165deg, var(--navy-raised), var(--navy) 90%); padding: 28px; display: flex; flex-direction: column; }
-.tier.featured { border-color: var(--edge-hi); box-shadow: 0 0 0 1px rgba(58,159,213,0.16), 0 18px 50px rgba(21,96,164,0.22); }
+.tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; align-items: center; }
+@media (max-width: 860px) { .tiers { grid-template-columns: 1fr; max-width: 460px; } .tier.featured { transform: none !important; } }
+.tier { border: 1px solid var(--edge); border-radius: var(--radius-lg); background: linear-gradient(165deg, var(--navy-raised), var(--navy) 90%); padding: 28px; display: flex; flex-direction: column; position: relative; transition: transform 0.3s var(--ease-out), box-shadow 0.3s, border-color 0.3s; }
+/* the other two tiers recede so the flagship clearly wins */
+.tier:not(.featured) { opacity: 0.82; transform: scale(0.97); }
+.tier:not(.featured):hover { opacity: 1; }
+/* OPERATIONS = the flagship tier: bigger, accent border, outer glow, raised */
+.tier.featured {
+  border-color: var(--signal); transform: scale(1.045); z-index: 2;
+  background:
+    radial-gradient(90% 150% at 50% 0%, rgba(21,96,164,0.28), transparent 58%),
+    linear-gradient(165deg, var(--navy-raised), var(--navy) 84%);
+  box-shadow:
+    0 0 0 1px rgba(58,159,213,0.45),
+    0 0 64px rgba(58,159,213,0.28),
+    0 30px 80px rgba(21,96,164,0.4);
+}
+.tier.featured::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+  background: linear-gradient(140deg, rgba(58,159,213,0.85), transparent 38%, transparent 62%, rgba(58,159,213,0.55));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+}
+.tier.featured:hover { transform: scale(1.06); }
 .tier .flag { align-self: flex-start; margin-bottom: 12px; }
 .tier-name { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--chrome-bright); }
 .tier-tag { font-size: 14px; color: var(--chrome-dim); margin: 8px 0 16px; line-height: 1.55; min-height: 44px; }
@@ -147,6 +167,9 @@
     <h2 class="rv rv-1">Automation Sprints</h2>
     <p class="pitch rv rv-1">You know that pile of work that eats your evenings — chasing invoices, re-typing the same quote, copying job details from email into the calendar into the spreadsheet. That's not a you problem, that's a repeats problem. In three weeks, we find the work that repeats, build a system that does it automatically, and hand you back your hours. Fixed price, fixed scope, no surprise bill.</p>
     <p class="get rv rv-1"><b>What you actually get:</b> a working automation, built and tested in your real tools, with a plain-English handbook and a walkthrough so your team runs it without us.</p>
+    <div class="opts rv">
+      <a href="https://opal.google/app/1l8r87AUrYgwJrl-T87pyC1-mm6s_73_l" target="_blank" rel="noopener" class="btn btn-ghost">Open the interactive Leak Finder — free ↗</a>
+    </div>
 
     <div class="tiers rv">
       <div class="tier">

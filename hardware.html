@@ -18,7 +18,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/throughline-v2.css?v=1">
 <style>
-.page-hero { padding: 132px 0 24px; }
+.page-hero { padding: 40px 0 24px; }
+/* cinematic AI Deployment banner */
+.deploy-banner { position: relative; min-height: 46vh; display: flex; align-items: flex-end; padding: 112px 0 40px; overflow: hidden; isolation: isolate;
+  background: linear-gradient(160deg, var(--navy), var(--void) 92%); }
+.deploy-banner .deploy-video { z-index: 0; }
+.deploy-banner .media-scrim { z-index: 1; }
+.deploy-banner-inner { position: relative; z-index: 2; }
+.deploy-banner .eyebrow { display: inline-block; margin-bottom: 12px; }
+.deploy-banner h2 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -0.025em; color: var(--chrome-bright); max-width: 18ch; }
 .breadcrumb { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--chrome-dim); margin-bottom: 16px; }
 .breadcrumb a { color: var(--signal-bright); }
 .page-hero h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -0.025em; }
@@ -80,6 +88,19 @@
 </nav>
 
 <main id="main">
+
+<!-- AI DEPLOYMENT cinematic banner (self-hosted loop, poster fallback) -->
+<section class="deploy-banner media-stage" aria-label="AI Deployment">
+  <video class="deploy-video" autoplay muted loop playsinline preload="auto" data-bgvideo
+         poster="assets/images/Hero%20Variation%20A2.png" onerror="this.style.display='none'">
+    <source src="assets/video/TLO-hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="media-scrim" aria-hidden="true"></div>
+  <div class="container deploy-banner-inner">
+    <span class="eyebrow">AI Deployment</span>
+    <h2>Own your stack. No per-seat SaaS.</h2>
+  </div>
+</section>
 
 <section class="page-hero">
   <div class="container">
@@ -214,7 +235,7 @@
 <!-- HORIZON -->
 <section class="section">
   <div class="container">
-    <div class="section-head rv"><span class="eyebrow">On the horizon</span><h2>Coming soon</h2><p>What's next in local AI hardware — clearly labelled so you know what's real and what's rumour.</p></div>
+    <div class="section-head rv"><span class="eyebrow">On the horizon</span><h2>What's coming next</h2><p>What's next in local AI hardware — clearly labelled so you know what's real and what's rumour.</p></div>
     <div class="horizon-grid">
       <div class="horizon-card rv rv-1"><span class="tag tag-rumored">Rumored</span><h3>Mac Studio M5 Max / M5 Ultra</h3><p>Expected later in 2026 (possibly October; RAM-shortage delays are likely). The M5 Ultra is rumoured to support up to 256GB of unified memory.</p></div>
       <div class="horizon-card rv rv-2"><span class="tag tag-confirmed">Confirmed</span><h3>NVIDIA DGX Station (GB300 Grace Blackwell)</h3><p>Announced. A deskside supercomputer with very large coherent memory, trillion-parameter class. Tens of thousands of dollars; shipping later in 2026.</p></div>

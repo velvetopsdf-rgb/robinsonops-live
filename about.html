@@ -25,7 +25,13 @@
 .credits { border-top: 1px solid var(--edge); border-bottom: 1px solid var(--edge); padding: 26px 0; }
 .credits-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .credits-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chrome-dim); margin-right: 8px; }
+.credits-inner { gap: 10px; }
 .credit-tag { font-family: var(--font-mono); font-size: 13px; color: var(--chrome); border: 1px solid var(--edge-hi); border-radius: 999px; padding: 7px 15px; }
+.credit-tag em { font-style: normal; color: var(--chrome-dim); margin-left: 4px; }
+.credit-tag.feat { color: var(--chrome-bright); border-color: var(--signal); background: rgba(58,159,213,0.1); box-shadow: 0 0 18px rgba(58,159,213,0.18); }
+.credit-tag.feat em { color: var(--signal-bright); }
+.credits-network { margin-top: 16px; font-size: 14px; color: var(--chrome-dim); }
+.credits-network strong, .credits-network b { color: var(--chrome); }
 .story-block { max-width: 760px; margin-bottom: clamp(40px,6vw,64px); }
 .story-block h2 { font-size: var(--t-h2); font-weight: 800; margin-bottom: 16px; }
 .story-block p { font-size: 16px; color: var(--chrome-dim); line-height: 1.75; margin-bottom: 14px; }
@@ -82,12 +88,18 @@
   <div class="container">
     <div class="credits-inner rv">
       <span class="credits-label">Select production credits</span>
-      <span class="credit-tag">The Boys</span>
-      <span class="credit-tag">Gen V</span>
+      <span class="credit-tag feat">Memory of a Killer <em>S1</em></span>
+      <span class="credit-tag feat">The Boys <em>S5</em></span>
+      <span class="credit-tag feat">Gen V <em>S2</em></span>
       <span class="credit-tag">American Gods</span>
-      <span class="credit-tag">TV Movies &amp; Series</span>
+      <span class="credit-tag">Ginny &amp; Georgia</span>
+      <span class="credit-tag">Orphan Black</span>
+      <span class="credit-tag">Firestarter</span>
+      <span class="credit-tag">12 Monkeys</span>
+      <span class="credit-tag">Jigsaw</span>
       <span class="credit-tag">DGC Ontario</span>
     </div>
+    <p class="credits-network rv rv-1">15 years on productions for Amazon, Netflix, Hulu, Crave + Warner Bros.</p>
   </div>
 </section>
 
@@ -136,6 +148,7 @@
       <div>
         <h3>GTA CAN Vibe Productions Inc.</h3>
         <p>Throughline Operations is the operations-consulting practice of GTA CAN Vibe Productions Inc. — a registered Ontario corporation serving Hamilton and GTA businesses.</p>
+        <p style="margin-top:10px;font-family:var(--font-mono);font-size:13px;color:var(--chrome);">Hamilton, Ontario · <a href="tel:+12898123420">(289) 812-3420</a> · <a href="mailto:joe@throughlineoperations.com">joe@throughlineoperations.com</a></p>
       </div>
     </div>
   </div>

@@ -38,8 +38,8 @@
     canvas.style.height = cssH + 'px';
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
-    // density: generous on desktop, capped on phones for perf
-    const spacing = coarse ? 116 : (cssW < 1100 ? 104 : 92);
+    // density: richer on desktop, still capped on phones for perf
+    const spacing = coarse ? 118 : (cssW < 1100 ? 96 : 82);
     cols = Math.ceil(cssW / spacing) + 2;
     rows = Math.ceil(cssH / spacing) + 2;
 
@@ -77,7 +77,7 @@
     }
 
     // seed pulses on a subset of edges
-    const pulseCount = coarse ? 10 : Math.min(26, Math.round(edges.length * 0.03));
+    const pulseCount = coarse ? 12 : Math.min(40, Math.round(edges.length * 0.045));
     pulses = [];
     for (let i = 0; i < pulseCount; i++) pulses.push(spawnPulse());
   }
@@ -120,8 +120,8 @@
 
     ctx.clearRect(0, 0, W, H);
 
-    const radius = 240;
-    const baseTrace = 0.05 + scrollK * 0.04;
+    const radius = 290;
+    const baseTrace = 0.06 + scrollK * 0.05;
 
     // ---- traces ----
     ctx.lineCap = 'round';
@@ -134,7 +134,7 @@
         const dist = Math.hypot(mx - ptr.x, my - ptr.y);
         glow = Math.max(0, 1 - dist / radius);
       }
-      const a = baseTrace + glow * 0.5;
+      const a = baseTrace + glow * 0.58;
       if (a <= 0.012) continue;
       ctx.beginPath();
       ctx.moveTo(e.a.x, e.a.y);
@@ -155,7 +155,7 @@
       }
       n.energy += (glow - n.energy) * 0.18;
       const breathe = 0.5 + 0.5 * Math.sin(time * 1.1 + n.phase);
-      const a = 0.18 + breathe * 0.12 + n.energy * 0.7 + scrollK * 0.05;
+      const a = 0.2 + breathe * 0.14 + n.energy * 0.75 + scrollK * 0.06;
       const rr = n.r * (1 + n.energy * 1.4);
       const col = n.energy > 0.25 ? BRIGHT : SIGNAL;
       if (n.energy > 0.04) {
