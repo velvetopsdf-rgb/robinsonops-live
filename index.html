@@ -27,7 +27,29 @@
      the body gradient + scrim + Live Circuit, which is already a rich dark field. */
 }
 .hero > .container { position: relative; z-index: 1; }   /* copy sits above scrim */
+/* headline LEFT, chrome TO mark resolving RIGHT — a grid so the two can never
+   overlap at any width (columns don't collide; on mobile it stacks) */
+.hero-grid { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,0.92fr); gap: clamp(24px,4vw,56px); align-items: center; width: 100%; }
 .hero-copy { max-width: 760px; }
+.hero-mark { position: relative; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(0.86) translateX(26px); }
+.hero.ready .hero-mark { animation: markIn 1.1s var(--ease-out) 0.95s forwards; }
+.hero-mark::before { content: ''; position: absolute; width: 72%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(58,159,213,0.42), transparent 66%); filter: blur(34px); z-index: -1; }
+.hero-mark img { width: clamp(190px, 24vw, 330px); height: auto; filter: drop-shadow(0 0 36px rgba(58,159,213,0.55)) drop-shadow(0 0 90px rgba(21,96,164,0.35)); animation: markFloat 8s ease-in-out infinite; }
+@keyframes markIn { to { opacity: 1; transform: none; } }
+@keyframes markFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+/* tablet/mobile: single column, mark drops BELOW the copy, smaller, left-aligned
+   — never overlaps the stacked headline; status chip stays the top-of-hero brand cue */
+@media (max-width: 940px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 26px; justify-items: start; }
+  .hero-mark { justify-content: flex-start; transform: scale(0.9) translateY(12px); }
+  .hero.ready .hero-mark { animation: markInM 1s var(--ease-out) 0.8s forwards; }
+  .hero-mark img { width: clamp(130px, 34vw, 190px); }
+}
+@keyframes markInM { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-mark { opacity: 1 !important; transform: none !important; }
+  .hero-mark img { animation: none !important; }
+}
 
 .hero-emblem {
   display: inline-flex; align-items: center; gap: 14px; margin-bottom: 26px;
@@ -185,11 +207,12 @@
   <video class="hero-video" autoplay muted loop playsinline preload="auto" data-bgvideo
          poster="assets/images/Hero%20Variation%20A2.png"
          onerror="this.style.display='none'">
-    <source src="assets/video/website-video-banner.mp4" type="video/mp4">
+    <source src="assets/video/tlo-website-banner.mp4" type="video/mp4">
   </video>
   <div class="media-scrim" aria-hidden="true"></div>
 
   <div class="container">
+    <div class="hero-grid">
       <div class="hero-copy">
         <div class="hero-emblem boot b1" role="img" aria-label="Throughline Operations — command layer online">
           <img src="assets/images/03_square_mark_TO_chrome.svg" alt="">
@@ -211,6 +234,10 @@
         </div>
         <p class="hero-loc boot b6">Built on 15 years of film logistics · Response same business day · CAD</p>
       </div>
+      <div class="hero-mark" aria-hidden="true">
+        <img src="assets/images/03_square_mark_TO_chrome.svg" alt="">
+      </div>
+    </div>
   </div>
   <span class="hero-media-tag boot b7" aria-hidden="true"><span class="dot"></span> Chaos · resolving into a throughline</span>
   <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>

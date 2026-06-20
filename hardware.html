@@ -46,15 +46,18 @@
 .band-price { font-family: var(--font-mono); font-weight: 700; font-size: 18px; color: var(--chrome-bright); }
 .hw-machines { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 18px; }
 .machine-card { border: 1px solid var(--edge); border-radius: var(--radius-lg); background: linear-gradient(165deg,var(--navy-raised),var(--navy) 92%); overflow: hidden; display: flex; flex-direction: column; }
-.machine-img-wrap { aspect-ratio: 16/10; background: var(--void); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.machine-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+/* uniform 3:2 frame for every render — identical aspect, fit, and backdrop so
+   the grid reads as one set regardless of each source crop */
+.machine-img-wrap { aspect-ratio: 3 / 2; background: var(--void); display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid var(--edge); }
+.machine-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.machine-delivery { font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); border-top: 1px solid var(--edge); padding-top: 10px; margin-top: 4px; }
+.machine-delivery .label { color: var(--signal-bright); letter-spacing: 0.04em; text-transform: uppercase; margin-right: 6px; }
 .machine-body { padding: 20px; }
 .machine-name { font-size: 16px; font-weight: 700; color: var(--chrome-bright); margin-bottom: 6px; }
 .machine-specs { font-size: 13px; color: var(--chrome-dim); line-height: 1.55; margin-bottom: 14px; }
 .machine-meta-row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; }
 .machine-meta-row .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal-bright); }
 .machine-meta-row .value { font-size: 13px; color: var(--chrome); line-height: 1.5; }
-.machine-leadtime { font-size: 12px; color: var(--chrome-dim); border-top: 1px solid var(--edge); padding-top: 10px; margin-top: 4px; font-style: italic; }
 .hw-note { font-family: var(--font-mono); font-size: 13px; color: var(--chrome-dim); border-left: 2px solid var(--signal); padding: 8px 0 8px 18px; margin-top: 20px; }
 .hw-note a { color: var(--signal-bright); }
 .horizon-grid, .read-steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 28px; }
@@ -127,21 +130,23 @@
     </div>
     <div class="hw-machines rv">
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/mac-mini.jpg" alt="Apple Mac mini" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-entry-mini-silver.png" alt="Compact silver mini-desktop render — entry-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">Apple Mac mini (M4 / M4 Pro)</div>
           <div class="machine-specs">A tiny, silent desktop that fits in your hand. A 48GB M4 Pro is the sweet spot for private AI.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">One person who wants a quiet, always-on private assistant on their desk.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">8B–30B models comfortably; a 48GB config handles ~70B at a modest pace. 1–2 agents.</span></div>
+          <div class="machine-delivery"><span class="label">Delivery</span>Lead time confirmed at scoping — varies by configuration.</div>
         </div>
       </div>
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/amd-mini-pc.webp" alt="AMD Ryzen AI mini-PC" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-entry-mini-black.png" alt="Compact black mini-PC render — entry-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">AMD Ryzen AI mini-PC</div>
           <div class="machine-specs">A compact Windows/Linux box (e.g. a Minisforum-class Ryzen AI 9) for teams that prefer not to run Mac.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">A small office wanting an affordable, standard-OS private AI box.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">Fast on 8B–14B models; 30B at a moderate pace. 1–2 agents.</span></div>
+          <div class="machine-delivery"><span class="label">Delivery</span>Lead time confirmed at scoping — varies by configuration.</div>
         </div>
       </div>
     </div>
@@ -163,22 +168,23 @@
     </div>
     <div class="hw-machines rv">
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/mac-studio.jpg" alt="Apple Mac Studio" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-studio-cube.png" alt="Brushed-metal cube desktop render — standard-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">Apple Mac Studio (M4 Max)</div>
           <div class="machine-specs">A silent, powerful box that sits in the office and serves the whole team's AI from one place.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">A small team sharing one capable, quiet private AI machine.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">~70B models comfortably; 3–5 agents at once.</span></div>
-          <div class="machine-leadtime">Lead-time note: high-memory Apple configs are supply-constrained in 2026 (6–10 weeks).</div>
+          <div class="machine-delivery"><span class="label">Delivery</span>High-memory Apple configs are supply-constrained in 2026 — roughly 6–10 weeks.</div>
         </div>
       </div>
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/framework-desktop.jpg" alt="Framework Desktop (Strix Halo)" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-standard-mesh.png" alt="Mesh-front compact desktop render — standard-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">Strix Halo mini-PC (Framework Desktop / GMKtec EVO-X2)</div>
           <div class="machine-specs">Ryzen AI Max+ 395 with 128GB — a lot of AI memory packed into a very small footprint.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">A team wanting large-model capability without a full workstation or the Apple wait.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">~70B models comfortably; 3–5 agents at once.</span></div>
+          <div class="machine-delivery"><span class="label">Delivery</span>Lead time confirmed at scoping — varies by configuration.</div>
         </div>
       </div>
     </div>
@@ -200,31 +206,33 @@
     </div>
     <div class="hw-machines rv">
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/mac-studio.jpg" alt="Apple Mac Studio (M3 Ultra)" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-studio-cube.png" alt="Brushed-metal cube desktop render — performance-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">Apple Mac Studio (M3 Ultra)</div>
           <div class="machine-specs">The maximum-memory Mac — quiet enough for an office, strong enough to run many agents together.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">A team running large models and many agents without a noisy server room.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">Large models with many concurrent agents.</span></div>
-          <div class="machine-leadtime">Note: 128GB/256GB options were withdrawn as of May 2026 — 96GB is the current ceiling, with long lead times.</div>
+          <div class="machine-delivery"><span class="label">Delivery</span>96GB is the current ceiling (128/256GB withdrawn May 2026); long lead times — confirmed at scoping.</div>
         </div>
       </div>
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/dgx-spark.png" alt="NVIDIA DGX Spark" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-performance-deskside.png" alt="Deskside AI compute unit render — performance-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">NVIDIA DGX Spark (GB10, 128GB)</div>
           <div class="machine-specs">A personal AI supercomputer — NVIDIA's deskside box built specifically for AI development and inference.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">Heavier development and inference on a dedicated, purpose-built AI machine.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">Large models with strong, sustained throughput.</span></div>
+          <div class="machine-delivery"><span class="label">Delivery</span>Lead time confirmed at scoping — varies by configuration.</div>
         </div>
       </div>
       <div class="machine-card">
-        <div class="machine-img-wrap"><img src="assets/images/hardware/gamertech-threadripper.webp" alt="Threadripper-Pro custom AI workstation" loading="lazy"></div>
+        <div class="machine-img-wrap"><img src="assets/images/hardware/hw-performance-tower.png" alt="Full tower workstation render — performance-tier private AI box" loading="lazy" width="1536" height="1024"></div>
         <div class="machine-body">
           <div class="machine-name">RTX-Pro / Threadripper-Pro workstation</div>
           <div class="machine-specs">A custom-built workstation from a Canadian integrator (Puget Systems ships to Canada) for the most demanding work.</div>
           <div class="machine-meta-row"><span class="label">What this is for</span><span class="value">Data-sovereign shops running multiple large models — training and inference together.</span></div>
           <div class="machine-meta-row"><span class="label">What it runs</span><span class="value">Multiple large models concurrently for data-sovereign training and inference workloads.</span></div>
+          <div class="machine-delivery"><span class="label">Delivery</span>Custom Canadian build (Puget Systems ships to Canada); lead time confirmed at scoping.</div>
         </div>
       </div>
     </div>
