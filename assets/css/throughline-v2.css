@@ -371,6 +371,13 @@ h1, h2, h3 { font-family: var(--font-display); color: var(--chrome-bright); }
   transform: scale(1.04); transition: transform 1.4s var(--ease-out);
 }
 .hero-video.playing, .deploy-video.playing { transform: scale(1); }
+.page-hero.media-stage {
+  min-height: 100svh; display: flex; align-items: center;
+  padding: 132px 0 96px; overflow: hidden;
+}
+.page-hero.media-stage > .container { position: relative; z-index: 1; }
+.page-hero.media-stage .hero-video { z-index: -2; }
+.page-hero.media-stage .media-scrim { z-index: 0; }
 /* navy readability scrim — keeps headline + CTAs legible over motion */
 .media-scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
