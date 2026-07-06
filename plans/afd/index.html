@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     /plans/<client>/ — CLIENT GAMEPLAN TEMPLATE
+     Private, unlisted client proposal page. To create a new client page:
+     copy this folder, then edit ONLY the <!-- CLIENT-CONTENT: ... --> regions
+     (title/meta, hero, heard, costs, options, roadmap, not, why, next, footer-note)
+     and the booking URL. Layout, CSS, and scripts stay untouched.
+     RULES: keep the noindex meta; never add this page to sitemap.xml or any nav.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<!-- CLIENT-CONTENT: title/meta -->
+<title>AFD Film Logistics — Operations Gameplan | Throughline Operations</title>
+<meta name="description" content="A private operations gameplan prepared for AFD Film Logistics by Throughline Operations.">
+<!-- /CLIENT-CONTENT: title/meta -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="../../assets/images/01_square_mark_TO_blue_throughline_transparent_64_favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- no ?v= query string here: it can break stylesheet resolution when the page
+     is opened directly from disk (file://); plain relative path works both on
+     disk and on GitHub Pages -->
+<link rel="stylesheet" href="../../assets/css/throughline-v2.css">
+<style>
+/* ---- gameplan template styles (shared by all /plans/<client>/ pages) ---- */
+.plan-hero { padding: 128px 0 40px; }
+.plan-hero .eyebrow { display: inline-block; margin-bottom: 14px; }
+.plan-hero h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -0.025em; max-width: 20ch; }
+.plan-hero .prepared { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; color: var(--signal-bright); text-transform: uppercase; margin: 18px 0 10px; }
+.plan-hero .tagline { font-size: var(--t-lead); color: var(--chrome-dim); font-style: italic; max-width: 58ch; }
+.plan-hero .hero-book { margin-top: 26px; }
+
+.plan-section { padding: clamp(48px, 7vw, 84px) 0; }
+.plan-section .section-label { font-family: var(--font-mono); font-size: var(--t-mono); letter-spacing: 0.2em; text-transform: uppercase; color: var(--signal-bright); display: block; margin-bottom: 14px; }
+.plan-section h2 { font-size: var(--t-h2); font-weight: 800; margin-bottom: 18px; max-width: 24ch; }
+.plan-section .body-copy { font-size: 16px; color: var(--chrome-dim); line-height: 1.75; max-width: 70ch; }
+.plan-section .body-copy b, .plan-section .body-copy strong { color: var(--chrome-bright); }
+
+.heard-list { list-style: none; display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin-top: 8px; }
+.heard-list li { font-size: 16px; color: var(--chrome); line-height: 1.65; padding-left: 28px; position: relative; }
+.heard-list li::before { content: '›'; position: absolute; left: 4px; color: var(--signal-bright); font-family: var(--font-mono); font-weight: 600; }
+
+.cost-callout { border: 1px solid var(--edge-hi); border-left: 3px solid var(--signal); border-radius: var(--radius-lg); background: linear-gradient(150deg, var(--navy-raised), var(--navy) 88%); padding: clamp(24px, 3.5vw, 38px); max-width: 820px; font-size: 17px; color: var(--chrome-dim); line-height: 1.75; }
+.cost-callout b { color: var(--chrome-bright); }
+
+/* ---- option cards (stacked) ---- */
+.option-stack { display: flex; flex-direction: column; gap: 18px; margin-top: 34px; }
+.option-card { position: relative; border: 1px solid var(--edge); border-radius: var(--radius-lg); background: linear-gradient(165deg, var(--navy-raised), var(--navy) 90%); padding: clamp(24px, 3.5vw, 38px); box-shadow: 0 1px 0 rgba(232,238,245,0.04) inset, 0 14px 40px rgba(0,0,0,0.28); }
+.option-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+.option-name { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--signal-bright); display: block; margin-bottom: 8px; }
+.option-title { font-family: var(--font-display); font-weight: 800; font-size: var(--t-h3); color: var(--chrome-bright); }
+.option-price { font-family: var(--font-mono); font-weight: 700; font-size: clamp(22px, 3vw, 30px); color: var(--chrome-bright); text-align: right; white-space: nowrap; }
+.option-price small { display: block; font-size: 12px; font-weight: 500; color: var(--chrome-dim); letter-spacing: 0.03em; margin-top: 4px; white-space: normal; }
+.option-card p.desc { font-size: 15.5px; color: var(--chrome-dim); line-height: 1.7; max-width: 76ch; }
+.option-card p.desc b { color: var(--chrome-bright); }
+.option-market { margin-top: 14px; font-size: 13px; font-style: italic; color: var(--chrome-dim); opacity: 0.85; }
+/* highlighted option (where most companies start) */
+.option-card.start-here { border-color: var(--signal); background: radial-gradient(90% 150% at 50% 0%, rgba(21,96,164,0.24), transparent 58%), linear-gradient(165deg, var(--navy-raised), var(--navy) 84%); box-shadow: 0 0 0 1px rgba(58,159,213,0.4), 0 0 54px rgba(58,159,213,0.22), 0 24px 70px rgba(21,96,164,0.34); }
+.option-card.start-here::before { content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; background: linear-gradient(140deg, rgba(58,159,213,0.8), transparent 40%, transparent 60%, rgba(58,159,213,0.5)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+
+/* quieter add-on block */
+.also-block { margin-top: 26px; border: 1px dashed var(--edge-hi); border-radius: var(--radius-lg); background: rgba(15, 33, 56, 0.35); padding: clamp(20px, 3vw, 30px); }
+.also-block h3 { font-family: var(--font-mono); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--chrome-dim); margin-bottom: 14px; }
+.also-block ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.also-block li { font-size: 14.5px; color: var(--chrome-dim); line-height: 1.7; padding-left: 22px; position: relative; }
+.also-block li::before { content: '+'; position: absolute; left: 2px; color: var(--signal-bright); font-family: var(--font-mono); }
+.also-block b { color: var(--chrome); }
+
+/* roadmap */
+.roadmap { border-left: 2px solid var(--edge-hi); padding-left: 26px; display: flex; flex-direction: column; gap: 20px; max-width: 780px; margin-top: 10px; }
+.roadmap-step h4 { font-family: var(--font-mono); font-size: 14px; color: var(--signal-bright); letter-spacing: 0.04em; margin-bottom: 5px; }
+.roadmap-step p { font-size: 15px; color: var(--chrome-dim); line-height: 1.65; }
+.roadmap-step p b { color: var(--chrome-bright); }
+
+/* Section 5 — What This Is Not: dark ledger */
+.not-block { background: var(--void); border: 1px solid var(--edge); border-radius: var(--radius-lg); padding: clamp(26px, 4vw, 40px); max-width: 820px; }
+.not-block ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+.not-block li { font-size: 15.5px; color: var(--chrome); line-height: 1.65; padding-left: 30px; position: relative; }
+.not-block li::before { content: '✕'; position: absolute; left: 0; color: var(--chrome-dim); font-weight: 700; }
+.not-block li b { color: var(--chrome-bright); }
+
+/* Section 6 — Why Throughline: raised trust panel */
+.why-block { border: 1px solid var(--edge-hi); border-radius: var(--radius-lg); background: radial-gradient(90% 140% at 0% 0%, rgba(21,96,164,0.22), transparent 58%), linear-gradient(150deg, var(--navy-raised), var(--navy) 86%); padding: clamp(26px, 4vw, 42px); max-width: 860px; position: relative; overflow: hidden; }
+.why-block::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--signal-bright), transparent); }
+.why-block p { font-size: 17px; color: var(--chrome); line-height: 1.8; }
+.why-block p b { color: var(--chrome-bright); }
+
+/* next steps */
+.next-steps { list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 16px; max-width: 700px; margin-top: 8px; }
+.next-steps li { counter-increment: step; font-size: 16px; color: var(--chrome); line-height: 1.65; padding-left: 46px; position: relative; }
+.next-steps li::before { content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 1px; font-family: var(--font-mono); font-weight: 600; font-size: 14px; color: var(--signal-bright); border: 1px solid var(--edge-hi); border-radius: 8px; padding: 3px 7px; }
+.next-book { margin-top: 30px; }
+
+.plan-footer { border-top: 1px solid var(--edge); padding: 36px 0 44px; margin-top: clamp(40px, 6vw, 72px); }
+.plan-footer p { font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.04em; line-height: 1.8; }
+.plan-footer a { color: var(--signal-bright); }
+.divider-line { height: 1px; background: var(--edge); max-width: var(--maxw); margin: 0 auto; }
+@media (max-width: 640px) { .option-price { text-align: left; } }
+</style>
+</head>
+<body>
+
+<canvas id="circuitField" class="circuit-field" aria-hidden="true"></canvas>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- minimal private-page nav: brand + booking only (no site nav — page is unlisted) -->
+<nav class="site-nav">
+  <a href="https://throughlineoperations.com" class="nav-brand" aria-label="Throughline Operations">
+    <img src="../../assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="" width="30" height="30">
+    <b>Throughline</b>&nbsp;<span>Operations</span>
+  </a>
+  <!-- plain anchor (not .nav-links): the shared mobile-menu CSS would hide a
+       .nav-links list behind a toggle this minimal nav doesn't have -->
+  <a href="https://calendar.app.google/Btg2atJDEB39V2Cg8" target="_blank" rel="noopener" class="nav-cta">Book the Walkthrough</a>
+</nav>
+
+<main id="main">
+
+<!-- CLIENT-CONTENT: hero -->
+<section class="plan-hero">
+  <div class="container">
+    <span class="eyebrow rv">Private gameplan · prepared for one company</span>
+    <h1 class="rv rv-1">AFD Film Logistics — Operations Gameplan</h1>
+    <p class="prepared rv rv-1">Prepared for Amare Dejene · July 2026</p>
+    <p class="body-copy rv rv-2" style="color:var(--chrome-dim);">Built by Throughline Operations from our July 3 conversation.</p>
+    <p class="tagline rv rv-2">Operational intelligence for a company that's about to get much bigger.</p>
+    <div class="hero-book rv rv-3">
+      <a href="https://calendar.app.google/Btg2atJDEB39V2Cg8" target="_blank" rel="noopener" class="btn btn-ghost">Book the Walkthrough ↗</a>
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: hero -->
+
+<div class="divider-line"></div>
+
+<!-- CLIENT-CONTENT: heard (Section 1) -->
+<section class="plan-section">
+  <div class="container">
+    <span class="section-label rv">01 / What we heard</span>
+    <h2 class="rv rv-1">This plan starts with your words, not our ideas.</h2>
+    <ul class="heard-list rv rv-1">
+      <li>Timesheets consume 4–8 hours every weekend — your highest-value time, spent on paperwork.</li>
+      <li>The inbox never empties. Real opportunities sit under routine noise.</li>
+      <li>Job details, driver info, and client history live in different places. Finding anything means remembering where it is.</li>
+      <li>Scheduling and driver outreach are manual, one call and one text at a time.</li>
+      <li>You have the ability to branch into traffic control here any time, and the international opportunities are real. AFD is growing whether the paperwork cooperates or not.</li>
+    </ul>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: heard -->
+
+<!-- CLIENT-CONTENT: costs (Section 2) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">02 / What that costs today</span>
+    <div class="cost-callout rv rv-1">
+      Timesheets alone: 4–8 hrs/weekend = <b>200–400 hours per year</b>. At even a modest value on your time, that's a five-figure annual leak — before counting missed inbox opportunities and hours lost to scattered information. The plan below is designed to hand those hours back.
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: costs -->
+
+<!-- CLIENT-CONTENT: options (Section 3) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">03 / Four ways in — Founding Client pricing</span>
+    <h2 class="rv rv-1">Pick an entry point, not an all-or-nothing decision.</h2>
+    <p class="body-copy rv rv-1">Every option credits fully toward the next. Start where the budget is comfortable; nothing you spend is lost when you level up.</p>
+
+    <div class="option-stack">
+      <div class="option-card rv">
+        <div class="option-head">
+          <div>
+            <span class="option-name">Option 1</span>
+            <div class="option-title">The Blueprint</div>
+          </div>
+          <div class="option-price">$1,999<small>fully credited toward any build within 30 days</small></div>
+        </div>
+        <p class="desc">A complete map before any construction: your operations documented end to end, the traffic-control launch plan &amp; requirements answered (certification, licensing, startup costs — with fixed quotes, not estimates), a cost teardown of what comparable services charge, and a 90-day roadmap.</p>
+        <p class="option-market">Market reference: operations assessments alone commonly run $2,500+.</p>
+      </div>
+
+      <div class="option-card start-here rv">
+        <div class="option-head">
+          <div>
+            <span class="option-name">Option 2</span>
+            <div class="option-title">Operations Core</div>
+            <span class="badge" style="margin-top:10px;">Where most companies start</span>
+          </div>
+          <div class="option-price">$3,999 + $597/mo</div>
+        </div>
+        <p class="desc">Your first operations assistant, hosted and managed, aimed at the three biggest leaks: the <b>timesheet killer</b> (speak or text the day's details — formatted timesheets come back done), <b>email triage</b> (the inbox sorted, prioritized, and drafted for your approval), and <b>one-button job logging</b> (every trip captured in one place, findable forever).</p>
+        <p class="option-market">Market reference: comparable single-workflow builds run $1,500–$5,000 setup + $500–$1,500/mo.</p>
+      </div>
+
+      <div class="option-card rv">
+        <div class="option-head">
+          <div>
+            <span class="option-name">Option 3</span>
+            <div class="option-title">Operations Assistant</div>
+          </div>
+          <div class="option-price">$8,999 + $997/mo</div>
+        </div>
+        <p class="desc">Everything in Core, grown into a full assistant: voice and text, scheduling support, driver outreach coordination, and an approval channel so nothing moves without a human yes.</p>
+        <p class="option-market">Market reference: multi-workflow systems run $5,000–$15,000 setup + $1,500–$3,000/mo.</p>
+      </div>
+
+      <div class="option-card rv">
+        <div class="option-head">
+          <div>
+            <span class="option-name">Option 4</span>
+            <div class="option-title">AFD Command System</div>
+          </div>
+          <div class="option-price">$19,999 + $1,497/mo</div>
+        </div>
+        <p class="desc">The full build: everything above, plus <b>AFD Mission Control</b> — your own branded dashboard where the whole operation lives — a <b>business memory system</b> (every job, client, and decision searchable and never lost), the complete <b>traffic-control launch package</b>, and the growth roadmap below.</p>
+        <p class="option-market">Market reference: comparable systems bundle at $30,000–$70,000 setup + $2,000–$5,000/mo.</p>
+      </div>
+    </div>
+
+    <div class="also-block rv">
+      <h3>Also available separately</h3>
+      <ul>
+        <li><b>Website refresh</b> — AFD's site brought current, quoted on request (from $2,499).</li>
+        <li><b>Cloud Convenience Stack — $1,000 flat.</b> If you just want the off-the-shelf route: we research and recommend the exact subscription stack for AFD, set up the accounts with you, and hand you the guide. Honest note: this path puts your data in the big cloud vendors' hands — convenient, capable, and the opposite of what our builds do. Some companies want exactly that; now you can see both roads priced.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: options -->
+
+<!-- CLIENT-CONTENT: roadmap (Section 4) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">04 / The growth roadmap — inside Option 4</span>
+    <h2 class="rv rv-1">Your operation, staffed up over time.</h2>
+    <p class="body-copy rv rv-1">Each piece added when you're ready:</p>
+    <div class="roadmap rv">
+      <div class="roadmap-step"><h4>Accounting workflow, first</h4><p>Receipts and invoices captured and categorized automatically as drafts — <b>you or Maedot review and approve everything.</b> You stay in control; the paperwork stops piling.</p></div>
+      <div class="roadmap-step"><h4>Asset research</h4><p>You set the goal and criteria; it scans and reports on purchases worth your attention.</p></div>
+      <div class="roadmap-step"><h4>Client acquisition</h4><p>Leads found, qualified, and queued for your review.</p></div>
+      <div class="roadmap-step"><h4>Social presence</h4><p>LinkedIn and social drafts, on brand, approved by you before anything posts.</p></div>
+    </div>
+    <p class="body-copy rv" style="margin-top:26px;">The dashboard and memory system are also the foundation for where AFD is headed internationally — one operational brain, wherever the work is.</p>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: roadmap -->
+
+<!-- CLIENT-CONTENT: not (Section 5) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">05 / What this is not</span>
+    <div class="not-block rv rv-1">
+      <ul>
+        <li><b>Not a replacement</b> for you, Maedot, or a single driver. This augments your team; it never replaces it.</li>
+        <li><b>Not software you have to learn.</b> You talk to it like a dispatcher.</li>
+        <li><b>Not a data grab.</b> Your systems are dedicated to AFD alone, handled PIPEDA-aligned, and nothing sends or spends without human approval.</li>
+        <li><b>Not a lock-in.</b> Month-to-month care; your data is always yours.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: not -->
+
+<!-- CLIENT-CONTENT: why (Section 6) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">06 / Why Throughline</span>
+    <div class="why-block rv rv-1">
+      <p>Fifteen years as a <b>DGC Location Manager</b> — Memory of a Killer, The Boys, Gen V, American Gods — running exactly this kind of logistics: crews, vehicles, permits, schedules, and paperwork that never sleeps. Throughline builds the operational systems we always needed on set, for companies like AFD that live the same reality.</p>
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: why -->
+
+<!-- CLIENT-CONTENT: next (Section 7) -->
+<section class="plan-section" style="padding-top:0;">
+  <div class="container">
+    <span class="section-label rv">07 / Next steps</span>
+    <ol class="next-steps rv rv-1">
+      <li>Read with notes — flag anything.</li>
+      <li>Book the walkthrough — the button below grabs a time that works.</li>
+      <li>Pick your way in. Every option credits upward; the Blueprint credit window is 30 days.</li>
+    </ol>
+    <div class="next-book rv rv-2">
+      <a href="https://calendar.app.google/Btg2atJDEB39V2Cg8" target="_blank" rel="noopener" class="btn btn-primary">Book the Walkthrough →</a>
+    </div>
+  </div>
+</section>
+<!-- /CLIENT-CONTENT: next -->
+
+</main>
+
+<footer class="plan-footer">
+  <div class="container">
+    <!-- CLIENT-CONTENT: footer-note -->
+    <p>Founding Client pricing prepared for AFD Film Logistics · July 2026 · Throughline Operations · <a href="https://throughlineoperations.com">throughlineoperations.com</a></p>
+    <!-- /CLIENT-CONTENT: footer-note -->
+  </div>
+</footer>
+
+<script src="../../assets/js/live-circuit.js" defer></script>
+<script src="../../assets/js/site.js" defer></script>
+</body>
+</html>
