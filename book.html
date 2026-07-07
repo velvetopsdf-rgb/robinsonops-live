@@ -47,7 +47,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand" aria-label="Throughline Operations — home">
+  <a href="index.html" class="nav-brand" aria-label="Throughline Operations home">
     <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="" width="30" height="30">
     <b>Throughline</b>&nbsp;<span>Operations</span>
   </a>
@@ -55,8 +55,10 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="hardware.html">Hardware</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="book.html" class="nav-cta" aria-current="page">Book a Call</a></li>
+    <li><a href="book.html" class="nav-cta" aria-current="page">Contact</a></li>
   </ul>
 </nav>
 
@@ -102,8 +104,8 @@
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Is this actually free?<span class="pm">+</span></button><div class="faq-a"><p>Yes. The discovery call is free, always. We use it to understand your operations and show you what we'd build. If we're a fit, we'll quote you on the spot. If not, you still leave with clarity on your biggest operational leak.</p></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">What if I'm not sure I need this?<span class="pm">+</span></button><div class="faq-a"><p>That's exactly who this call is for. If you're losing time to manual scheduling, chasing invoices, or your team runs on text messages and memory — there's something to fix. The call tells you what it is and whether it's worth fixing.</p></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need to prepare anything?<span class="pm">+</span></button><div class="faq-a"><p>No prep needed. Just show up ready to describe how your day-to-day operations work — how jobs get booked, how you invoice, how your team communicates. We'll ask the right questions.</p></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens after the call?<span class="pm">+</span></button><div class="faq-a"><p id="faqAfter">If you want to move forward, we'll recommend the right engagement based on your needs — from a fixed-scope Automation Sprint to a private AI deployment. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">Want the map before the call?<span class="pm">+</span></button><div class="faq-a"><p>The $999 Ops Blueprint is the paid version of this: a 45-minute mapping call plus a written 1-page SOP, a prioritized tool-stack recommendation, and a 90-day roadmap delivered in 5–7 days — credited toward a larger engagement booked within 30 days.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens after the call?<span class="pm">+</span></button><div class="faq-a"><p id="faqAfter">If you want to move forward, we'll recommend the right engagement based on your needs — from a fixed-scope Business Automation Buildout to a private AI deployment. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Want the map before the call?<span class="pm">+</span></button><div class="faq-a"><p>The $2,499 AI Operations Blueprint is the paid version of this: an operations mapping engagement, client-owned Operations Manual, and 90-day roadmap credited toward a build within 60 days.</p></div></div>
     </div>
   </div>
 </section>
@@ -115,30 +117,29 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <img src="assets/images/03_square_mark_TO_chrome.svg" alt="Throughline Operations">
-        <p>Operational intelligence that augments your team. Built on 15 years of film logistics, for Hamilton &amp; GTA businesses.</p>
+        <p>Operational intelligence for businesses that need cleaner workflows, owned context, and practical automation.</p>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Offers</h4>
         <ul>
-          <li><a href="services.html#sprints">Automation Sprints</a></li>
-          <li><a href="services.html#geo">GEO Audit + Retainer</a></li>
-          <li><a href="services.html#deployment">AI Deployment</a></li>
-          <li><a href="services.html#agents">AI Agent Builds</a></li>
-          <li><a href="services.html#websites">Website Builds</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="founder.html">Founder Launch System</a></li>
+          <li><a href="vip.html">Production Intelligence Concierge</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="book.html">Book a Call</a></li>
-          <li><a href="hardware.html">Local AI Hardware Guide</a></li>
+          <li><a href="book.html">Contact</a></li>
           <li><a href="privacy.html">Privacy &amp; Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-entity">© <span data-year>2026</span> Throughline Operations · Hamilton, Ontario · the operations-consulting practice of GTA CAN Vibe Productions Inc. · All prices in CAD.</p>
+      <p class="footer-entity">&copy; <span data-year>2026</span> Throughline Operations - Hamilton, Ontario - All prices in CAD.</p>
       <span class="footer-status"><span class="dot"></span> Command layer online</span>
     </div>
   </div>
@@ -164,16 +165,16 @@ const service = params.get('service');
 const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
 const SPRINTS = {
-  'sprint-essentials': { name: 'Automation Sprint — Essentials', price: '$2,499', blurb: 'one repeating leak, found and eliminated' },
-  'sprint-growth':     { name: 'Automation Sprint — Growth',     price: '$4,499', blurb: 'several connected workflows across one operational area' },
-  'sprint-operations': { name: 'Automation Sprint — Operations', price: '$6,999', blurb: 'intelligent systems across several operational areas' }
+  'blueprint': { name: 'AI Operations Blueprint', price: '$2,499', blurb: 'client-owned Operations Manual and 90-day roadmap' },
+  'buildout': { name: 'Business Automation Buildout', price: 'Starting at $9,999', blurb: '3-6 automations, SOPs, dashboards, and onboarding' },
+  'workforce-os': { name: 'AI Workforce Operating System', price: 'Typical $24,999-$49,999', blurb: 'owned intelligence layer with approval flows and reporting' }
 };
 const SERVICES = {
-  geo:        { name: 'GEO Audit + Retainer', price: '$1,499 audit (then $497–$1,497/mo)', blurb: 'getting you found when customers ask AI for a recommendation' },
-  deployment: { name: 'AI Deployment',        price: 'from $7,500 CAD — scoped after discovery', blurb: 'a private operational-intelligence system you own — on-prem, cloud, or hybrid' },
+  website: { name: 'Website and AI Visibility Refresh', price: 'from $2,499', blurb: 'refreshing the site and visibility layer inside the new ladder' },
+  deployment: { name: 'Private AI Command Center', price: 'Starting at $59,999', blurb: 'private deployment, hardware consulting, model routing, and executive dashboard' },
   agents:     { name: 'AI Agent Build',       price: 'scoped to your tools', blurb: 'a custom agent that handles a real operational task in your stack' },
   website:    { name: 'Website Build',        price: 'scoped to your build',  blurb: 'a fast, modern site built for both Google and AI search' },
-  blueprint:  { name: 'Ops Blueprint',        price: '$999', blurb: 'a paid 45-minute map of your business with a written SOP, tool stack, and 90-day roadmap' }
+  blueprint: { name: 'AI Operations Blueprint', price: '$2,499', blurb: 'client-owned Operations Manual and 90-day roadmap' }
 };
 
 if (tier && SPRINTS[tier]) {
