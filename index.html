@@ -87,6 +87,17 @@
 .hero-support { font-size: var(--t-lead); color: var(--chrome); margin-bottom: 12px; font-weight: 500; }
 .hero-desc { font-size: 17px; color: var(--chrome-dim); max-width: 520px; line-height: 1.7; margin-bottom: 32px; }
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-cta-row .btn { font-weight: 800; }
+.hero-cta-row .btn-primary {
+  text-shadow: 0 1px 14px rgba(0,0,0,0.24);
+  box-shadow: inset 0 1px 0 rgba(232,238,245,0.28), 0 18px 58px rgba(58,159,213,0.44);
+}
+.hero-cta-row .btn-ghost {
+  color: var(--chrome-bright);
+  border-color: rgba(232,238,245,0.34);
+  background: rgba(15,33,56,0.62);
+  box-shadow: inset 0 1px 0 rgba(232,238,245,0.08), 0 12px 38px rgba(0,0,0,0.28);
+}
 .hero-loc { margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.04em; }
 
 /* full-bleed hero background video: sits at -2 so the global Live Circuit
@@ -171,6 +182,36 @@
 
 .opal-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal-bright); border: 1px solid var(--edge-hi); border-radius: 999px; padding: 8px 14px; margin-top: 4px; transition: 0.2s; align-self: flex-start; }
 .opal-link:hover { background: rgba(58,159,213,0.1); border-color: var(--signal-bright); }
+
+.ai-visibility-cta {
+  font-weight: 800;
+  color: var(--chrome-bright) !important;
+  border-color: rgba(58,159,213,0.72) !important;
+  background:
+    linear-gradient(135deg, rgba(58,159,213,0.30), rgba(21,96,164,0.72)),
+    rgba(15,33,56,0.84) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(232,238,245,0.18),
+    0 0 0 1px rgba(58,159,213,0.20),
+    0 18px 52px rgba(21,96,164,0.38),
+    0 0 34px rgba(58,159,213,0.22);
+}
+.ai-visibility-cta:hover {
+  color: #fff !important;
+  border-color: var(--signal-bright) !important;
+  background:
+    linear-gradient(135deg, rgba(91,184,240,0.36), rgba(21,96,164,0.88)),
+    rgba(15,33,56,0.92) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(232,238,245,0.24),
+    0 0 0 1px rgba(58,159,213,0.34),
+    0 22px 64px rgba(21,96,164,0.46),
+    0 0 44px rgba(58,159,213,0.30);
+}
+.card-opal.ai-visibility-cta {
+  padding: 10px 16px;
+  margin-top: 8px;
+}
 
 .final-cta { text-align: center; }
 .final-cta h2 { font-size: var(--t-h1); font-weight: 800; margin-bottom: 14px; }
@@ -359,7 +400,7 @@
           <li>Prioritized SaaS / AI tool-stack recommendation</li>
           <li>90-day roadmap, delivered in 5–7 days</li>
         </ul>
-        <div class="blueprint-credit">Credited toward a larger engagement booked within 30 days.</div>
+        <div class="blueprint-credit">Credited toward any build booked within 60 days.</div>
       </div>
     </div>
   </div>
@@ -396,9 +437,9 @@
         <p class="svc-get"><b>What you get:</b> the full audit scored across six domains with a prioritized action plan. Retainers keep you visible month after month.</p>
         <div class="svc-foot">
           <span class="svc-price">Website and visibility work scoped into buildouts</span>
-          <a href="services.html#geo" class="svc-link">Explore GEO →</a>
+          <a href="services.html#refresh" class="svc-link">Explore visibility work →</a>
         </div>
-        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="card-opal">Check your AI visibility — free, 2 min ↗</a>
+        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="card-opal ai-visibility-cta">Check your AI visibility — free, 2 min ↗</a>
       </div>
 
       <a href="services.html#deployment" class="svc-card rv rv-2">
@@ -423,7 +464,7 @@
         </div>
       </a>
 
-      <a href="services.html#websites" class="svc-card rv rv-2">
+      <a href="services.html#refresh" class="svc-card rv rv-2">
         <span class="svc-num">05 / Web</span>
         <h3>Website Builds</h3>
         <p>Most trades websites are a business card from 2015. Yours should be a worker: findable by Google AND by the AI platforms your customers now ask, fast on a phone in a parking lot, and built to turn a visit into a booked call.</p>
@@ -463,7 +504,7 @@
       <img src="assets/images/hero-infographic.png" alt="Can AI find your business? Getting recommended by AI is roughly 30× harder than ranking in classic search." loading="lazy" width="1934" height="1080">
     </figure>
     <div style="text-align:center; margin-top:28px;">
-      <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="btn btn-ghost">Check your AI visibility — free, 2 min ↗</a>
+      <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="btn btn-ghost ai-visibility-cta">Check your AI visibility — free, 2 min ↗</a>
     </div>
   </div>
 </section>
@@ -673,7 +714,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const recText = document.getElementById('recText');
     if (waste < 11000) {
       recTitle.textContent = 'Recommended: AI Operations Blueprint · $2,499';
-      recText.textContent = 'A focused, fixed-scope sprint to eliminate one repeating operational leak. Best for solo operators and small teams. Not sure? The $2,499 AI Operations Blueprint maps it first.';
+      recText.textContent = 'A fixed-scope mapping engagement: a client-owned Operations Manual and 90-day roadmap, credited toward any build within 60 days. Best for solo operators and small teams.';
     } else if (waste < 26000) {
       recTitle.textContent = 'Recommended: Business Automation Buildout · from $9,999';
       recText.textContent = 'A larger sprint covering several connected workflows and integrations, documented so your team owns the system. Built for growing teams.';
