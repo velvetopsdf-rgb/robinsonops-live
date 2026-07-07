@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A1628">
 <title>Book a Free Discovery Call — Throughline Operations</title>
 <meta name="description" content="Book a free 15-minute discovery call. No pitch, no pressure — we find the work that repeats in your operation and show you what we'd build. Hamilton & GTA.">
 <link rel="canonical" href="https://throughlineoperations.com/book.html">
@@ -16,22 +17,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/throughline-v2.css?v=1">
+<link rel="stylesheet" href="assets/css/throughline-v2.css?v=4">
 <style>
-.page-hero { padding: 140px 0 24px; }
+.page-hero { padding: 128px 0 18px; }
 .page-hero h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -0.025em; }
 .page-hero p { font-size: var(--t-lead); color: var(--chrome-dim); max-width: 62ch; margin-top: 16px; }
-.book-grid { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(28px, 4vw, 52px); align-items: start; }
-@media (max-width: 900px) { .book-grid { grid-template-columns: 1fr; } }
+.book-layout-section { padding-top: 16px; }
+.book-layout-section .container { max-width: 1480px; }
+.book-grid { display: grid; grid-template-columns: minmax(280px, 430px) minmax(720px, 1fr); gap: clamp(28px, 3vw, 46px); align-items: start; }
+.book-call-panel { max-width: 430px; }
+@media (max-width: 1180px) { .book-grid { grid-template-columns: 1fr; } .book-call-panel { max-width: 760px; } }
 .call-step { display: flex; gap: 16px; margin-bottom: 22px; }
 .call-step .n { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--edge-hi); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 600; color: var(--signal-bright); background: var(--navy); }
 .call-step h3 { font-size: 17px; font-weight: 700; color: var(--chrome-bright); margin-bottom: 4px; }
 .call-step p { font-size: 14px; color: var(--chrome-dim); line-height: 1.6; }
 .call-note { border: 1px solid var(--edge); border-radius: var(--radius); background: var(--navy); padding: 20px; font-size: 14px; color: var(--chrome); line-height: 1.9; margin-top: 12px; }
 .call-note b { color: var(--chrome-bright); }
-.calendly-wrap { border: 1px solid var(--edge-hi); border-radius: var(--radius-lg); overflow: hidden; background: var(--navy); box-shadow: 0 24px 70px rgba(0,0,0,0.4); }
-.calendly-wrap iframe { width: 100%; height: 720px; border: 0; display: block; }
-.calendly-fallback { padding: 14px 18px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); border-top: 1px solid var(--edge); }
+.appointment-wrap { border: 1px solid var(--edge-hi); border-radius: var(--radius-lg); overflow: hidden; background: var(--navy); box-shadow: 0 24px 70px rgba(0,0,0,0.4); }
+.appointment-wrap iframe { width: 100%; height: clamp(920px, 86vh, 1080px); min-height: 920px; border: 0; display: block; background: #fff; }
+@media (max-width: 640px) { .appointment-wrap iframe { height: 840px; min-height: 840px; } }
+.appointment-fallback { padding: 14px 18px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); border-top: 1px solid var(--edge); }
 .book-faq { max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
 .faq-item { border: 1px solid var(--edge); border-radius: var(--radius); background: var(--navy); overflow: hidden; }
 .faq-q { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 18px 20px; font-family: var(--font-body); font-size: 16px; font-weight: 600; color: var(--chrome-bright); display: flex; justify-content: space-between; gap: 16px; }
@@ -40,6 +45,27 @@
 .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease-out); }
 .faq-a p { padding: 0 20px 18px; font-size: 15px; color: var(--chrome-dim); line-height: 1.65; }
 </style>
+<script type="application/ld+json" data-v3-schema>
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contact",
+  "headline": "Contact | Throughline Operations",
+  "description": "Book a discovery call with Throughline Operations for AI operations, automation, private deployment, or founder launch support.",
+  "url": "https://throughlineoperations.com/book.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/",
+    "logo": "https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -47,7 +73,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand" aria-label="Throughline Operations — home">
+  <a href="index.html" class="nav-brand" aria-label="Throughline Operations home">
     <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="" width="30" height="30">
     <b>Throughline</b>&nbsp;<span>Operations</span>
   </a>
@@ -55,8 +81,10 @@
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="hardware.html">Hardware</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="book.html" class="nav-cta" aria-current="page">Book a Call</a></li>
+    <li><a href="book.html" class="nav-cta" aria-current="page">Contact</a></li>
   </ul>
 </nav>
 
@@ -70,10 +98,10 @@
   </div>
 </section>
 
-<section class="section" style="padding-top:24px;">
+<section class="section book-layout-section">
   <div class="container">
     <div class="book-grid">
-      <div class="rv">
+      <div class="book-call-panel rv">
         <h2 style="font-family:var(--font-display);font-weight:800;font-size:var(--t-h3);margin-bottom:22px;color:var(--chrome-bright);">What happens on the call</h2>
         <div class="call-step"><div class="n">1</div><div><h3>Quick snapshot</h3><p>You tell us how your business runs right now — scheduling, invoicing, customer communication, team coordination. Two minutes, no prep needed.</p></div></div>
         <div class="call-step"><div class="n">2</div><div><h3>Find the throughline</h3><p id="step2Desc">We pinpoint the repeating work costing you time and money. Missed calls, lost invoices, manual scheduling — whatever runs through every day, we find it.</p></div></div>
@@ -85,11 +113,13 @@
         </div>
       </div>
 
-      <div class="calendly-wrap rv rv-1">
+      <div class="appointment-wrap rv rv-1">
+        <!-- Google Calendar Appointment Scheduling begin -->
         <iframe
-          src="https://calendly.com/robinsonops/15min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=050B14&text_color=C8CDD3&primary_color=3a9fd5"
-          title="Book a call with Throughline Operations" loading="lazy"></iframe>
-        <p class="calendly-fallback">Booking calendar not loading? <a href="https://calendly.com/robinsonops/15min" target="_blank" rel="noopener">Open it in a new tab →</a></p>
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1LTtCWMu7Mb0DNLwyu_FJHn7PbBjbFOLeRrbNDFluQcdqU6xCM_VxFTFl8FgdRGwpjrGBGbTKL?gv=true"
+          title="Book a call with Throughline Operations" style="border: 0" width="100%" height="960" frameborder="0" loading="lazy"></iframe>
+        <!-- end Google Calendar Appointment Scheduling -->
+        <p class="appointment-fallback">Booking calendar not loading? <a href="https://calendar.app.google/bv29qHU3MbGhGXsy5" target="_blank" rel="noopener">Open booking page</a>.</p>
       </div>
     </div>
   </div>
@@ -102,8 +132,8 @@
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Is this actually free?<span class="pm">+</span></button><div class="faq-a"><p>Yes. The discovery call is free, always. We use it to understand your operations and show you what we'd build. If we're a fit, we'll quote you on the spot. If not, you still leave with clarity on your biggest operational leak.</p></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">What if I'm not sure I need this?<span class="pm">+</span></button><div class="faq-a"><p>That's exactly who this call is for. If you're losing time to manual scheduling, chasing invoices, or your team runs on text messages and memory — there's something to fix. The call tells you what it is and whether it's worth fixing.</p></div></div>
       <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need to prepare anything?<span class="pm">+</span></button><div class="faq-a"><p>No prep needed. Just show up ready to describe how your day-to-day operations work — how jobs get booked, how you invoice, how your team communicates. We'll ask the right questions.</p></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens after the call?<span class="pm">+</span></button><div class="faq-a"><p id="faqAfter">If you want to move forward, we'll recommend the right engagement based on your needs — from a fixed-scope Automation Sprint to a private AI deployment. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div></div>
-      <div class="faq-item"><button class="faq-q" aria-expanded="false">Want the map before the call?<span class="pm">+</span></button><div class="faq-a"><p>The $999 Ops Blueprint is the paid version of this: a 45-minute mapping call plus a written 1-page SOP, a prioritized tool-stack recommendation, and a 90-day roadmap delivered in 5–7 days — credited toward a larger engagement booked within 30 days.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens after the call?<span class="pm">+</span></button><div class="faq-a"><p id="faqAfter">If you want to move forward, we'll recommend the right engagement based on your needs — from a fixed-scope Business Automation Buildout to a private AI deployment. You'll know the exact scope and price before you commit. If you're not ready, no follow-up pressure.</p></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">Want the map before the call?<span class="pm">+</span></button><div class="faq-a"><p>The $2,499 AI Operations Blueprint is the paid version of this: an operations mapping engagement, client-owned Operations Manual, and 90-day roadmap credited toward a build within 60 days.</p></div></div>
     </div>
   </div>
 </section>
@@ -115,37 +145,36 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <img src="assets/images/03_square_mark_TO_chrome.svg" alt="Throughline Operations">
-        <p>Operational intelligence that augments your team. Built on 15 years of film logistics, for Hamilton &amp; GTA businesses.</p>
+        <p>Operational intelligence for businesses that need cleaner workflows, owned context, and practical automation.</p>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Offers</h4>
         <ul>
-          <li><a href="services.html#sprints">Automation Sprints</a></li>
-          <li><a href="services.html#geo">GEO Audit + Retainer</a></li>
-          <li><a href="services.html#deployment">AI Deployment</a></li>
-          <li><a href="services.html#agents">AI Agent Builds</a></li>
-          <li><a href="services.html#websites">Website Builds</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="founder.html">Founder Launch System</a></li>
+          <li><a href="vip.html">Production Intelligence Concierge</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="book.html">Book a Call</a></li>
-          <li><a href="hardware.html">Local AI Hardware Guide</a></li>
+          <li><a href="book.html">Contact</a></li>
           <li><a href="privacy.html">Privacy &amp; Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-entity">© <span data-year>2026</span> Throughline Operations · Hamilton, Ontario · the operations-consulting practice of GTA CAN Vibe Productions Inc. · All prices in CAD.</p>
+      <p class="footer-entity">&copy; <span data-year>2026</span> Throughline Operations - Hamilton, Ontario - All prices in CAD.</p>
       <span class="footer-status"><span class="dot"></span> Command layer online</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/live-circuit.js?v=1" defer></script>
-<script src="assets/js/site.js?v=1" defer></script>
+<script src="assets/js/site.js?v=4" defer></script>
 <script>
 /* FAQ accordion */
 document.querySelectorAll('.faq-q').forEach((q) => {
@@ -164,16 +193,15 @@ const service = params.get('service');
 const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
 const SPRINTS = {
-  'sprint-essentials': { name: 'Automation Sprint — Essentials', price: '$2,499', blurb: 'one repeating leak, found and eliminated' },
-  'sprint-growth':     { name: 'Automation Sprint — Growth',     price: '$4,499', blurb: 'several connected workflows across one operational area' },
-  'sprint-operations': { name: 'Automation Sprint — Operations', price: '$6,999', blurb: 'intelligent systems across several operational areas' }
+  'blueprint': { name: 'AI Operations Blueprint', price: '$2,499', blurb: 'client-owned Operations Manual and 90-day roadmap' },
+  'buildout': { name: 'Business Automation Buildout', price: 'Starting at $9,999', blurb: '3-6 automations, SOPs, dashboards, and onboarding' },
+  'workforce-os': { name: 'AI Workforce Operating System', price: 'Typical $24,999-$49,999', blurb: 'owned intelligence layer with approval flows and reporting' }
 };
 const SERVICES = {
-  geo:        { name: 'GEO Audit + Retainer', price: '$1,499 audit (then $497–$1,497/mo)', blurb: 'getting you found when customers ask AI for a recommendation' },
-  deployment: { name: 'AI Deployment',        price: 'from $7,500 CAD — scoped after discovery', blurb: 'a private operational-intelligence system you own — on-prem, cloud, or hybrid' },
+  website:    { name: 'Website and AI Visibility Refresh', price: 'from $2,499', blurb: 'refreshing the site and visibility layer inside the new ladder' },
+  deployment: { name: 'Private AI Command Center', price: 'Starting at $59,999', blurb: 'private deployment, hardware consulting, model routing, and executive dashboard' },
   agents:     { name: 'AI Agent Build',       price: 'scoped to your tools', blurb: 'a custom agent that handles a real operational task in your stack' },
-  website:    { name: 'Website Build',        price: 'scoped to your build',  blurb: 'a fast, modern site built for both Google and AI search' },
-  blueprint:  { name: 'Ops Blueprint',        price: '$999', blurb: 'a paid 45-minute map of your business with a written SOP, tool stack, and 90-day roadmap' }
+  blueprint:  { name: 'AI Operations Blueprint', price: '$2,499', blurb: 'client-owned Operations Manual and 90-day roadmap' }
 };
 
 if (tier && SPRINTS[tier]) {

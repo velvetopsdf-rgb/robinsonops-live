@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A1628">
 <title>Throughline Operations — Operational Intelligence | Hamilton &amp; GTA</title>
 <meta name="description" content="Operational intelligence that augments your team. We find the work that repeats and build systems that run it for you. Built on 15 years of film logistics. Hamilton &amp; GTA.">
 <link rel="canonical" href="https://throughlineoperations.com/index.html">
@@ -16,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/throughline-v2.css?v=1">
+<link rel="stylesheet" href="assets/css/throughline-v2.css?v=4">
 <style>
 /* ═══════════ HOME — booting hero (full-bleed video background) ═══════════ */
 .hero {
@@ -86,6 +87,17 @@
 .hero-support { font-size: var(--t-lead); color: var(--chrome); margin-bottom: 12px; font-weight: 500; }
 .hero-desc { font-size: 17px; color: var(--chrome-dim); max-width: 520px; line-height: 1.7; margin-bottom: 32px; }
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero-cta-row .btn { font-weight: 800; }
+.hero-cta-row .btn-primary {
+  text-shadow: 0 1px 14px rgba(0,0,0,0.24);
+  box-shadow: inset 0 1px 0 rgba(232,238,245,0.28), 0 18px 58px rgba(58,159,213,0.44);
+}
+.hero-cta-row .btn-ghost {
+  color: var(--chrome-bright);
+  border-color: rgba(232,238,245,0.34);
+  background: rgba(15,33,56,0.62);
+  box-shadow: inset 0 1px 0 rgba(232,238,245,0.08), 0 12px 38px rgba(0,0,0,0.28);
+}
 .hero-loc { margin-top: 22px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.04em; }
 
 /* full-bleed hero background video: sits at -2 so the global Live Circuit
@@ -171,12 +183,63 @@
 .opal-link { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--signal-bright); border: 1px solid var(--edge-hi); border-radius: 999px; padding: 8px 14px; margin-top: 4px; transition: 0.2s; align-self: flex-start; }
 .opal-link:hover { background: rgba(58,159,213,0.1); border-color: var(--signal-bright); }
 
+.ai-visibility-cta {
+  font-weight: 800;
+  color: var(--chrome-bright) !important;
+  border-color: rgba(58,159,213,0.72) !important;
+  background:
+    linear-gradient(135deg, rgba(58,159,213,0.30), rgba(21,96,164,0.72)),
+    rgba(15,33,56,0.84) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(232,238,245,0.18),
+    0 0 0 1px rgba(58,159,213,0.20),
+    0 18px 52px rgba(21,96,164,0.38),
+    0 0 34px rgba(58,159,213,0.22);
+}
+.ai-visibility-cta:hover {
+  color: #fff !important;
+  border-color: var(--signal-bright) !important;
+  background:
+    linear-gradient(135deg, rgba(91,184,240,0.36), rgba(21,96,164,0.88)),
+    rgba(15,33,56,0.92) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(232,238,245,0.24),
+    0 0 0 1px rgba(58,159,213,0.34),
+    0 22px 64px rgba(21,96,164,0.46),
+    0 0 44px rgba(58,159,213,0.30);
+}
+.card-opal.ai-visibility-cta {
+  padding: 10px 16px;
+  margin-top: 8px;
+}
+
 .final-cta { text-align: center; }
 .final-cta h2 { font-size: var(--t-h1); font-weight: 800; margin-bottom: 14px; }
 .final-cta p { font-size: var(--t-lead); color: var(--chrome-dim); max-width: 540px; margin: 0 auto 30px; }
 .final-cta .note { margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.03em; }
 .geo-note { font-family: var(--font-mono); font-size: 11px; color: var(--chrome-dim); text-align: center; margin-top: 22px; letter-spacing: 0.02em; }
 </style>
+<script type="application/ld+json" data-v3-schema>
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Throughline Operations",
+  "headline": "Throughline Operations | Operational Intelligence",
+  "description": "Operational intelligence for Hamilton and GTA businesses: owned systems, practical automation, and AI operations management that augments your team.",
+  "url": "https://throughlineoperations.com/index.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/",
+    "logo": "https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -185,7 +248,7 @@
 
 <!-- ═══════════ NAV ═══════════ -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-brand" aria-label="Throughline Operations — home">
+  <a href="index.html" class="nav-brand" aria-label="Throughline Operations home">
     <img src="assets/images/01_square_mark_TO_blue_throughline_transparent.svg" alt="" width="30" height="30">
     <b>Throughline</b>&nbsp;<span>Operations</span>
   </a>
@@ -193,8 +256,10 @@
   <ul class="nav-links">
     <li><a href="index.html" aria-current="page">Home</a></li>
     <li><a href="services.html">Services</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="hardware.html">Hardware</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="book.html" class="nav-cta">Book a Call</a></li>
+    <li><a href="book.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -242,6 +307,34 @@
   <span class="hero-media-tag boot b7" aria-hidden="true"><span class="dot"></span> Chaos · resolving into a throughline</span>
   <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
 </section>
+
+<section class="command-console-section" aria-labelledby="commandConsoleHeading">
+  <div class="container">
+    <div class="command-console rv" data-command-console>
+      <div class="command-console-bar">
+        <span class="command-console-led">Typical morning simulation</span>
+        <span>Operational intelligence preview</span>
+      </div>
+      <div class="command-console-body">
+        <div class="command-copy">
+          <h2 id="commandConsoleHeading">Watch a workday find its throughline.</h2>
+          <p>This scripted console shows how repeat work becomes visible, reviewable, and easier to hand off while people keep approvals, relationships, and judgment.</p>
+        </div>
+        <div class="command-window" role="region" aria-label="Operations console simulation">
+          <div class="command-lines" aria-live="polite" data-console-output></div>
+          <span class="command-cursor" aria-hidden="true"></span>
+          <div class="command-prompts" aria-label="Console prompts">
+            <button type="button" data-console-prompt="hours">Where do businesses like mine lose hours?</button>
+            <button type="button" data-console-prompt="week">What does week one look like?</button>
+            <button type="button" data-console-prompt="human">What stays human?</button>
+          </div>
+          <a class="btn btn-primary command-cta" href="book.html">Book the 15-minute call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═══════════ PROBLEM BEAT ═══════════ -->
 <section class="section beat">
@@ -300,14 +393,14 @@
         <a href="book.html" class="btn btn-primary" style="margin-top:22px;">Book the Blueprint →</a>
       </div>
       <div class="blueprint-side">
-        <div class="blueprint-price">$999<span> CAD</span></div>
+        <div class="blueprint-price">$2,499<span> CAD</span></div>
         <ul class="blueprint-list">
           <li>45-minute operations mapping call</li>
           <li>1-page SOP for your core workflow</li>
           <li>Prioritized SaaS / AI tool-stack recommendation</li>
           <li>90-day roadmap, delivered in 5–7 days</li>
         </ul>
-        <div class="blueprint-credit">Credited toward a larger engagement booked within 30 days.</div>
+        <div class="blueprint-credit">Credited toward any build booked within 60 days.</div>
       </div>
     </div>
   </div>
@@ -327,11 +420,11 @@
           <span class="svc-num">01 / Automation</span>
           <span class="badge">Most common start</span>
         </div>
-        <h3>Automation Sprints</h3>
+        <h3>Business Automation Buildouts</h3>
         <p>You know the pile of work that eats your evenings. In three weeks we find the work that repeats, build a system that does it automatically, and hand you back your hours — fixed price, fixed scope, no surprise bill.</p>
         <p class="svc-get"><b>What you get:</b> a working automation built and tested in your real tools, with a plain-English handbook and a walkthrough so your team runs it without us.</p>
         <div class="svc-foot">
-          <span class="svc-price">$2,499 / $4,499 / $6,999 CAD</span>
+          <span class="svc-price">Buildouts from $9,999 CAD</span>
           <a href="services.html#sprints" class="svc-link">See the sprint →</a>
         </div>
         <a href="https://opal.google/app/1l8r87AUrYgwJrl-T87pyC1-mm6s_73_l" target="_blank" rel="noopener" class="card-opal">Open the Leak Finder app — free ↗</a>
@@ -339,14 +432,14 @@
 
       <div class="svc-card rv rv-1">
         <span class="svc-num">02 / Visibility</span>
-        <h3>GEO Audit + Retainer</h3>
+        <h3>Website and AI Visibility Refresh</h3>
         <p>45% of customers now ask AI to recommend a local business — and almost nobody shows up. We test exactly what AI says about you across every major platform, find why you're missing, and hand you the fix list, ranked.</p>
         <p class="svc-get"><b>What you get:</b> the full audit scored across six domains with a prioritized action plan. Retainers keep you visible month after month.</p>
         <div class="svc-foot">
-          <span class="svc-price">$1,499 audit · $497–$1,497/mo</span>
-          <a href="services.html#geo" class="svc-link">Explore GEO →</a>
+          <span class="svc-price">Website and visibility work scoped into buildouts</span>
+          <a href="services.html#refresh" class="svc-link">Explore visibility work →</a>
         </div>
-        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="card-opal">Check your AI visibility — free, 2 min ↗</a>
+        <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="card-opal ai-visibility-cta">Check your AI visibility — free, 2 min ↗</a>
       </div>
 
       <a href="services.html#deployment" class="svc-card rv rv-2">
@@ -355,7 +448,7 @@
         <p>Your own private operational intelligence — set up where YOU want it. On a machine in your office, in the cloud, or both. Because it can run entirely on hardware inside your building, your customer data never has to leave the premises.</p>
         <p class="svc-get"><b>What you get:</b> a working private system scoped to your operation — on-premises, cloud, hybrid, or full hardware install.</p>
         <div class="svc-foot">
-          <span class="svc-price">Starts from $7,500 CAD — scoped after discovery</span>
+          <span class="svc-price">Private AI Command Center starts at $59,999 CAD</span>
           <span class="svc-link">Sovereignty &amp; options →</span>
         </div>
       </a>
@@ -371,7 +464,7 @@
         </div>
       </a>
 
-      <a href="services.html#websites" class="svc-card rv rv-2">
+      <a href="services.html#refresh" class="svc-card rv rv-2">
         <span class="svc-num">05 / Web</span>
         <h3>Website Builds</h3>
         <p>Most trades websites are a business card from 2015. Yours should be a worker: findable by Google AND by the AI platforms your customers now ask, fast on a phone in a parking lot, and built to turn a visit into a booked call.</p>
@@ -411,7 +504,7 @@
       <img src="assets/images/hero-infographic.png" alt="Can AI find your business? Getting recommended by AI is roughly 30× harder than ranking in classic search." loading="lazy" width="1934" height="1080">
     </figure>
     <div style="text-align:center; margin-top:28px;">
-      <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="btn btn-ghost">Check your AI visibility — free, 2 min ↗</a>
+      <a href="https://opal.google/app/1hIbFMtTSAqeh8qseIF_1jXHIg0GjYL4u" target="_blank" rel="noopener" class="btn btn-ghost ai-visibility-cta">Check your AI visibility — free, 2 min ↗</a>
     </div>
   </div>
 </section>
@@ -527,37 +620,36 @@
     <div class="footer-top">
       <div class="footer-brand-block">
         <img src="assets/images/03_square_mark_TO_chrome.svg" alt="Throughline Operations">
-        <p>Operational intelligence that augments your team. Built on 15 years of film logistics, for Hamilton &amp; GTA businesses.</p>
+        <p>Operational intelligence for businesses that need cleaner workflows, owned context, and practical automation.</p>
       </div>
       <div class="footer-col">
-        <h4>Services</h4>
+        <h4>Offers</h4>
         <ul>
-          <li><a href="services.html#sprints">Automation Sprints</a></li>
-          <li><a href="services.html#geo">GEO Audit + Retainer</a></li>
-          <li><a href="services.html#deployment">AI Deployment</a></li>
-          <li><a href="services.html#agents">AI Agent Builds</a></li>
-          <li><a href="services.html#websites">Website Builds</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="hardware.html">Hardware</a></li>
+          <li><a href="founder.html">Founder Launch System</a></li>
+          <li><a href="vip.html">Production Intelligence Concierge</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="book.html">Book a Call</a></li>
-          <li><a href="hardware.html">Local AI Hardware Guide</a></li>
+          <li><a href="book.html">Contact</a></li>
           <li><a href="privacy.html">Privacy &amp; Terms</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-entity">© <span data-year>2026</span> Throughline Operations · Hamilton, Ontario · the operations-consulting practice of GTA CAN Vibe Productions Inc. · All prices in CAD.</p>
+      <p class="footer-entity">&copy; <span data-year>2026</span> Throughline Operations - Hamilton, Ontario - the operations-consulting practice of GTA CAN Vibe Productions Inc. - All prices in CAD.</p>
       <span class="footer-status"><span class="dot"></span> Command layer online</span>
     </div>
   </div>
 </footer>
 
 <script src="assets/js/live-circuit.js?v=1" defer></script>
-<script src="assets/js/site.js?v=1" defer></script>
+<script src="assets/js/site.js?v=4" defer></script>
 <script>
 /* booting hero */
 window.addEventListener('DOMContentLoaded', () => {
@@ -621,17 +713,111 @@ window.addEventListener('DOMContentLoaded', () => {
     const recTitle = document.getElementById('recTitle');
     const recText = document.getElementById('recText');
     if (waste < 11000) {
-      recTitle.textContent = 'Recommended: Automation Sprint — Essentials · $2,499';
-      recText.textContent = 'A focused, fixed-scope sprint to eliminate one repeating operational leak. Best for solo operators and small teams. Not sure? The $999 Ops Blueprint maps it first.';
+      recTitle.textContent = 'Recommended: AI Operations Blueprint · $2,499';
+      recText.textContent = 'A fixed-scope mapping engagement: a client-owned Operations Manual and 90-day roadmap, credited toward any build within 60 days. Best for solo operators and small teams.';
     } else if (waste < 26000) {
-      recTitle.textContent = 'Recommended: Automation Sprint — Growth · $4,499';
+      recTitle.textContent = 'Recommended: Business Automation Buildout · from $9,999';
       recText.textContent = 'A larger sprint covering several connected workflows and integrations, documented so your team owns the system. Built for growing teams.';
     } else {
-      recTitle.textContent = 'Recommended: Automation Sprint — Operations · $6,999';
+      recTitle.textContent = 'Recommended: AI Workforce Operating System · from $24,999';
       recText.textContent = 'Our deepest sprint tier — intelligent systems across several operational areas, plus a path to ongoing support. For teams with real volume.';
     }
   }
 })();
 </script>
+
+<script data-section-s-script>
+(() => {
+  const root = document.querySelector('[data-command-console]');
+  if (!root) return;
+  const output = root.querySelector('[data-console-output]');
+  const buttons = Array.from(root.querySelectorAll('[data-console-prompt]'));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running = false;
+  const morning = [
+    '> opening a typical morning queue',
+    '> scanning inbox... 14 new leads',
+    '> 3 flagged: quote requested',
+    '> follow-ups drafted for review',
+    '> schedule conflict found',
+    '> 2 crews rerouted for approval',
+    '> next actions waiting on the team'
+  ];
+  const replies = {
+    hours: [
+      '> repeated intake gets copied between tools',
+      '> quote requests wait for a human to notice',
+      '> schedule changes ripple through the day',
+      '> the first fix is visibility, then handoff'
+    ],
+    week: [
+      '> map the repeat work',
+      '> choose one workflow worth fixing first',
+      '> build a reviewable path in existing tools',
+      '> hand over the playbook and next roadmap'
+    ],
+    human: [
+      '> approvals stay human',
+      '> client relationships stay human',
+      '> judgment stays with the team',
+      '> the console carries repetitive load only'
+    ]
+  };
+
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const lineEl = () => {
+    const line = document.createElement('div');
+    line.className = 'command-line';
+    output.appendChild(line);
+    return line;
+  };
+  const renderLine = async (text) => {
+    const line = lineEl();
+    if (reduce) {
+      line.textContent = text;
+      return;
+    }
+    for (const ch of text) {
+      line.textContent += ch;
+      await wait(20 + Math.random() * 15);
+    }
+  };
+  const runLines = async (lines) => {
+    running = true;
+    root.classList.remove('ready');
+    output.innerHTML = '';
+    for (const line of lines) {
+      await renderLine(line);
+      if (!reduce) await wait(120 + Math.random() * 130);
+    }
+    root.classList.add('ready');
+    running = false;
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (running) return;
+      const key = button.getAttribute('data-console-prompt');
+      runLines(replies[key] || morning);
+    });
+  });
+
+  const start = () => runLines(morning);
+  if (reduce || !('IntersectionObserver' in window)) {
+    start();
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          start();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(root);
+  }
+})();
+</script>
+
 </body>
 </html>
