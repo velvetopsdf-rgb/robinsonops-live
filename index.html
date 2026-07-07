@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0A1628">
 <title>Throughline Operations — Operational Intelligence | Hamilton &amp; GTA</title>
 <meta name="description" content="Operational intelligence that augments your team. We find the work that repeats and build systems that run it for you. Built on 15 years of film logistics. Hamilton &amp; GTA.">
 <link rel="canonical" href="https://throughlineoperations.com/index.html">
@@ -16,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/throughline-v2.css?v=1">
+<link rel="stylesheet" href="assets/css/throughline-v2.css?v=3">
 <style>
 /* ═══════════ HOME — booting hero (full-bleed video background) ═══════════ */
 .hero {
@@ -177,6 +178,27 @@
 .final-cta .note { margin-top: 14px; font-family: var(--font-mono); font-size: 12px; color: var(--chrome-dim); letter-spacing: 0.03em; }
 .geo-note { font-family: var(--font-mono); font-size: 11px; color: var(--chrome-dim); text-align: center; margin-top: 22px; letter-spacing: 0.02em; }
 </style>
+<script type="application/ld+json" data-v3-schema>
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Throughline Operations",
+  "headline": "Throughline Operations | Operational Intelligence",
+  "description": "Operational intelligence for Hamilton and GTA businesses: owned systems, practical automation, and AI operations management that augments your team.",
+  "url": "https://throughlineoperations.com/index.html",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Throughline Operations",
+    "url": "https://throughlineoperations.com/",
+    "logo": "https://throughlineoperations.com/assets/images/01_square_mark_TO_blue_throughline_transparent.svg"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -244,6 +266,34 @@
   <span class="hero-media-tag boot b7" aria-hidden="true"><span class="dot"></span> Chaos · resolving into a throughline</span>
   <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
 </section>
+
+<section class="command-console-section" aria-labelledby="commandConsoleHeading">
+  <div class="container">
+    <div class="command-console rv" data-command-console>
+      <div class="command-console-bar">
+        <span class="command-console-led">Typical morning simulation</span>
+        <span>Operational intelligence preview</span>
+      </div>
+      <div class="command-console-body">
+        <div class="command-copy">
+          <h2 id="commandConsoleHeading">Watch a workday find its throughline.</h2>
+          <p>This scripted console shows how repeat work becomes visible, reviewable, and easier to hand off while people keep approvals, relationships, and judgment.</p>
+        </div>
+        <div class="command-window" role="region" aria-label="Operations console simulation">
+          <div class="command-lines" aria-live="polite" data-console-output></div>
+          <span class="command-cursor" aria-hidden="true"></span>
+          <div class="command-prompts" aria-label="Console prompts">
+            <button type="button" data-console-prompt="hours">Where do businesses like mine lose hours?</button>
+            <button type="button" data-console-prompt="week">What does week one look like?</button>
+            <button type="button" data-console-prompt="human">What stays human?</button>
+          </div>
+          <a class="btn btn-primary command-cta" href="book.html">Book the 15-minute call &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ═══════════ PROBLEM BEAT ═══════════ -->
 <section class="section beat">
@@ -558,7 +608,7 @@
 </footer>
 
 <script src="assets/js/live-circuit.js?v=1" defer></script>
-<script src="assets/js/site.js?v=1" defer></script>
+<script src="assets/js/site.js?v=3" defer></script>
 <script>
 /* booting hero */
 window.addEventListener('DOMContentLoaded', () => {
@@ -634,5 +684,99 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 })();
 </script>
+
+<script data-section-s-script>
+(() => {
+  const root = document.querySelector('[data-command-console]');
+  if (!root) return;
+  const output = root.querySelector('[data-console-output]');
+  const buttons = Array.from(root.querySelectorAll('[data-console-prompt]'));
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let running = false;
+  const morning = [
+    '> opening a typical morning queue',
+    '> scanning inbox... 14 new leads',
+    '> 3 flagged: quote requested',
+    '> follow-ups drafted for review',
+    '> schedule conflict found',
+    '> 2 crews rerouted for approval',
+    '> next actions waiting on the team'
+  ];
+  const replies = {
+    hours: [
+      '> repeated intake gets copied between tools',
+      '> quote requests wait for a human to notice',
+      '> schedule changes ripple through the day',
+      '> the first fix is visibility, then handoff'
+    ],
+    week: [
+      '> map the repeat work',
+      '> choose one workflow worth fixing first',
+      '> build a reviewable path in existing tools',
+      '> hand over the playbook and next roadmap'
+    ],
+    human: [
+      '> approvals stay human',
+      '> client relationships stay human',
+      '> judgment stays with the team',
+      '> the console carries repetitive load only'
+    ]
+  };
+
+  const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+  const lineEl = () => {
+    const line = document.createElement('div');
+    line.className = 'command-line';
+    output.appendChild(line);
+    return line;
+  };
+  const renderLine = async (text) => {
+    const line = lineEl();
+    if (reduce) {
+      line.textContent = text;
+      return;
+    }
+    for (const ch of text) {
+      line.textContent += ch;
+      await wait(20 + Math.random() * 15);
+    }
+  };
+  const runLines = async (lines) => {
+    running = true;
+    root.classList.remove('ready');
+    output.innerHTML = '';
+    for (const line of lines) {
+      await renderLine(line);
+      if (!reduce) await wait(120 + Math.random() * 130);
+    }
+    root.classList.add('ready');
+    running = false;
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      if (running) return;
+      const key = button.getAttribute('data-console-prompt');
+      runLines(replies[key] || morning);
+    });
+  });
+
+  const start = () => runLines(morning);
+  if (reduce || !('IntersectionObserver' in window)) {
+    start();
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          start();
+          io.disconnect();
+        }
+      });
+    }, { threshold: 0.35 });
+    io.observe(root);
+  }
+})();
+</script>
+
 </body>
 </html>
