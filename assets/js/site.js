@@ -23,6 +23,14 @@
     }
   }
 
+  /* ---- auto-tag v3 surfaces so section entries fade in on untagged pages ---- */
+  document.querySelectorAll('.section .section-head, .section .v3-card, .section .v3-panel, .section .v3-table, .hardware-tier-head').forEach((el) => {
+    if (el.classList.contains('rv') || el.closest('.rv')) return;
+    el.classList.add('rv');
+    const i = Array.prototype.indexOf.call(el.parentElement.children, el);
+    if (i > 0) el.classList.add('rv-' + Math.min(i, 4));
+  });
+
   /* ---- scroll reveals (varied, never blocking content) ---- */
   const revs = document.querySelectorAll('.rv');
   if (reduce || !('IntersectionObserver' in window)) {
