@@ -97,3 +97,31 @@
     }
   });
 })();
+
+
+/* V3 PASS 2 ALIVE INTERACTIONS */
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  const surfaces = document.querySelectorAll('.v3-card, .v3-panel, .machine-card, .hw-img, .command-console');
+  surfaces.forEach((surface) => {
+    surface.addEventListener('pointermove', (event) => {
+      const rect = surface.getBoundingClientRect();
+      const x = ((event.clientX - rect.left) / rect.width) * 100;
+      const y = ((event.clientY - rect.top) / rect.height) * 100;
+      surface.style.setProperty('--mx', x.toFixed(2) + '%');
+      surface.style.setProperty('--my', y.toFixed(2) + '%');
+    }, { passive: true });
+  });
+
+  const nav = document.querySelector('.site-nav');
+  if (nav) {
+    let last = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      nav.classList.toggle('nav-hidden', y > last && y > 140);
+      last = y;
+    }, { passive: true });
+  }
+})();
