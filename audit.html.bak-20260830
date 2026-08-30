@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The $999 AI &amp; Subscription Audit — Throughline Operations · Hamilton, Ontario</title>
+  <meta name="description" content="One flat $999 CAD, everything included. I walk your whole workday, find where time and money are leaking, and hand you a written plan: what to keep, what to cancel, and cheaper or free ways to do the rest. Hamilton, Ontario.">
+  <!-- PUBLISHED COPY: robots is now index, follow (flipped 2026-08-30 per work
+       order item 15 + Joe GO). Preview and live copies are identical. -->
+  <meta name="robots" content="index, follow">
+  <style>
+    /* ── Tokens (continuity with live design system) ──────────────────── */
+    :root {
+      --void:         #050B14;
+      --navy:         #0A1628;
+      --navy-raised:  #0F2138;
+      --signal:       #1560A4;
+      --signal-bright:#3a9fd5;
+      --chrome:       #C8CDD3;
+      --chrome-dim:   #8A94A0;
+      --radius: 14px;
+      --maxw: 720px;
+    }
+
+    /* ── Base ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--chrome);
+      background:
+        radial-gradient(120% 60% at 50% 0%, rgba(21,96,164,0.16) 0%, rgba(21,96,164,0) 55%),
+        linear-gradient(180deg, var(--void) 0%, var(--navy) 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 clamp(1.15rem, 4.5vw, 2rem);
+    }
+    section { padding: clamp(2.2rem, 6vw, 3.4rem) 0; }
+    section + section { border-top: 1px solid rgba(138,148,160,0.14); }
+
+    h1, h2, h3 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: #fff; }
+    h1 { font-size: clamp(1.95rem, 6.5vw, 3rem); }
+    h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); margin-bottom: 1rem; }
+    h3 { font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; color: var(--chrome); }
+    p, li { font-size: 1rem; }
+    p + p { margin-top: 0.8rem; }
+    a { color: var(--signal-bright); }
+    ul { padding-left: 1.25rem; }
+    li + li { margin-top: 0.55rem; }
+    strong { color: #fff; }
+
+    /* ── Brand strip ──────────────────────────────────────────────────── */
+    .brandbar { display: flex; align-items: center; gap: 0.65rem; padding: 1.4rem 0 0; }
+    .brandbar svg { width: 44px; height: 28px; display: block; flex: 0 0 44px; }
+    .brandbar svg .brand-word { display: none; }
+    .brandbar span { font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; color: var(--chrome); }
+    .brandbar a { text-decoration: none; }
+
+    /* ── Spice: static circuit-trace background (CSS-only, no animation) ─ */
+    .circuit {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.55;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'><g fill='none' stroke='%231560A4' stroke-opacity='0.16' stroke-width='1'><path d='M30 40 H150 V130 H260 V40 H390'/><circle cx='30' cy='40' r='3' fill='%231560A4' fill-opacity='0.22'/><circle cx='390' cy='40' r='3' fill='%231560A4' fill-opacity='0.22'/><path d='M60 200 H180 V290 H320 V200 H400'/><circle cx='60' cy='200' r='3' fill='%231560A4' fill-opacity='0.22'/><circle cx='400' cy='200' r='3' fill='%231560A4' fill-opacity='0.22'/><path d='M10 360 H120 V300 H250 V380 H410'/><circle cx='10' cy='360' r='3' fill='%231560A4' fill-opacity='0.22'/><circle cx='410' cy='380' r='3' fill='%231560A4' fill-opacity='0.22'/><path d='M200 10 V80 H340'/><circle cx='340' cy='80' r='3' fill='%231560A4' fill-opacity='0.22'/></g></svg>");
+      background-size: 420px 420px;
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────────────── */
+    .hero { padding: clamp(2.6rem, 8vw, 4.5rem) 0 clamp(2.2rem, 6vw, 3rem); }
+    .hero .kicker {
+      font-size: 0.82rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--signal-bright); margin-bottom: 1rem;
+    }
+    .hero p.lede { font-size: clamp(1.05rem, 3vw, 1.2rem); color: var(--chrome); max-width: 46ch; margin-top: 1.1rem; }
+
+    /* ── Price card + CTA ─────────────────────────────────────────────── */
+    .price-card {
+      background: linear-gradient(160deg, var(--navy-raised) 0%, var(--navy) 100%);
+      border: 1px solid rgba(58,159,213,0.35);
+      border-radius: var(--radius);
+      padding: clamp(1.4rem, 4.5vw, 2rem);
+      margin-top: 1.8rem;
+      box-shadow: 0 0 60px -18px rgba(21,96,164,0.55);
+    }
+    .price-card .price { font-size: clamp(2.2rem, 7vw, 2.8rem); font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+    .price-card .price small { font-size: 0.42em; font-weight: 700; color: var(--chrome-dim); letter-spacing: 0; }
+    .price-card .allin { color: var(--chrome); margin-top: 0.35rem; }
+    .price-card ul { margin-top: 1rem; }
+
+    .cta {
+      display: block;
+      text-align: center;
+      background: var(--signal);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 1.05rem 1.4rem;
+      margin-top: 1.4rem;
+      transition: background .2s ease;
+    }
+    .cta:hover, .cta:focus-visible { background: #1a70bd; }
+    .cta:focus-visible { outline: 3px solid var(--signal-bright); outline-offset: 3px; }
+    .cta-note { text-align: center; font-size: 0.88rem; color: var(--chrome-dim); margin-top: 0.7rem; }
+
+    /* ── Guarantee band ───────────────────────────────────────────────── */
+    .guarantee {
+      border-left: 3px solid var(--signal-bright);
+      padding: 0.4rem 0 0.4rem 1.1rem;
+      margin-top: 1.6rem;
+    }
+    .guarantee p { font-size: 1.02rem; color: #fff; }
+    .guarantee .lead-in { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--signal-bright); display: block; margin-bottom: 0.4rem; }
+
+    /* ── Steps ────────────────────────────────────────────────────────── */
+    .steps { list-style: none; padding: 0; counter-reset: step; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      padding: 0 0 1.3rem 3rem;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute; left: 0; top: 0.1rem;
+      width: 1.9rem; height: 1.9rem;
+      display: grid; place-items: center;
+      background: var(--navy-raised);
+      border: 1px solid rgba(58,159,213,0.45);
+      border-radius: 50%;
+      font-weight: 800; font-size: 0.95rem; color: var(--signal-bright);
+    }
+    .steps b { color: #fff; }
+
+    /* ── Tiers ────────────────────────────────────────────────────────── */
+    .tiers { display: grid; gap: 1rem; }
+    @media (min-width: 560px) { .tiers { grid-template-columns: 1fr 1fr; } }
+    .tier {
+      background: var(--navy-raised);
+      border: 1px solid rgba(138,148,160,0.18);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+    }
+    .tier h3 { margin-bottom: 0.5rem; }
+    .tier p { font-size: 0.95rem; }
+    .tier--note {
+      grid-column: 1 / -1;
+      background: transparent;
+      border-style: dashed;
+    }
+
+    /* ── No-passwords callout (markup class is .nop — keep in sync) ────── */
+    .nop {
+      background: rgba(21,96,164,0.12);
+      border: 1px solid rgba(58,159,213,0.4);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.3rem;
+    }
+    section.nopasswords h2 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+
+    /* ── Not-included list ────────────────────────────────────────────── */
+    .not-list { color: var(--chrome-dim); }
+    .not-list li::marker { color: var(--signal); }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid rgba(138,148,160,0.14);
+      padding: 1.6rem 0 2.2rem;
+      font-size: 0.85rem;
+      color: var(--chrome-dim);
+    }
+    footer a { color: var(--chrome-dim); }
+    footer a:hover, footer a:focus-visible { color: var(--chrome); }
+
+    /* ── Reduced motion ───────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="circuit" aria-hidden="true"></div>
+  <div class="wrap">
+
+    <div class="brandbar">
+      <a href="https://throughlineoperations.com/" aria-label="Throughline Operations home">
+        <svg viewBox="240 190 902 570" fill="none" role="img" aria-label="Throughline Operations mark">
+          <polygon points="269.50,457.80 786.10,457.80 786.10,498.80 269.50,498.80" fill="#1560A4"/>
+          <polygon points="855.80,457.80 1036.20,457.80 1077.20,468.05 1077.20,498.80 855.80,498.80" fill="#1560A4"/>
+          <polygon points="269.50,220.00 724.60,220.00 671.30,293.80 269.50,293.80" fill="#C8CDD3"/>
+          <polygon points="441.70,293.80 529.85,293.80 562.65,324.55 562.65,404.50 441.70,404.50" fill="#C8CDD3"/>
+          <rect x="441.70" y="529.55" width="120.95" height="200.90" fill="#C8CDD3"/>
+          <path d="M 656.95,478.30 a 227.55,227.55 0 1,0 455.10,0 a 227.55,227.55 0 1,0 -455.10,0 M 736.90,478.30 a 147.60,147.60 0 1,1 295.20,0 a 147.60,147.60 0 1,1 -295.20,0" fill="#C8CDD3" fill-rule="evenodd"/>
+          <!-- In-SVG wordmark hidden by CSS (.brand-word): sub-pixel at 44px render.
+               The adjacent .brandbar span carries the wordmark in real HTML text. -->
+          <g class="brand-word">
+            <text x="700" y="980" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="800" letter-spacing="12" font-size="120" fill="#C8CDD3">THROUGHLINE</text>
+            <polygon points="270,1028 292,1044 1106,1044 1130,1028 298,1028" fill="#1560A4"/>
+            <rect x="224" y="1095" width="76" height="11" fill="#8A94A0"/>
+            <text x="700" y="1126" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="700" letter-spacing="26" font-size="58" fill="#C8CDD3">OPERATIONS</text>
+            <rect x="1100" y="1095" width="76" height="11" fill="#8A94A0"/>
+          </g>
+        </svg>
+      </a>
+      <span>Throughline Operations · Hamilton, Ontario</span>
+    </div>
+
+    <!-- HERO + PRICE -->
+    <header class="hero">
+      <p class="kicker">The AI &amp; Subscription Audit</p>
+      <h1>Find the software you're paying for but don't need.</h1>
+      <p class="lede">I walk your whole workday top to bottom, find where time and money are leaking, and hand you a written plan: what to keep, what to cancel, and cheaper or free ways to do the rest.</p>
+      <p class="lede" style="margin-top:0.6rem;">Questions? Call Joe now: <a href="tel:+12898123420" style="color:var(--signal-bright); font-weight:700;">(289) 812-3420</a></p>
+
+      <div class="price-card">
+        <p class="price">$999 <small>CAD, all-in</small></p>
+        <p class="allin">One price. Everything included:</p>
+        <ul>
+          <li>One interview (60–90 minutes, your place or video)</li>
+          <li>The research pass</li>
+          <li>A written report with a one-page verdict</li>
+          <li>The organization guide — how to keep logins and bills in one place</li>
+          <li>A 30-minute review call</li>
+        </ul>
+        <p class="allin">No add-ons. No surprises.</p>
+
+        <div class="guarantee">
+          <span class="lead-in">The guarantee</span>
+          <p>If the audit doesn't give you a clear keep, cancel, or change answer for every subscription we review, I'll finish the work at no charge.</p>
+        </div>
+
+        <a class="cta" href="https://throughlineoperations.com/book.html">Book your audit — $999 CAD all-in</a>
+        <p class="cta-note">Booking takes about 15 minutes of your time. Full payment on booking; 48-hour reschedule window. Questions first? Call Joe: <a href="tel:+12898123420" style="color:inherit; text-decoration:underline;">(289) 812-3420</a>.</p>
+      </div>
+    </header>
+
+    <!-- HOW IT WORKS -->
+    <section aria-labelledby="how-h">
+      <h2 id="how-h">How it works</h2>
+      <ol class="steps">
+        <li><b>You book.</b> You get a short prep package the same day: what I'll ask and what to gather (your subscription list and recent bills — screenshots are fine).</li>
+        <li><b>We talk.</b> About 60–90 minutes, in person by default or by video. I watch how your day actually runs — every system you touch, every subscription you pay for. I record so I don't miss anything; it stays private and is deleted after your report is delivered.</li>
+        <li><b>I research.</b> For every tool you use, I look for the cheaper, free, or better-fit options — paid services, open-source, and hardware.</li>
+        <li><b>You get the report.</b> Promised within 7 days, usually 3–4. It ends with an action list in priority order.</li>
+        <li><b>We review it together.</b> A 30-minute call is included: I walk the report and answer questions. After that, 14 days of follow-up by email, included.</li>
+      </ol>
+    </section>
+
+    <!-- WHAT'S IN THE REPORT -->
+    <section aria-labelledby="report-h">
+      <h2 id="report-h">What's in the report</h2>
+      <div class="tiers">
+        <div class="tier">
+          <h3>Deep-solved problems</h3>
+          <p>Your top 3–5 pain points get the full treatment: where you are now, the options compared, my recommendation, and what fixing it would actually look like.</p>
+        </div>
+        <div class="tier">
+          <h3>The catalogue</h3>
+          <p>Every other subscription and tool gets a row: keep, cancel, or change — plus the swap options. This section runs as wide as your findings do.</p>
+        </div>
+        <div class="tier tier--note">
+          <h3>What the audit doesn't do</h3>
+          <p>The audit tells you what to use and shows you what implementing it looks like. Implementing it is the next engagement — only if you want it. I present options with trade-offs; every cancel-and-switch decision stays yours.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NO PASSWORDS -->
+    <section aria-labelledby="nopw-h" class="nopasswords">
+      <div class="nop">
+        <h2 id="nopw-h">I don't want your passwords. Ever, at this stage.</h2>
+        <p>I work from your subscription list, your bills, and what you show me on your own screen. Logins only ever come into play later, inside a separate implementation engagement, through a proper secure system.</p>
+      </div>
+    </section>
+
+    <!-- WHAT THIS IS NOT -->
+    <section aria-labelledby="not-h">
+      <h2 id="not-h">What this is not</h2>
+      <ul class="not-list">
+        <li>Not a security pen-test</li>
+        <li>Not legal or contract review</li>
+        <li>Not tax or accounting advice</li>
+        <li>Not implementation — that's a separate engagement if you want it</li>
+        <li>No system access or passwords required or accepted at the audit stage</li>
+      </ul>
+    </section>
+
+    <!-- WHO -->
+    <section aria-labelledby="who-h">
+      <h2 id="who-h">Who you're working with</h2>
+      <p><strong>Joe Robinson.</strong> I run Throughline Operations here in Hamilton. I spent 20 years in film — 15 of them running locations as a DGC Location Manager — keeping complicated shoots on budget and on schedule. Now I do the same for local businesses' software and subscriptions.</p>
+      <p>I work solo. You deal with me, start to finish.</p>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final" aria-labelledby="book-h">
+      <h2 id="book-h">Still deciding?</h2>
+      <p>Book your audit — $999 CAD, all-in. Or call Joe first with your questions: <a href="tel:+12898123420" style="font-weight:700;">(289) 812-3420</a> — 9:00 am–5:00 pm Eastern, Monday to Friday.</p>
+      <a class="cta" href="https://throughlineoperations.com/book.html">Book your audit — $999 CAD all-in</a>
+    </section>
+
+    <footer>
+      <p>© 2026 Throughline Operations · <a href="https://throughlineoperations.com/">throughlineoperations.com</a> · <a href="https://throughlineoperations.com/privacy.html">Privacy</a> · <a href="tel:+12898123420">(289) 812-3420</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
